@@ -12,60 +12,69 @@ knitr::opts_chunk$set(echo = TRUE)
 # Load Libraries
 install.packages("ggplot2")
 
+
 library("ggplot2")
+library("ggrepel")
+library(rvest)
+library(dplyr)
+library(stringr)
+source("AutoReadUSBRData/AutoReadUSBRData.R")
+
+# Reads in Updated HydroData
+df <- fReadReclamationHydroData(FromHydroData = T)
 
 
+#### Function that Reads in most current CRMMS Inflow Data
+base <- "https://www.usbr.gov/uc/water/hydrodata/crmms/"
+page <- read_html(base)
+links <- page %>% html_nodes("a") %>% html_attr("href")
+links
 
-
-## Set Current Storage: All data from https://usbr.gov/uc/water/hydrodata/reservoir_data/919/dashboard.html#csv/
-storage <- read.csv("Storage.csv")
-storage$datetime <- as.Date(storage$datetime)
-current_storage <- storage[which.max(storage$datetime),]
+####### Function that takes df and filter into specific values by time frame
+# Inputs: FieldName, TimeStep
+filter_parameter <- function(field_name, TimeStep){
+  TimeStep[TimeStep$FieldName == field_name, ]
+}
+# Current Storage is the most recent storage value
+storage_data <-filter_parameter("Storage", df$dfResDaily)
+current_storage <- storage_data[which.max(storage_data$DateValue),]
 
 # Set Inflows
-inflow <- read.csv("Inflow.csv")
-inflow_proj <- data.frame(inflow$ESP.Min, inflow$ESP.Most, inflow$ESP.Max, as.Date(inflow$datetime, format = "%m/%d/%Y"))
-names(inflow_proj)[4] <- "datetime"
+inflow <- read.csv("Data/May 2026 CRMMS Inflow.csv")
+inflow$datetime <- as.Date(inflow$date)
 
-# Add DROA Flaming Gorge Releases (high = 1 maf, low = .660 maf)
-fg_release <- read.csv("Flaming Gorge DROA Release.csv")
+
+
+# Set DROA Flaming Gorge Releases (high = 1 maf, low = .660 maf)
+fg_release <- read.csv("Data/Flaming Gorge DROA Release.csv")
 fg_release$datetime <- as.Date(fg_release$datetime, format = "%m/%d/%Y")
-inflow <- merge(inflow_proj, fg_release, by = "datetime", all = T)
+inflow <- merge(inflow, fg_release, by = "datetime", all = T)
+inflow$FG_Low[is.na(inflow$FG_Low)] <- 0
+inflow$FG_High[is.na(inflow$FG_High)] <- 0
 inflow <- inflow[order(inflow$datetime), ]
 
-inflow$FG_High[is.na(inflow$FG_High)] <- 0
-inflow$FG_Low[is.na(inflow$FG_Low)] <- 0
-inflow$high <- inflow$inflow.ESP.Most +inflow$FG_High
-inflow$low <- inflow$inflow.ESP.Most + inflow$FG_Low
-inflow$high_10 <- inflow$inflow.ESP.Min + inflow$FG_High
-inflow$low_10<- inflow$inflow.ESP.Min + inflow$FG_Low
+# Define Inflow Scenarios
+inflow$old <- inflow$X24MS.MIN.PROB - inflow$FG_High
+inflow$low <- inflow$old + inflow$FG_Low
+inflow$high <- inflow$X24MS.MIN.PROB
 
-# Define Inflow Projection (Currently Based on median flow)
-inflow_high_fun <- approxfun(as.numeric(inflow$datetime),inflow$high)
-inflow_low_fun <- approxfun(as.numeric(inflow$datetime),inflow$low)
-inflow_old_fun <- approxfun(as.numeric(inflow$datetime), inflow$inflow.ESP.Most)
-inflow_high_10_fun <- approxfun(as.numeric(inflow$datetime), inflow$high_10)
-inflow_low_10_fun <- approxfun(as.numeric(inflow$datetime), inflow$low_10)
+# Define Inflow Interpolation (Currently Based on 24MS Low Prob flow)
+inflow_old_fun <- approxfun(as.numeric(inflow$datetime),inflow$old)
+inflow_low_fun <- approxfun(as.numeric(inflow$datetime), inflow$low)
+inflow_high_fun <- approxfun(as.numeric(inflow$datetime), inflow$high)
 
-# Set Releases (Currently Based on Median Flow)
-outflow <- read.csv("Outflow.csv")
-outflow_proj <- data.frame(outflow$ESP.Min, outflow$ESP.Most, as.Date(outflow$datetime, format = "%m/%d/%Y"))
-names(outflow_proj)[3] <- "datetime"
-outflow_old_fun <- approxfun(as.numeric(outflow_proj$datetime), outflow_proj$outflow.ESP.Most)
-
-# Factor in Lowered releases 
-# Outflow Left in 2026 = 6 - 3.6 = 2.4 MAF
-# Projected Outflow Left in 2026 = 3.308 MAF
-# Percent reduction in outflow = 2.4/3.308
-# New Projected Outflow = Old Outflow * 2.4/3.308
-outflow_proj$new <- outflow$ESP.Most * 2.4/3.308
-outflow_new_fun <- approxfun(as.numeric(outflow_proj$datetime), outflow_proj$new)
-
+# Set Releases (Based on 24MS Low Prob flow)
+outflow_new <- read.csv("Data/May 2026 CRMMS Lake Powell Release.csv")
+outflow_old <- read.csv("Data/43 (2).csv")
+outflow <- merge(outflow_new, outflow_old, by = "date")
+outflow <- data.frame(new = outflow$X24MS.MIN.PROB.x, old = outflow$X24MS.MIN.PROB.y, date = outflow$date)
+outflow$datetime <- as.Date(outflow$date)
+outflow_new_fun <- approxfun(as.numeric(outflow$datetime), outflow$new)
+outflow_old_fun <- approxfun(as.numeric(outflow$datetime), outflow$old)
 
 # Set Evaporation
 # Evaporation is in acre feet per year
-evap_data <- read.csv("dfPowellEvap.csv")
-
+evap_data <- read.csv("Data/dfPowellEvap.csv")
 
 # Define Evaporation Approximation
 evap_fun <- approxfun(evap_data$Total.Storage..ac.ft., evap_data$EvapVolMaxLo/12)
@@ -73,31 +82,27 @@ evap_fun <- approxfun(evap_data$Total.Storage..ac.ft., evap_data$EvapVolMaxLo/12
 --------------------------------------------------------------------------------------------
 
 # Interpolate into Time Series by Month
-time_grid <- seq(from = (current_storage$datetime), to = as.Date("2027-10-01"), by = "month")
+time_grid <- seq(from = (current_storage$DateValue), to = as.Date("2027-10-01"), by = "month")
 time_num <- as.numeric(time_grid)
 
 inflow_high_i <- inflow_high_fun(time_num)
 inflow_low_i <- inflow_low_fun(time_num)
 inflow_old_i <- inflow_old_fun(time_num)
-inflow_high_10_i <- inflow_high_10_fun(time_num)
-inflow_low_10_i <- inflow_low_10_fun(time_num)
 outflow_new_i <- outflow_new_fun(time_num)
 outflow_old_i <- outflow_old_fun(time_num)
 
-sum(inflow$inflow.ESP.Min[inflow$dateti])
 
 # Set Up Dataframe
-df<- data.frame(datetime = time_grid, inflow_high = inflow_high_i, inflow_low = inflow_low_i, inflow_old = inflow_old_i, inflow_high_10 = inflow_high_10_i, inflow_low_10 = inflow_low_10_i, outflow_new = outflow_new_i, ouflow_old = outflow_old_i)
-start_idx <- which.min(abs(df$datetime - current_storage$datetime))
+df<- data.frame(datetime = time_grid, inflow_high = inflow_high_i, inflow_low = inflow_low_i, inflow_old = inflow_old_i,outflow_new = outflow_new_i, ouflow_old = outflow_old_i)
+start_idx <- which.min(abs(df$datetime - current_storage$DateValue))
 
 # Storage Projection Function: 
 # Storage = Previous Storage + Inflow - Outflow - Evaporation
 # Evaporation per timestep = Evaporation per year/365*days in time step
 project_storage <- function(inflow, outflow)
 {
-
   storage <- numeric(length(time_grid))
-  storage[1] <- current_storage$storage
+  storage[1] <- current_storage$Value
   
   for (i in 2:length(time_grid)) {
   evap_i <- evap_fun(storage[i-1])
@@ -120,37 +125,51 @@ project_storage <- function(inflow, outflow)
 project_old <- project_storage(inflow_old_i, outflow_old_i)
 project_high<- project_storage(inflow_high_i, outflow_new_i)
 project_low <- project_storage(inflow_low_i, outflow_old_i)
-project_high_10 <- project_storage(inflow_high_10_i, outflow_new_i)
-project_low_10 <- project_storage(inflow_low_10_i, outflow_new_i)
+
 project_old$label <- "Pre April 2026 Projections"
 project_high$label <- "1 MAF release from Flaming Gorge"
 project_low$label <- "0.660 MAF release from Flaming Gorge"
-project_high_10$label <- "1 MAF release from Flaming Gorge"
-project_low_10$label <- "0.660 MAF release from Flaming Gorge"
 
-project_mid <- rbind(project_old, project_high, project_low)
-project_low <- rbind(project_high_10, project_low_10, project_old)
+projection <- rbind(project_old, project_high, project_low)
+
+# Approximate linear relationship between elevation and storage
+lm(storage ~ elevation, data = projection)
 
 
-# Figure 1: Projected Elevations
-ggplot(project_mid, 
-        aes(x = datetime, y = elevation, color = label)) + 
-        geom_line(linewidth = 1.2) +
-        labs(title = "Lake Powell Elevation Projections Median Inflow", x = "Date", y =               "Elevation(ft.)")+
-        geom_hline(yintercept = 3490, linetype = "dashed", color = "red") +
-        geom_point(data = highlight, size = 2, color = "black") +
-        geom_text( data = highlight, aes(label = round(elevation, 1)), vjust = -1)
-       
+##### Plot Projected Elevations
+
+# Set key elevations and points to be labeled
+key_elevations <- data.frame(elevation_label = c(3490, 3525), storage_label = c(5.9, 7.8), label = c( "Minimum Power Pool: 3490 ft, 5.9 MAF", "DROA Target Elevation: 3525 ft, 7.8 MAF"))
+october <- projection[projection$datetime == as.Date("2026-9-27"),]
+
         
-    
-    highlight <- project_mid[project_mid$datetime == "2026-10-01",]
-    highlight_10 <- project_low[project_low$datetime == "2026-10-01",]
-        
-ggplot(project_low,
-        aes(x = datetime, y = elevation, color = label)) + 
+ggplot(projection,
+# General Set up
+        aes(x = datetime, y = elevation, color = label)) +
         geom_line(linewidth = 1.2) +
-        labs(title = "Lake Powell Elevation Projections Low Inflow", x = "Date", y =                  "Elevation(ft.)")+
-        geom_hline(yintercept = 3490, linetype = "dashed", color = "red")+
-        geom_point(data = highlight_10, size = 2, color = "black") +
-        geom_text(data = highlight_10, aes(label = round(elevation, 1)), vjust = -2)
+        scale_color_manual(name = "Operation Strategy", values = c(
+          "Pre April 2026 Projections" = rgb(.88,.09,.79), 
+          "1 MAF release from Flaming Gorge" = "darkolivegreen3", 
+          "0.660 MAF release from Flaming Gorge" = "darkolivegreen")) +
+        labs(title = "Lake Powell Elevation Projections Low Inflow (10th Percentile)", x = 
+        "Date", y = "Elevation(ft.)")+
+        
+# Plots October Elevations
+        geom_point(data = october, size = 2, color = "black") +
+        geom_text_repel(data = october, aes(label = round(elevation, 1)), vjust = -2) +
+        geom_vline(xintercept = as.Date("2026-9-27"), linetype = "dashed", 
+        color = "black") +
+        annotate("text", x = as.Date("2026-9-27"), y = min(projection$elevation), 
+        color = "black", size = 4, label = "October 2026") + 
+        
+# Plots Right side key elevations
+        geom_hline(yintercept = key_elevations$elevation_label, color = "red", linetype = 
+        "dashed")+
+        scale_y_continuous(name = "Elevation (ft.)",
+        sec.axis = sec_axis(~.*1,breaks = key_elevations$elevation_label,
+        labels = key_elevations$label  
+        ))
+
+
+
 
