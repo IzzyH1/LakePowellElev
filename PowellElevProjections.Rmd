@@ -1,23 +1,42 @@
 ---
 title: "Powell Elevation Projection"
+author: Isabel Hinton
 output: html_document
-date: "2026-05-05"
+date: "2026-05-29"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Description
+This is an R Markdown document that displays elevation/storage projections for Lake Powell based on 3 operation strategies: 
+1. Pre April 2026 Operations: No additional releases from Flaming Gorge Reservoir, 7.48 MAF release from Lake Powell for the 2026 water year. 
+2. Low Additional Releases from Flaming Gorge: Additional 0.66 MAF release from Flaming Gorge from April 2026 - April 2027, 6 MAF release from Lake Powell for the 2026 water year.
+3. High Additional Releases from Flaming Gorge: Additional 1 MAF release from Flaming Gorge from April 2026 - April 2027, 6 MAF release from Lake Powell for the 2026 water year.
+
+These strategies are based on the Bureau of Reclamation's recent decision to change the target release for Lake Powell from 7.48 MAF to 6 MAF as well as release anywhere from 0.66 MAF to 1 MAF of additional water from Flaming Gorge Reservoir.
+
+Data Sources:
+Current Storage (df$ResDaily): USBR Hydrodata (https://www.usbr.gov/uc/water/hydrodata/reservoir_data/site_map.html)
+Inflow Projections (inflow): USBR CRMM 24-Month Study (https://www.usbr.gov/uc/water/hydrodata/crmms/current/crmms_nav.html)
+Additional Flaming Gorge Release Schedule (fg_release): USBR 2026 Drought Response Operations Plan (https://usbr.gov/ColoradoRiverBasin/documents/dcp/DROA/2026/uc-2026droughtresponseoperationsplan-attachmentsa-h-508-20260423.pdf) 
+Outflow Projections (outflow): USBR CRMM 24-Month Study 10th Percentile Flows - Pre April 2026 Projections are based on April 2026 24-Month Study, the rest are based on the most recent 24-Month Study (https://www.usbr.gov/uc/water/hydrodata/crmms/current/crmms_nav.html)
+Evaporation Estimations(evap_fun): 
+Storage to Elevation Conversion (elev_fun): 
+
+```{r MassBalanceCalculations, echo=FALSE, warning=FALSE, message=FALSE}
+
 
 # Load Libraries
-install.packages("ggplot2")
-
-
 library("ggplot2")
 library("ggrepel")
 library(rvest)
 library(dplyr)
 library(stringr)
+library(here)
+library(readxl)
+library(ymd)
 source("AutoReadUSBRData/AutoReadUSBRData.R")
 
 # Reads in Updated HydroData
@@ -25,10 +44,10 @@ df <- fReadReclamationHydroData(FromHydroData = T)
 
 
 #### Function that Reads in most current CRMMS Inflow Data
-base <- "https://www.usbr.gov/uc/water/hydrodata/crmms/"
-page <- read_html(base)
-links <- page %>% html_nodes("a") %>% html_attr("href")
-links
+#base <- "https://www.usbr.gov/uc/water/hydrodata/crmms/"
+#page <- read_html(base)
+#links <- page %>% html_nodes("a") %>% html_attr("href")
+#links
 
 ####### Function that takes df and filter into specific values by time frame
 # Inputs: FieldName, TimeStep
@@ -42,7 +61,6 @@ current_storage <- storage_data[which.max(storage_data$DateValue),]
 # Set Inflows
 inflow <- read.csv("Data/May 2026 CRMMS Inflow.csv")
 inflow$datetime <- as.Date(inflow$date)
-
 
 
 # Set DROA Flaming Gorge Releases (high = 1 maf, low = .660 maf)
@@ -72,14 +90,7 @@ outflow$datetime <- as.Date(outflow$date)
 outflow_new_fun <- approxfun(as.numeric(outflow$datetime), outflow$new)
 outflow_old_fun <- approxfun(as.numeric(outflow$datetime), outflow$old)
 
-# Set Evaporation
-# Evaporation is in acre feet per year
-evap_data <- read.csv("Data/dfPowellEvap.csv")
 
-# Define Evaporation Approximation
-evap_fun <- approxfun(evap_data$Total.Storage..ac.ft., evap_data$EvapVolMaxLo/12)
-
---------------------------------------------------------------------------------------------
 
 # Interpolate into Time Series by Month
 time_grid <- seq(from = (current_storage$DateValue), to = as.Date("2027-10-01"), by = "month")
@@ -96,13 +107,26 @@ outflow_old_i <- outflow_old_fun(time_num)
 df<- data.frame(datetime = time_grid, inflow_high = inflow_high_i, inflow_low = inflow_low_i, inflow_old = inflow_old_i,outflow_new = outflow_new_i, ouflow_old = outflow_old_i)
 start_idx <- which.min(abs(df$datetime - current_storage$DateValue))
 
-# Storage Projection Function: 
+# Storage Projection Function:
+# Inputs: Inflow, Outflow, Current Storage (Vectors)
+#         evap_csv (file path as String)  
+#         time_grid (List)
+# Output: Data Frame - datetime, storage, elevatrion, label, scenario 
 # Storage = Previous Storage + Inflow - Outflow - Evaporation
 # Evaporation per timestep = Evaporation per year/365*days in time step
-project_storage <- function(inflow, outflow)
+project_storage <- function(inflow, outflow, current_storage, time_grid)
 {
   storage <- numeric(length(time_grid))
   storage[1] <- current_storage$Value
+  
+# Set Evaporation
+# Evaporation is in acre feet per year
+  evap_url <- "https://raw.githubusercontent.com/IzzyH1/LakePowellElev/refs/heads/main/dfPowellEvap.csv"
+  evap_data <- read.csv(evap_url)
+
+# Define Evaporation Approximation
+  evap_fun <- approxfun(evap_data$Total.Storage..ac.ft.,     
+  evap_data$EvapVolMaxLo/12)
   
   for (i in 2:length(time_grid)) {
   evap_i <- evap_fun(storage[i-1])
@@ -117,14 +141,14 @@ project_storage <- function(inflow, outflow)
   elev <- sapply(storage, function(x){
     evap_data$Elevation..ft.[which.min(abs(x - evap_data$Live.Storage..ac.ft.))]
     })
-  data.frame( datetime = time_grid, storage = storage, elevation = elev)
+  data.frame(datetime = time_grid, storage = storage, elevation = elev)
   
 }
 
 
-project_old <- project_storage(inflow_old_i, outflow_old_i)
-project_high<- project_storage(inflow_high_i, outflow_new_i)
-project_low <- project_storage(inflow_low_i, outflow_old_i)
+project_old <- project_storage(inflow_old_i, outflow_old_i, current_storage, time_grid)
+project_high<- project_storage(inflow_high_i, outflow_new_i,current_storage, time_grid)
+project_low <- project_storage(inflow_low_i, outflow_old_i,current_storage, time_grid)
 
 project_old$label <- "Pre April 2026 Projections"
 project_high$label <- "1 MAF release from Flaming Gorge"
@@ -139,10 +163,15 @@ lm(storage ~ elevation, data = projection)
 ##### Plot Projected Elevations
 
 # Set key elevations and points to be labeled
-key_elevations <- data.frame(elevation_label = c(3490, 3525), storage_label = c(5.9, 7.8), label = c( "Minimum Power Pool: 3490 ft, 5.9 MAF", "DROA Target Elevation: 3525 ft, 7.8 MAF"))
+key_elevations <- data.frame(elevation_label = 
+c(3490, 3525, 3460,3471, 3482, 3502, 3511, 3519.5), 
+label = c( "Minimum Power Pool: 3490 ft, 5.9 MAF", "DROA Target Elevation: 3525 ft, 7.8 MAF", "4.5", "5", "5.5","6.5","7", "7.5"))
 october <- projection[projection$datetime == as.Date("2026-9-27"),]
 
-        
+```
+Figure 1: Lake Powell Elevation and Storage Projections
+```{r ProjectionPlot, echo=FALSE, warning=FALSE, message=FALSE}
+
 ggplot(projection,
 # General Set up
         aes(x = datetime, y = elevation, color = label)) +
@@ -154,20 +183,21 @@ ggplot(projection,
         labs(title = "Lake Powell Elevation Projections Low Inflow (10th Percentile)", x = 
         "Date", y = "Elevation(ft.)")+
         
+        
 # Plots October Elevations
         geom_point(data = october, size = 2, color = "black") +
         geom_text_repel(data = october, aes(label = round(elevation, 1)), vjust = -2) +
         geom_vline(xintercept = as.Date("2026-9-27"), linetype = "dashed", 
         color = "black") +
         annotate("text", x = as.Date("2026-9-27"), y = min(projection$elevation), 
-        color = "black", size = 4, label = "October 2026") + 
+        color = "black", size = 4, label = "October 2026")+ 
         
-# Plots Right side key elevations
-        geom_hline(yintercept = key_elevations$elevation_label, color = "red", linetype = 
-        "dashed")+
+# Plots Right side axis
+        geom_hline(yintercept = c(3525, 3490), color = "red", 
+        linetype = "dashed") +
         scale_y_continuous(name = "Elevation (ft.)",
-        sec.axis = sec_axis(~.*1,breaks = key_elevations$elevation_label,
-        labels = key_elevations$label  
+        sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation_label,
+        labels = key_elevations$label, name = "Storage(MAF)" 
         ))
 
 
