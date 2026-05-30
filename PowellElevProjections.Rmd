@@ -25,7 +25,7 @@ Outflow Projections (outflow): USBR CRMM 24-Month Study 10th Percentile Flows - 
 Evaporation Estimations(evap_fun): 
 Storage to Elevation Conversion (elev_fun): 
 
-```{r MassBalanceCalculations, echo=FALSE, warning=FALSE, message=FALSE}
+```{r MassBalanceCalculations, echo=FALSE, warning=FALSE, message=FALSE, results = "hide"}
 
 
 # Load Libraries
@@ -44,6 +44,7 @@ source("AutoReadUSBRData/AutoReadUSBRData.R")
 
 # Reads in Updated HydroData
 df <- fReadReclamationHydroData(FromHydroData = TRUE)
+#df <- fReadReclamationHydroData(FromHydroData = FALSE)
 
 
 #### Function that Reads in most current CRMMS Inflow Data
@@ -158,9 +159,6 @@ project_low$label <- "0.660 MAF release from Flaming Gorge"
 
 projection <- rbind(project_old, project_high, project_low)
 
-# Approximate linear relationship between elevation and storage
-lm(storage ~ elevation, data = projection)
-
 
 ##### Plot Projected Elevations
 
@@ -168,11 +166,12 @@ lm(storage ~ elevation, data = projection)
 key_elevations <- data.frame(elevation_label = 
 c(3490, 3525, 3460,3471, 3482, 3502, 3511, 3519.5), 
 label = c( "Minimum Power Pool: 3490 ft, 5.9 MAF", "DROA Target Elevation: 3525 ft, 7.8 MAF", "4.5", "5", "5.5","6.5","7", "7.5"))
-october <- projection[projection$datetime == as.Date("2026-9-27"),]
+october_date <- projection$datetime[which.min(abs(projection$datetime - as.Date("2026-10-01")))]
+october <- projection[projection$datetime == october_date,]
 
 ```
 Figure 1: Lake Powell Elevation and Storage Projections
-```{r ProjectionPlot, echo=FALSE, warning=FALSE, message=FALSE}
+```{r ProjectionPlot, echo=FALSE, warning=FALSE, message=FALSE, fig.width=10}
 
 ggplot(projection,
 # General Set up
@@ -189,9 +188,9 @@ ggplot(projection,
 # Plots October Elevations
         geom_point(data = october, size = 2, color = "black") +
         geom_text_repel(data = october, aes(label = round(elevation, 1)), vjust = -2) +
-        geom_vline(xintercept = as.Date("2026-9-27"), linetype = "dashed", 
+        geom_vline(xintercept = october$datetime, linetype = "dashed", 
         color = "black") +
-        annotate("text", x = as.Date("2026-9-27"), y = min(projection$elevation), 
+        annotate("text", x = october$datetime, y = min(projection$elevation), 
         color = "black", size = 4, label = "October 2026")+ 
         
 # Plots Right side axis

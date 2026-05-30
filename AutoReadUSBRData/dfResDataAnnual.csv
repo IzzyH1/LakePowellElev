@@ -54,780 +54,805 @@
 "53",1962,921,"Lake Mead","Mead",42,"Total Release","cfs",4200809
 "54",1962,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.33218314215
 "55",1963,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0
-"56",1963,919,"Lake Powell","Powell",29,"Inflow","cfs",1634832.29707
-"57",1963,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",3.24264257374
-"58",1963,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",580473.17569
-"59",1963,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",1.1513517539
-"60",1963,919,"Lake Powell","Powell",42,"Total Release","cfs",259080
-"61",1963,921,"Lake Mead","Mead",42,"Total Release","cfs",4448609
-"62",1963,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.82368727434
-"63",1964,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.0737751848288
-"64",1964,919,"Lake Powell","Powell",29,"Inflow","cfs",3350892.73932
-"65",1964,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.646398821
-"66",1964,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",3777020.35283
-"67",1964,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.49161061811
-"68",1964,919,"Lake Powell","Powell",42,"Total Release","cfs",1216798
-"69",1964,921,"Lake Mead","Mead",42,"Total Release","cfs",4150231
-"70",1964,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.23186314261
-"71",1965,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.166053129857
-"72",1965,919,"Lake Powell","Powell",29,"Inflow","cfs",6909548.13301
-"73",1965,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.70488885716
-"74",1965,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",7585916.389219
-"75",1965,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.04644573251
-"76",1965,919,"Lake Powell","Powell",42,"Total Release","cfs",5455120
-"77",1965,921,"Lake Mead","Mead",42,"Total Release","cfs",4005622
-"78",1965,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.94503537242
-"79",1966,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.2165753639
-"80",1966,919,"Lake Powell","Powell",29,"Inflow","cfs",4309574.72191
-"81",1966,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.54791680254
-"82",1966,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4380672.94017
-"83",1966,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.68893806389
-"84",1966,919,"Lake Powell","Powell",42,"Total Release","cfs",3959880
-"85",1966,921,"Lake Mead","Mead",42,"Total Release","cfs",3916412
-"86",1966,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.76808991868
-"87",1967,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.191975097261
-"88",1967,919,"Lake Powell","Powell",29,"Inflow","cfs",4162845.51335
-"89",1967,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.249223968
-"90",1967,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4526966.755868
-"91",1967,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.97910761555
-"92",1967,919,"Lake Powell","Powell",42,"Total Release","cfs",3931180
-"93",1967,921,"Lake Mead","Mead",42,"Total Release","cfs",3959679
-"94",1967,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.85390876229
-"95",1968,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.213551955756
-"96",1968,919,"Lake Powell","Powell",29,"Inflow","cfs",5003162.39316
-"97",1968,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.92596415365
-"98",1968,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5202463.137078
-"99",1968,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.31893515004
-"100",1968,919,"Lake Powell","Powell",42,"Total Release","cfs",4201650
-"101",1968,921,"Lake Mead","Mead",42,"Total Release","cfs",3953279
-"102",1968,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.84121454734
-"103",1969,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.270930912027
-"104",1969,919,"Lake Powell","Powell",29,"Inflow","cfs",5802179.38543
-"105",1969,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.5084549779
-"106",1969,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5808211.58469
-"107",1969,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.52041967386
-"108",1969,919,"Lake Powell","Powell",42,"Total Release","cfs",4448440
-"109",1969,921,"Lake Mead","Mead",42,"Total Release","cfs",4027694
-"110",1969,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.98881454708
-"111",1970,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.32339147786
-"112",1970,919,"Lake Powell","Powell",29,"Inflow","cfs",5928028.32894
-"113",1970,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.75807271786
-"114",1970,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6045850.00878
-"115",1970,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.99176861055
-"116",1970,919,"Lake Powell","Powell",42,"Total Release","cfs",4372260
-"117",1970,921,"Lake Mead","Mead",42,"Total Release","cfs",3978066
-"118",1970,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.89037884374
-"119",1971,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.383746565469
-"120",1971,919,"Lake Powell","Powell",29,"Inflow","cfs",5566792.12027
-"121",1971,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.0415711438
-"122",1971,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5948074.175738
-"123",1971,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.79783307775
-"124",1971,919,"Lake Powell","Powell",42,"Total Release","cfs",4331160
-"125",1971,921,"Lake Mead","Mead",42,"Total Release","cfs",4141709
-"126",1971,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.21496000203
-"127",1972,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.389710462418
-"128",1972,919,"Lake Powell","Powell",29,"Inflow","cfs",4435362.74725
-"129",1972,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.79741371079
-"130",1972,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4703107.09338
-"131",1972,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",9.3284768805
-"132",1972,919,"Lake Powell","Powell",42,"Total Release","cfs",4694180
-"133",1972,921,"Lake Mead","Mead",42,"Total Release","cfs",4167520
-"134",1972,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.26615537337
-"135",1973,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.421303362201
-"136",1973,919,"Lake Powell","Powell",29,"Inflow","cfs",7762794.5675
-"137",1973,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",15.39727847507
-"138",1973,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",8053378.74542
-"139",1973,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.97364379464
-"140",1973,919,"Lake Powell","Powell",42,"Total Release","cfs",5096150
-"141",1973,921,"Lake Mead","Mead",42,"Total Release","cfs",4001834
-"142",1973,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.93752198612
-"143",1974,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.520678186659
-"144",1974,919,"Lake Powell","Powell",29,"Inflow","cfs",5036086.15749
-"145",1974,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.9889312197
-"146",1974,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5026615.3966354
-"147",1974,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",9.97014624293
-"148",1974,919,"Lake Powell","Powell",42,"Total Release","cfs",4167480
-"149",1974,921,"Lake Mead","Mead",42,"Total Release","cfs",4460173
-"150",1974,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.84662413364
-"151",1975,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.537085128401
-"152",1975,919,"Lake Powell","Powell",29,"Inflow","cfs",6234658.61104
-"153",1975,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.36626501347
-"154",1975,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6602313.991933
-"155",1975,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.09549882957
-"156",1975,919,"Lake Powell","Powell",42,"Total Release","cfs",4666130
-"157",1975,921,"Lake Mead","Mead",42,"Total Release","cfs",4220548
-"158",1975,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.37133487794
-"159",1976,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.563558150205
-"160",1976,919,"Lake Powell","Powell",29,"Inflow","cfs",4393190.61774
-"161",1976,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.71376651388
-"162",1976,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4250633.94602
-"163",1976,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.43100948083
-"164",1976,919,"Lake Powell","Powell",42,"Total Release","cfs",4276360
-"165",1976,921,"Lake Mead","Mead",42,"Total Release","cfs",4194703
-"166",1976,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.32007206815
-"167",1977,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.507796485607
-"168",1977,919,"Lake Powell","Powell",29,"Inflow","cfs",2763687.79093
-"169",1977,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.48169479135
-"170",1977,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",1779022.873714
-"171",1977,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",3.52864041166
-"172",1977,919,"Lake Powell","Powell",42,"Total Release","cfs",4164620
-"173",1977,921,"Lake Mead","Mead",42,"Total Release","cfs",3812380
-"174",1977,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.56174545672
-"175",1978,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.467986377701
-"176",1978,919,"Lake Powell","Powell",29,"Inflow","cfs",4765640.70771
-"177",1978,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.45251049406
-"178",1978,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5575732.47841
-"179",1978,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.05930408915
-"180",1978,919,"Lake Powell","Powell",42,"Total Release","cfs",4211640
-"181",1978,921,"Lake Mead","Mead",42,"Total Release","cfs",3873960
-"182",1978,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.68388760495
-"183",1979,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.541808808551
-"184",1979,919,"Lake Powell","Powell",29,"Inflow","cfs",7160048.09582
-"185",1979,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",14.20174828599
-"186",1979,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",7153656.429026
-"187",1979,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",14.1890706076
-"188",1979,919,"Lake Powell","Powell",42,"Total Release","cfs",4182820
-"189",1979,921,"Lake Mead","Mead",42,"Total Release","cfs",3724700
-"190",1979,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.38783471325
-"191",1980,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.632343005105
-"192",1980,919,"Lake Powell","Powell",29,"Inflow","cfs",6478182.85382
-"193",1980,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.849288306774
-"194",1980,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6897934.2453
-"195",1980,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.68185305312
-"196",1980,919,"Lake Powell","Powell",42,"Total Release","cfs",5499190
-"197",1980,921,"Lake Mead","Mead",42,"Total Release","cfs",5020320
-"198",1980,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.95765950587
-"199",1981,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.605028405282
-"200",1981,919,"Lake Powell","Powell",29,"Inflow","cfs",3232701.60454
-"201",1981,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.41197012475
-"202",1981,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2842818.540848
-"203",1981,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.63864834569
-"204",1981,919,"Lake Powell","Powell",42,"Total Release","cfs",4182140
-"205",1981,921,"Lake Mead","Mead",42,"Total Release","cfs",4954750
-"206",1981,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.82760330823
-"207",1982,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.599597920809
-"208",1982,919,"Lake Powell","Powell",29,"Inflow","cfs",5700772.13692
-"209",1982,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.307316629791
-"210",1982,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6438832.01954
-"211",1982,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.77123706537
-"212",1982,919,"Lake Powell","Powell",42,"Total Release","cfs",4186799
-"213",1982,921,"Lake Mead","Mead",42,"Total Release","cfs",3724550
-"214",1982,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.38753719158
-"215",1983,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.670813568593
-"216",1983,919,"Lake Powell","Powell",29,"Inflow","cfs",10139000.84252
-"217",1983,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",20.11041488807
-"218",1983,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",10270185.15646
-"219",1983,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",20.37061519437
-"220",1983,919,"Lake Powell","Powell",42,"Total Release","cfs",8819610
-"221",1983,921,"Lake Mead","Mead",42,"Total Release","cfs",7438350
-"222",1983,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",14.75375206757
-"223",1984,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.657054210488
-"224",1984,919,"Lake Powell","Powell",29,"Inflow","cfs",10410905.43297
-"225",1984,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",20.64972978447
-"226",1984,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",10494330.989222
-"227",1984,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",20.845676855
-"228",1984,919,"Lake Powell","Powell",42,"Total Release","cfs",10335120
-"229",1984,921,"Lake Mead","Mead",42,"Total Release","cfs",11197600
-"230",1984,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",22.2101157042
-"231",1985,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.651715702682
-"232",1985,919,"Lake Powell","Powell",29,"Inflow","cfs",9096397.93561
-"233",1985,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",18.04244218478
-"234",1985,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",8831273.735338
-"235",1985,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",17.51657600622
-"236",1985,919,"Lake Powell","Powell",42,"Total Release","cfs",9626610
-"237",1985,921,"Lake Mead","Mead",42,"Total Release","cfs",9394900
-"238",1985,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",18.6345123985
-"239",1986,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.647437516083
-"240",1986,919,"Lake Powell","Powell",29,"Inflow","cfs",9146691.91658
-"241",1986,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",18.14219883735
-"242",1986,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",9350054.02167
-"243",1986,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",18.54556169492
-"244",1986,919,"Lake Powell","Powell",42,"Total Release","cfs",8494120
-"245",1986,921,"Lake Mead","Mead",42,"Total Release","cfs",8678400
-"246",1986,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",17.2133553736
-"247",1987,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.649062026514
-"248",1987,919,"Lake Powell","Powell",29,"Inflow","cfs",6958583.489
-"249",1987,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.80214906768
-"250",1987,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6744145.616069
-"251",1987,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.3768177499
-"252",1987,919,"Lake Powell","Powell",42,"Total Release","cfs",6770250
-"253",1987,921,"Lake Mead","Mead",42,"Total Release","cfs",6624400
-"254",1987,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",13.1393057876
-"255",1988,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.638871787883
-"256",1988,919,"Lake Powell","Powell",29,"Inflow","cfs",4235411.56009
-"257",1988,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.400816316162
-"258",1988,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4027785.7962785
-"259",1988,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.98899662115
-"260",1988,919,"Lake Powell","Powell",42,"Total Release","cfs",4105740
-"261",1988,921,"Lake Mead","Mead",42,"Total Release","cfs",4883600
-"262",1988,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.6864793404
-"263",1989,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.594820128891
-"264",1989,919,"Lake Powell","Powell",29,"Inflow","cfs",2755802.90057
-"265",1989,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.466055339632
-"266",1989,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2994462.3387712
-"267",1989,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.93942943414
-"268",1989,919,"Lake Powell","Powell",42,"Total Release","cfs",4023510
-"269",1989,921,"Lake Mead","Mead",42,"Total Release","cfs",4550570
-"270",1989,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.02592396857
-"271",1990,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.505345908896
-"272",1990,919,"Lake Powell","Powell",29,"Inflow","cfs",2474616.56413
-"273",1990,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",4.908330374989
-"274",1990,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2677567.10958
-"275",1990,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.31087691187
-"276",1990,919,"Lake Powell","Powell",42,"Total Release","cfs",4104120
-"277",1990,921,"Lake Mead","Mead",42,"Total Release","cfs",4669130
-"278",1990,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.26108430061
-"279",1991,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.450295094598
-"280",1991,919,"Lake Powell","Powell",29,"Inflow","cfs",3764115.5674
-"281",1991,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.46601434748
-"282",1991,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4437008.70476
-"283",1991,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.80067842392
-"284",1991,919,"Lake Powell","Powell",42,"Total Release","cfs",4094540
-"285",1991,921,"Lake Mead","Mead",42,"Total Release","cfs",4518380
-"286",1991,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.96207603559
-"287",1992,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.430775302122
-"288",1992,919,"Lake Powell","Powell",29,"Inflow","cfs",3917121.77924
-"289",1992,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.76949774288
-"290",1992,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",3706853.85184
-"291",1992,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.35243739341
-"292",1992,919,"Lake Powell","Powell",42,"Total Release","cfs",4034290
-"293",1992,921,"Lake Mead","Mead",42,"Total Release","cfs",4037670
-"294",1992,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.00860165503
-"295",1993,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.48539226481
-"296",1993,919,"Lake Powell","Powell",29,"Inflow","cfs",6910644.98843
-"297",1993,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.70706443706
-"298",1993,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",7278429.21825
-"299",1993,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",14.43655381674
-"300",1993,919,"Lake Powell","Powell",42,"Total Release","cfs",4085010
-"301",1993,921,"Lake Mead","Mead",42,"Total Release","cfs",3535838.06122
-"302",1993,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.0132325191
-"303",1994,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.53439382998
-"304",1994,919,"Lake Powell","Powell",29,"Inflow","cfs",3875062.70976
-"305",1994,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.686074795855
-"306",1994,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",3425083.29588
-"307",1994,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.79355364642
-"308",1994,919,"Lake Powell","Powell",42,"Total Release","cfs",4178800
-"309",1994,921,"Lake Mead","Mead",42,"Total Release","cfs",4742932.72542
-"310",1994,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.40746987028
-"311",1995,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.570051832402
-"312",1995,919,"Lake Powell","Powell",29,"Inflow","cfs",7409026.38134
-"313",1995,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",14.69558951247
-"314",1995,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",8018891.5306
-"315",1995,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.90523940293
-"316",1995,919,"Lake Powell","Powell",42,"Total Release","cfs",4650100
-"317",1995,921,"Lake Mead","Mead",42,"Total Release","cfs",4414414.53825
-"318",1995,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.75586354791
-"319",1996,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.616968261699
-"320",1996,919,"Lake Powell","Powell",29,"Inflow","cfs",5490473.3986
-"321",1996,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",10.89019517003
-"322",1996,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5244499.96414
-"323",1996,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.40231398145
-"324",1996,919,"Lake Powell","Powell",42,"Total Release","cfs",5809080
-"325",1996,921,"Lake Mead","Mead",42,"Total Release","cfs",5079696.95854
-"326",1996,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.07543198761
-"327",1997,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.618768830486
-"328",1997,919,"Lake Powell","Powell",29,"Inflow","cfs",8177993.21077
-"329",1997,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",16.22081297406
-"330",1997,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",8597680.83148
-"331",1997,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",17.05325123995
-"332",1997,919,"Lake Powell","Powell",42,"Total Release","cfs",6969451.99022
-"333",1997,921,"Lake Mead","Mead",42,"Total Release","cfs",5625995.47417
-"334",1997,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",11.15899928811
-"335",1998,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.640568036198
-"336",1998,919,"Lake Powell","Powell",29,"Inflow","cfs",6917499.38929
-"337",1998,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.72065994118
-"338",1998,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6816528.21097
-"339",1998,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.52038653575
-"340",1998,919,"Lake Powell","Powell",42,"Total Release","cfs",6811237.19209
-"341",1998,921,"Lake Mead","Mead",42,"Total Release","cfs",6034992.58269
-"342",1998,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",11.97023322441
-"343",1999,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.638258836358
-"344",1999,919,"Lake Powell","Powell",29,"Inflow","cfs",6293741.28697
-"345",1999,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.48345379076
-"346",1999,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6453518.35231
-"347",1999,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.80036698135
-"348",1999,919,"Lake Powell","Powell",42,"Total Release","cfs",5648809.67605
-"349",1999,921,"Lake Mead","Mead",42,"Total Release","cfs",5745021.69248
-"350",1999,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",11.39508435138
-"351",2000,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.615387297556
-"352",2000,919,"Lake Powell","Powell",29,"Inflow","cfs",3919454.34868
-"353",2000,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.77412432765
-"354",2000,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",3497046.26476
-"355",2000,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.93629011435
-"356",2000,919,"Lake Powell","Powell",42,"Total Release","cfs",4729520.03799
-"357",2000,921,"Lake Mead","Mead",42,"Total Release","cfs",5537397.07952
-"358",2000,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.98326693544
-"359",2001,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.569384541343
-"360",2001,919,"Lake Powell","Powell",29,"Inflow","cfs",3456526.42627
-"361",2001,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.855920182473
-"362",2001,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",3526055.24362
-"363",2001,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.99382858357
-"364",2001,919,"Lake Powell","Powell",42,"Total Release","cfs",4152081.66608
-"365",2001,921,"Lake Mead","Mead",42,"Total Release","cfs",5287013.1892
-"366",2001,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.4866377294
-"367",2002,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.48340671961
-"368",2002,919,"Lake Powell","Powell",29,"Inflow","cfs",1852122.53537
-"369",2002,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",3.673631474733
-"370",2002,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",1332374.89161
-"371",2002,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",2.64272705865
-"372",2002,919,"Lake Powell","Powell",42,"Total Release","cfs",4149738.8759
-"373",2002,921,"Lake Mead","Mead",42,"Total Release","cfs",5294979.19455
-"374",2002,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.50243807242
-"375",2003,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.391213065056
-"376",2003,919,"Lake Powell","Powell",29,"Inflow","cfs",3061694.39336
-"377",2003,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.0727822677
-"378",2003,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",3106033.0606
-"379",2003,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.16072673406
-"380",2003,919,"Lake Powell","Powell",42,"Total Release","cfs",4148577.7502
-"381",2003,921,"Lake Mead","Mead",42,"Total Release","cfs",4762978.82615
-"382",2003,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.44723072927
-"383",2004,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.323824371941
-"384",2004,919,"Lake Powell","Powell",29,"Inflow","cfs",2712157.66501
-"385",2004,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.37948627661
-"386",2004,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2981314.86636
-"387",2004,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.91335180111
-"388",2004,919,"Lake Powell","Powell",42,"Total Release","cfs",4149765.95856
-"389",2004,921,"Lake Mead","Mead",42,"Total Release","cfs",4857605.8711
-"390",2004,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.6349207383
-"391",2005,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.32397891919
-"392",2005,919,"Lake Powell","Powell",29,"Inflow","cfs",5821515.63038
-"393",2005,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.54680786325
-"394",2005,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6450780.02699
-"395",2005,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.79493559172
-"396",2005,919,"Lake Powell","Powell",42,"Total Release","cfs",4150157.91653
-"397",2005,921,"Lake Mead","Mead",42,"Total Release","cfs",4002901.56
-"398",2005,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.93963946018
-"399",2006,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.362977838878
-"400",2006,919,"Lake Powell","Powell",29,"Inflow","cfs",4319401.90871
-"401",2006,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.56740874299
-"402",2006,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4349006.43576
-"403",2006,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.62612846886
-"404",2006,919,"Lake Powell","Powell",42,"Total Release","cfs",4148467.24724
-"405",2006,921,"Lake Mead","Mead",42,"Total Release","cfs",4736853.62543
-"406",2006,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.395412151
-"407",2007,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.371127016931
-"408",2007,919,"Lake Powell","Powell",29,"Inflow","cfs",4343742.9446
-"409",2007,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.61568848364
-"410",2007,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4413234.81238
-"411",2007,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.75352359425
-"412",2007,919,"Lake Powell","Powell",42,"Total Release","cfs",4149813.7558
-"413",2007,921,"Lake Mead","Mead",42,"Total Release","cfs",4764503.48359
-"414",2007,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.45025484514
-"415",2008,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.395639185977
-"416",2008,919,"Lake Powell","Powell",29,"Inflow","cfs",6130267.31679
-"417",2008,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.15920789748
-"418",2008,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6093264.73177
-"419",2008,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.085814341026
-"420",2008,919,"Lake Powell","Powell",42,"Total Release","cfs",4526421.0164
-"421",2008,921,"Lake Mead","Mead",42,"Total Release","cfs",4805230.4165
-"422",2008,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.53103553797
-"423",2009,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.437297800766
-"424",2009,919,"Lake Powell","Powell",29,"Inflow","cfs",4892306.26315
-"425",2009,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.70374795736
-"426",2009,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5152369.87713
-"427",2009,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.219576613101
-"428",2009,919,"Lake Powell","Powell",42,"Total Release","cfs",4152166.66831
-"429",2009,921,"Lake Mead","Mead",42,"Total Release","cfs",4643593.3744
-"430",2009,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.21043314169
-"431",2010,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.443544964974
-"432",2010,919,"Lake Powell","Powell",29,"Inflow","cfs",4268486.0102
-"433",2010,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.46641853096
-"434",2010,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4248154.92248
-"435",2010,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.426092407899
-"436",2010,919,"Lake Powell","Powell",42,"Total Release","cfs",4151688.7017
-"437",2010,921,"Lake Mead","Mead",42,"Total Release","cfs",4668394.19435
-"438",2010,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.25962484744
-"439",2011,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.467236483762
-"440",2011,919,"Lake Powell","Powell",29,"Inflow","cfs",7813628.19726
-"441",2011,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",15.49810551287
-"442",2011,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",8052252.93924
-"443",2011,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.971410789862
-"444",2011,919,"Lake Powell","Powell",42,"Total Release","cfs",6311276.26455
-"445",2011,921,"Lake Mead","Mead",42,"Total Release","cfs",4940539.32887
-"446",2011,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.79941685131
-"447",2012,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.454983854021
-"448",2012,919,"Lake Powell","Powell",29,"Inflow","cfs",3006709.11606
-"449",2012,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.96372055865
-"450",2012,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2474602.16573
-"451",2012,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",4.9083018164103
-"452",2012,919,"Lake Powell","Powell",42,"Total Release","cfs",4772412.44062
-"453",2012,921,"Lake Mead","Mead",42,"Total Release","cfs",4749774.15745
-"454",2012,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.42103965052
-"455",2013,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.360910571846
-"456",2013,919,"Lake Powell","Powell",29,"Inflow","cfs",2701419.4854
-"457",2013,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.35818740866
-"458",2013,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2580400.52616
-"459",2013,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.118149802835
-"460",2013,919,"Lake Powell","Powell",42,"Total Release","cfs",4150335.37247
-"461",2013,921,"Lake Mead","Mead",42,"Total Release","cfs",4559146.79229
-"462",2013,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.04293578508
-"463",2014,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.347171794899
-"464",2014,919,"Lake Powell","Powell",29,"Inflow","cfs",4681962.66289
-"465",2014,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.28653751058
-"466",2014,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5233519.09669
-"467",2014,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.38053374503
-"468",2014,919,"Lake Powell","Powell",42,"Total Release","cfs",3770993.81767
-"469",2014,921,"Lake Mead","Mead",42,"Total Release","cfs",4920154.61039
-"470",2014,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.75898435177
-"471",2015,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.368092871285
-"472",2015,919,"Lake Powell","Powell",29,"Inflow","cfs",4748942.75231
-"473",2015,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.41939058222
-"474",2015,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",5129284.55192
-"475",2015,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.17378753821
-"476",2015,919,"Lake Powell","Powell",42,"Total Release","cfs",4537637.69588
-"477",2015,921,"Lake Mead","Mead",42,"Total Release","cfs",4661480.03786
-"478",2015,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.24591082065
-"479",2016,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.378368984558
-"480",2016,919,"Lake Powell","Powell",29,"Inflow","cfs",4995748.97056
-"481",2016,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.90892357786
-"482",2016,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4848019.36634
-"483",2016,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",9.615906180531
-"484",2016,919,"Lake Powell","Powell",42,"Total Release","cfs",4537491.42591
-"485",2016,921,"Lake Mead","Mead",42,"Total Release","cfs",4685113.46526
-"486",2016,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.29278703919
-"487",2017,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.408693088906
-"488",2017,919,"Lake Powell","Powell",29,"Inflow","cfs",5745584.59147
-"489",2017,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.39620084121
-"490",2017,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6002034.67646
-"491",2017,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.90486216794
-"492",2017,919,"Lake Powell","Powell",42,"Total Release","cfs",4537492.89881
-"493",2017,921,"Lake Mead","Mead",42,"Total Release","cfs",4345748.12547
-"494",2017,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.61966570319
-"495",2018,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.3863460534
-"496",2018,919,"Lake Powell","Powell",29,"Inflow","cfs",2752038.10066
-"497",2018,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.45858796725
-"498",2018,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2325244.73153
-"499",2018,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",4.61205566469829
-"500",2018,919,"Lake Powell","Powell",42,"Total Release","cfs",4537452.60899
-"501",2018,921,"Lake Mead","Mead",42,"Total Release","cfs",4658468.52913
-"502",2018,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.2399375798
-"503",2019,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.355521978382
-"504",2019,919,"Lake Powell","Powell",29,"Inflow","cfs",5942400.23285
-"505",2019,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.786578974365
-"506",2019,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6529660.62878
-"507",2019,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.951392981772
-"508",2019,919,"Lake Powell","Powell",42,"Total Release","cfs",4538203.33346
-"509",2019,921,"Lake Mead","Mead",42,"Total Release","cfs",4482864.91293
-"510",2019,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.89163288659
-"511",2020,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.372177901831
-"512",2020,919,"Lake Powell","Powell",29,"Inflow","cfs",3298696.78266
-"513",2020,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.54286965085
-"514",2020,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2948149.04536
-"515",2020,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.847568354367
-"516",2020,919,"Lake Powell","Powell",42,"Total Release","cfs",4149338.55062
-"517",2020,921,"Lake Mead","Mead",42,"Total Release","cfs",4165762.87719
-"518",2020,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.26267017083
-"519",2021,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.276791583708
-"520",2021,919,"Lake Powell","Powell",29,"Inflow","cfs",2049136.99681
-"521",2021,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",4.06440395961
-"522",2021,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",1765637.9694
-"523",2021,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",3.502091840147
-"524",2021,919,"Lake Powell","Powell",42,"Total Release","cfs",4149026.01941
-"525",2021,921,"Lake Mead","Mead",42,"Total Release","cfs",4719367.32716
-"526",2021,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.36072858418
-"527",2022,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.203149031246
-"528",2022,919,"Lake Powell","Powell",29,"Inflow","cfs",3079197.35621
-"529",2022,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.10749888759
-"530",2022,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",3067291.38365
-"531",2022,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.083883735753
-"532",2022,919,"Lake Powell","Powell",42,"Total Release","cfs",3528725.9682
-"533",2022,921,"Lake Mead","Mead",42,"Total Release","cfs",4486426.16725
-"534",2022,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.89869653265
-"535",2023,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.230008363894
-"536",2023,919,"Lake Powell","Powell",29,"Inflow","cfs",6071775.57244
-"537",2023,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.04319121654
-"538",2023,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",6766491.68927
-"539",2023,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.42114053904
-"540",2023,919,"Lake Powell","Powell",42,"Total Release","cfs",4326162.38686
-"541",2023,921,"Lake Mead","Mead",42,"Total Release","cfs",3848075.98149
-"542",2023,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.63254740214
-"543",2024,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.268701118603
-"544",2024,919,"Lake Powell","Powell",29,"Inflow","cfs",4098686.34134
-"545",2024,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.12962580072
-"546",2024,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",4023975.60504
-"547",2024,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.981439216166
-"548",2024,919,"Lake Powell","Powell",42,"Total Release","cfs",3771910.64576
-"549",2024,921,"Lake Mead","Mead",42,"Total Release","cfs",3848377.54209
-"550",2024,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.63314553775
-"551",2025,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.23946616937
-"552",2025,919,"Lake Powell","Powell",29,"Inflow","cfs",2589188.44528
-"553",2025,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.13558038636
-"554",2025,919,"Lake Powell","Powell",33,"Unregulated Inflow","cfs",2363718.5614
-"555",2025,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",4.6883673940675
-"556",2025,919,"Lake Powell","Powell",42,"Total Release","cfs",3771450.8502
-"557",2025,921,"Lake Mead","Mead",42,"Total Release","cfs",3968518.88618
-"558",2025,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.87144242138
-"559",1964,919,"Lake Powell","Powell",17,"Storage","million acre-feet",0.8354
-"560",1965,919,"Lake Powell","Powell",17,"Storage","million acre-feet",4.0868
-"561",1966,919,"Lake Powell","Powell",17,"Storage","million acre-feet",6.4226
-"562",1967,919,"Lake Powell","Powell",17,"Storage","million acre-feet",5.8498
-"563",1968,919,"Lake Powell","Powell",17,"Storage","million acre-feet",6.143
-"564",1969,919,"Lake Powell","Powell",17,"Storage","million acre-feet",7.0182
-"565",1970,919,"Lake Powell","Powell",17,"Storage","million acre-feet",9.4521
-"566",1971,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.8531
-"567",1972,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.9727
-"568",1973,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.6818
-"569",1974,919,"Lake Powell","Powell",17,"Storage","million acre-feet",16.8418
-"570",1975,919,"Lake Powell","Powell",17,"Storage","million acre-feet",17.1605
-"571",1976,919,"Lake Powell","Powell",17,"Storage","million acre-feet",19.4602
-"572",1977,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.2078
-"573",1978,919,"Lake Powell","Powell",17,"Storage","million acre-feet",15.3611
-"574",1979,919,"Lake Powell","Powell",17,"Storage","million acre-feet",15.5574
-"575",1980,919,"Lake Powell","Powell",17,"Storage","million acre-feet",20.3119
-"576",1981,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.6653
-"577",1982,919,"Lake Powell","Powell",17,"Storage","million acre-feet",19.9235
-"578",1983,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.1676
-"579",1984,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.7051
-"580",1985,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.6128
-"581",1986,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.2378
-"582",1987,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.4396
-"583",1988,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.3466
-"584",1989,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.558229
-"585",1990,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.652837
-"586",1991,919,"Lake Powell","Powell",17,"Storage","million acre-feet",15.556514
-"587",1992,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.462381
-"588",1993,919,"Lake Powell","Powell",17,"Storage","million acre-feet",13.691332
-"589",1994,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.685809
-"590",1995,919,"Lake Powell","Powell",17,"Storage","million acre-feet",17.504979
-"591",1996,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.665883
-"592",1997,919,"Lake Powell","Powell",17,"Storage","million acre-feet",20.891924
-"593",1998,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.105034
-"594",1999,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.064563
-"595",2000,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.955429
-"596",2001,919,"Lake Powell","Powell",17,"Storage","million acre-feet",20.290329
-"597",2002,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.495213
-"598",2003,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.100988
-"599",2004,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.781589
-"600",2005,919,"Lake Powell","Powell",17,"Storage","million acre-feet",8.881077
-"601",2006,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.964097
-"602",2007,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.401988
-"603",2008,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.617009
-"604",2009,919,"Lake Powell","Powell",17,"Storage","million acre-feet",13.952749
-"605",2010,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.96288
-"606",2011,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.873006
-"607",2012,919,"Lake Powell","Powell",17,"Storage","million acre-feet",16.662076
-"608",2013,919,"Lake Powell","Powell",17,"Storage","million acre-feet",13.230884
-"609",2014,919,"Lake Powell","Powell",17,"Storage","million acre-feet",10.623416
-"610",2015,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.916846
-"611",2016,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.266957
-"612",2017,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.297425
-"613",2018,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.322262
-"614",2019,919,"Lake Powell","Powell",17,"Storage","million acre-feet",10.498645
-"615",2020,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.851469
-"616",2021,919,"Lake Powell","Powell",17,"Storage","million acre-feet",10.601066
-"617",2022,919,"Lake Powell","Powell",17,"Storage","million acre-feet",7.010147
-"618",2023,919,"Lake Powell","Powell",17,"Storage","million acre-feet",5.71270817
-"619",2024,919,"Lake Powell","Powell",17,"Storage","million acre-feet",8.61941614
-"620",2025,919,"Lake Powell","Powell",17,"Storage","million acre-feet",8.91216332
-"621",1965,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3491.47998
-"622",1966,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3532.63989
-"623",1967,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3523.5
-"624",1968,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3528.26001
-"625",1969,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3541.67993
-"626",1970,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3574.06006
-"627",1971,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3600.94995
-"628",1972,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3612.28003
-"629",1973,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3609.40991
-"630",1974,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3646.88989
-"631",1975,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3649.47998
-"632",1976,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3667.17993
-"633",1977,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3657.75
-"634",1978,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3634.41992
-"635",1979,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3636.12988
-"636",1980,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3673.3501
-"637",1981,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3682.73999
-"638",1982,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3670.58008
-"639",1983,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3686.12012
-"640",1984,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3689.66992
-"641",1985,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3689.07007
-"642",1986,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3686.6001
-"643",1987,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3687.93994
-"644",1988,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3687.33008
-"645",1989,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3682.05005
-"646",1990,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3661.21997
-"647",1991,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3636.17993
-"648",1992,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3626.47998
-"649",1993,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3619.32007
-"650",1994,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3661.46997
-"651",1995,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3652.31006
-"652",1996,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3682.78003
-"653",1997,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3677.46997
-"654",1998,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3685.72998
-"655",1999,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3685.45996
-"656",2000,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3684.72998
-"657",2001,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3673.23999
-"658",2002,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3660.02
-"659",2003,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3623.15991
-"660",2004,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3600.33008
-"661",2005,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3567.17993
-"662",2006,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3602.22998
-"663",2007,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3606.71
-"664",2008,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3598.6
-"665",2009,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3621.78
-"666",2010,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3630.98
-"667",2011,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3630.18
-"668",2012,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3645.5
-"669",2013,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3614.91
-"670",2014,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3587.81
-"671",2015,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3601.74
-"672",2016,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3605.34
-"673",2017,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3605.65
-"674",2018,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3625.2
-"675",2019,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3586.41
-"676",2020,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3611.2
-"677",2021,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3587.56
-"678",2022,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3541.76
-"679",2023,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3527.89
-"680",2024,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3571.34
-"681",2025,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3575.15
-"682",1965,919,"Lake Powell","Powell",89,"Area","square feet",49782.71
-"683",1966,919,"Lake Powell","Powell",89,"Area","square feet",64361.32
-"684",1967,919,"Lake Powell","Powell",89,"Area","square feet",60828.75
-"685",1968,919,"Lake Powell","Powell",89,"Area","square feet",62668.49
-"686",1969,919,"Lake Powell","Powell",89,"Area","square feet",67943.07
-"687",1970,919,"Lake Powell","Powell",89,"Area","square feet",82790.29
-"688",1971,919,"Lake Powell","Powell",89,"Area","square feet",95887.72
-"689",1972,919,"Lake Powell","Powell",89,"Area","square feet",101859.8
-"690",1973,919,"Lake Powell","Powell",89,"Area","square feet",100346.96
-"691",1974,919,"Lake Powell","Powell",89,"Area","square feet",122479.03
-"692",1975,919,"Lake Powell","Powell",89,"Area","square feet",124142.52
-"693",1976,919,"Lake Powell","Powell",89,"Area","square feet",136193.48
-"694",1977,919,"Lake Powell","Powell",89,"Area","square feet",129453.94
-"695",1978,919,"Lake Powell","Powell",89,"Area","square feet",114671.08
-"696",1979,919,"Lake Powell","Powell",89,"Area","square feet",115707.74
-"697",1980,919,"Lake Powell","Powell",89,"Area","square feet",140743.36
-"698",1981,919,"Lake Powell","Powell",89,"Area","square feet",147720.76
-"699",1982,919,"Lake Powell","Powell",89,"Area","square feet",138700.75
-"700",1983,919,"Lake Powell","Powell",89,"Area","square feet",150279.01
-"701",1984,919,"Lake Powell","Powell",89,"Area","square feet",152965.68
-"702",1985,919,"Lake Powell","Powell",89,"Area","square feet",152511.68
-"703",1986,919,"Lake Powell","Powell",89,"Area","square feet",150642.28
-"704",1987,919,"Lake Powell","Powell",89,"Area","square feet",151656.34
-"705",1988,919,"Lake Powell","Powell",89,"Area","square feet",151194.77
-"706",1989,919,"Lake Powell","Powell",89,"Area","square feet",147198.58
-"707",1990,919,"Lake Powell","Powell",89,"Area","square feet",131798.61
-"708",1991,919,"Lake Powell","Powell",89,"Area","square feet",115738.08
-"709",1992,919,"Lake Powell","Powell",89,"Area","square feet",109857.49
-"710",1993,919,"Lake Powell","Powell",89,"Area","square feet",105570.61
-"711",1994,919,"Lake Powell","Powell",89,"Area","square feet",131982.96
-"712",1995,919,"Lake Powell","Powell",89,"Area","square feet",125960.14
-"713",1996,919,"Lake Powell","Powell",89,"Area","square feet",147751.07
-"714",1997,919,"Lake Powell","Powell",89,"Area","square feet",143781.36
-"715",1998,919,"Lake Powell","Powell",89,"Area","square feet",149983.74
-"716",1999,919,"Lake Powell","Powell",89,"Area","square feet",149779.37
-"717",2000,919,"Lake Powell","Powell",89,"Area","square feet",149226.89
-"718",2001,919,"Lake Powell","Powell",89,"Area","square feet",140662.17
-"719",2002,919,"Lake Powell","Powell",89,"Area","square feet",130913.75
-"720",2003,919,"Lake Powell","Powell",89,"Area","square feet",107844.7
-"721",2004,919,"Lake Powell","Powell",89,"Area","square feet",95560.98
-"722",2005,919,"Lake Powell","Powell",89,"Area","square feet",79458.24
-"723",2006,919,"Lake Powell","Powell",89,"Area","square feet",96562.42
-"724",2007,919,"Lake Powell","Powell",89,"Area","square feet",98923.84
-"725",2008,919,"Lake Powell","Powell",89,"Area","square feet",94706.6
-"726",2009,919,"Lake Powell","Powell",89,"Area","square feet",107008.13
-"727",2010,919,"Lake Powell","Powell",89,"Area","square feet",112585.63
-"728",2011,919,"Lake Powell","Powell",89,"Area","square feet",112100.62
-"729",2012,919,"Lake Powell","Powell",89,"Area","square feet",121586.38
-"730",2013,919,"Lake Powell","Powell",89,"Area","square feet",103246.06
-"731",2014,919,"Lake Powell","Powell",89,"Area","square feet",89462.66
-"732",2015,919,"Lake Powell","Powell",89,"Area","square feet",96304.15
-"733",2016,919,"Lake Powell","Powell",89,"Area","square feet",98201.71
-"734",2017,919,"Lake Powell","Powell",89,"Area","square feet",98365.12
-"735",2018,919,"Lake Powell","Powell",89,"Area","square feet",109081.5
-"736",2019,919,"Lake Powell","Powell",89,"Area","square feet",88782.26
-"737",2020,919,"Lake Powell","Powell",89,"Area","square feet",101290.52
-"738",2021,919,"Lake Powell","Powell",89,"Area","square feet",89341.16
-"739",2022,919,"Lake Powell","Powell",89,"Area","square feet",67978.2
-"740",2023,919,"Lake Powell","Powell",89,"Area","square feet",58569.81
-"741",2024,919,"Lake Powell","Powell",89,"Area","square feet",75970.28
-"742",2025,919,"Lake Powell","Powell",89,"Area","square feet",77688.74
-"743",1936,921,"Lake Mead","Mead",49,"Pool Elevation","feet",908.349976
-"744",1937,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1023.54999
-"745",1938,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1095.95996
-"746",1939,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1168.63
-"747",1940,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1172.94995
-"748",1941,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1170.78003
-"749",1942,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1205.27002
-"750",1943,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1193.87
-"751",1944,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1184.29004
-"752",1945,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1174.31995
-"753",1946,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1168.76001
-"754",1947,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1151.67004
-"755",1948,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.03003
-"756",1949,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1170.77002
-"757",1950,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1176.72998
-"758",1951,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1160.07996
-"759",1952,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1157.09998
-"760",1953,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1176.23999
-"761",1954,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1149.88
-"762",1955,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1109.56995
-"763",1956,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1092.56995
-"764",1957,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1099.32996
-"765",1958,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.47998
-"766",1959,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.47998
-"767",1960,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1168.64001
-"768",1961,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1167.47998
-"769",1962,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1155.23999
-"770",1963,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1195.06006
-"771",1964,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1141.46997
-"772",1965,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1088.95996
-"773",1966,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1127.96997
-"774",1967,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1129.68994
-"775",1968,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1127.81006
-"776",1969,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1139.09998
-"777",1970,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1149.79004
-"778",1971,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1151.72998
-"779",1972,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1156.77002
-"780",1973,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1163.94995
-"781",1974,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1178.59998
-"782",1975,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.67004
-"783",1976,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1179.59998
-"784",1977,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1186.47998
-"785",1978,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1179.19995
-"786",1979,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1188.84998
-"787",1980,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1196.72998
-"788",1981,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1203.56006
-"789",1982,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1195.32996
-"790",1983,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1204.92004
-"791",1984,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1213.30005
-"792",1985,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1208.25
-"793",1986,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1208.70996
-"794",1987,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1209.77002
-"795",1988,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1210.08997
-"796",1989,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1199.47998
-"797",1990,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.06006
-"798",1991,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1178.58997
-"799",1992,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1171.77002
-"800",1993,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.42004
-"801",1994,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1188.42
-"802",1995,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.65002
-"803",1996,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.73999
-"804",1997,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1192.75
-"805",1998,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1212.83997
-"806",1999,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1214.68994
-"807",2000,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1212.56006
-"808",2001,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1196.39001
-"809",2002,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1177.22998
-"810",2003,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1153.28003
-"811",2004,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1139.45
-"812",2005,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1130.12
-"813",2006,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1135.26
-"814",2007,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1126.65
-"815",2008,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1111.31
-"816",2009,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1107.27
-"817",2010,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1093.46
-"818",2011,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1082.04
-"819",2012,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1126.06
-"820",2013,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1117.33
-"821",2014,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1106.4
-"822",2015,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1083.65
-"823",2016,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1078.23
-"824",2017,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1076.51
-"825",2018,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1080.96
-"826",2019,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1078.37
-"827",2020,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1083.89
-"828",2021,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1081.19
-"829",2022,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1064.94
-"830",2023,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1042.89
-"831",2024,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1064.9
-"832",2025,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1060.93
+"56",1963,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",3.24264257374
+"57",1963,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",1.1513517539
+"58",1963,919,"Lake Powell","Powell",42,"Total Release","cfs",259080
+"59",1963,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",0.51387768598
+"60",1963,921,"Lake Mead","Mead",42,"Total Release","cfs",4448609
+"61",1963,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.82368727434
+"62",1964,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.0737751848288
+"63",1964,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.646398821
+"64",1964,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.49161061811
+"65",1964,919,"Lake Powell","Powell",42,"Total Release","cfs",1216798
+"66",1964,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",2.4134836362
+"67",1964,921,"Lake Mead","Mead",42,"Total Release","cfs",4150231
+"68",1964,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.23186314261
+"69",1965,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.166053129857
+"70",1965,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.70488885716
+"71",1965,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.04644573251
+"72",1965,919,"Lake Powell","Powell",42,"Total Release","cfs",5455120
+"73",1965,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",10.82007272971
+"74",1965,921,"Lake Mead","Mead",42,"Total Release","cfs",4005622
+"75",1965,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.94503537242
+"76",1966,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.2165753639
+"77",1966,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.54791680254
+"78",1966,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.68893806389
+"79",1966,919,"Lake Powell","Powell",42,"Total Release","cfs",3959880
+"80",1966,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",7.85430744027
+"81",1966,921,"Lake Mead","Mead",42,"Total Release","cfs",3916412
+"82",1966,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.76808991868
+"83",1967,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.191975097261
+"84",1967,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.249223968
+"85",1967,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.97910761555
+"86",1967,919,"Lake Powell","Powell",42,"Total Release","cfs",3931180
+"87",1967,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",7.79738182091
+"88",1967,921,"Lake Mead","Mead",42,"Total Release","cfs",3959679
+"89",1967,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.85390876229
+"90",1968,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.213551955756
+"91",1968,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.92596415365
+"92",1968,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.31893515004
+"93",1968,919,"Lake Powell","Powell",42,"Total Release","cfs",4201650
+"94",1968,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.33385124231
+"95",1968,921,"Lake Mead","Mead",42,"Total Release","cfs",3953279
+"96",1968,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.84121454734
+"97",1969,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.270930912027
+"98",1969,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.5084549779
+"99",1969,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.52041967386
+"100",1969,919,"Lake Powell","Powell",42,"Total Release","cfs",4448440
+"101",1969,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.82335206704
+"102",1969,921,"Lake Mead","Mead",42,"Total Release","cfs",4027694
+"103",1969,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.98881454708
+"104",1970,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.32339147786
+"105",1970,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.75807271786
+"106",1970,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.99176861055
+"107",1970,919,"Lake Powell","Powell",42,"Total Release","cfs",4372260
+"108",1970,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.67225124195
+"109",1970,921,"Lake Mead","Mead",42,"Total Release","cfs",3978066
+"110",1970,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.89037884374
+"111",1971,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.383746565469
+"112",1971,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.0415711438
+"113",1971,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.79783307775
+"114",1971,919,"Lake Powell","Powell",42,"Total Release","cfs",4331160
+"115",1971,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.59073058051
+"116",1971,921,"Lake Mead","Mead",42,"Total Release","cfs",4141709
+"117",1971,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.21496000203
+"118",1972,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.389710462418
+"119",1972,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.79741371079
+"120",1972,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",9.3284768805
+"121",1972,919,"Lake Powell","Powell",42,"Total Release","cfs",4694180
+"122",1972,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",9.31077025121
+"123",1972,921,"Lake Mead","Mead",42,"Total Release","cfs",4167520
+"124",1972,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.26615537337
+"125",1973,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.421303362201
+"126",1973,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",15.39727847507
+"127",1973,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.97364379464
+"128",1973,919,"Lake Powell","Powell",42,"Total Release","cfs",5096150
+"129",1973,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",10.10806611736
+"130",1973,921,"Lake Mead","Mead",42,"Total Release","cfs",4001834
+"131",1973,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.93752198612
+"132",1974,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.520678186659
+"133",1974,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.9889312197
+"134",1974,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",9.97014624293
+"135",1974,919,"Lake Powell","Powell",42,"Total Release","cfs",4167480
+"136",1974,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.26607603471
+"137",1974,921,"Lake Mead","Mead",42,"Total Release","cfs",4460173
+"138",1974,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.84662413364
+"139",1975,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.537085128401
+"140",1975,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.36626501347
+"141",1975,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.09549882957
+"142",1975,919,"Lake Powell","Powell",42,"Total Release","cfs",4666130
+"143",1975,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",9.2551338855
+"144",1975,921,"Lake Mead","Mead",42,"Total Release","cfs",4220548
+"145",1975,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.37133487794
+"146",1976,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.563558150205
+"147",1976,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.71376651388
+"148",1976,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.43100948083
+"149",1976,919,"Lake Powell","Powell",42,"Total Release","cfs",4276360
+"150",1976,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.4820363656
+"151",1976,921,"Lake Mead","Mead",42,"Total Release","cfs",4194703
+"152",1976,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.32007206815
+"153",1977,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.507796485607
+"154",1977,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.48169479135
+"155",1977,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",3.52864041166
+"156",1977,919,"Lake Powell","Powell",42,"Total Release","cfs",4164620
+"157",1977,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.26040330692
+"158",1977,921,"Lake Mead","Mead",42,"Total Release","cfs",3812380
+"159",1977,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.56174545672
+"160",1978,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.467986377701
+"161",1978,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.45251049406
+"162",1978,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.05930408915
+"163",1978,919,"Lake Powell","Powell",42,"Total Release","cfs",4211640
+"164",1978,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.35366611794
+"165",1978,921,"Lake Mead","Mead",42,"Total Release","cfs",3873960
+"166",1978,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.68388760495
+"167",1979,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.541808808551
+"168",1979,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",14.20174828599
+"169",1979,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",14.1890706076
+"170",1979,919,"Lake Powell","Powell",42,"Total Release","cfs",4182820
+"171",1979,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.29650248128
+"172",1979,921,"Lake Mead","Mead",42,"Total Release","cfs",3724700
+"173",1979,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.38783471325
+"174",1980,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.632343005105
+"175",1980,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.849288306774
+"176",1980,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.68185305312
+"177",1980,919,"Lake Powell","Powell",42,"Total Release","cfs",5499190
+"178",1980,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",10.90748429942
+"179",1980,921,"Lake Mead","Mead",42,"Total Release","cfs",5020320
+"180",1980,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.95765950587
+"181",1981,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.605028405282
+"182",1981,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.41197012475
+"183",1981,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.63864834569
+"184",1981,919,"Lake Powell","Powell",42,"Total Release","cfs",4182140
+"185",1981,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.29515372036
+"186",1981,921,"Lake Mead","Mead",42,"Total Release","cfs",4954750
+"187",1981,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.82760330823
+"188",1982,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.599597920809
+"189",1982,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.307316629791
+"190",1982,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.77123706537
+"191",1982,919,"Lake Powell","Powell",42,"Total Release","cfs",4186799
+"192",1982,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.30439471313
+"193",1982,921,"Lake Mead","Mead",42,"Total Release","cfs",3724550
+"194",1982,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.38753719158
+"195",1983,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.670813568593
+"196",1983,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",20.11041488807
+"197",1983,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",20.37061519437
+"198",1983,919,"Lake Powell","Powell",42,"Total Release","cfs",8819610
+"199",1983,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",17.4934413236
+"200",1983,921,"Lake Mead","Mead",42,"Total Release","cfs",7438350
+"201",1983,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",14.75375206757
+"202",1984,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.657054210488
+"203",1984,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",20.64972978447
+"204",1984,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",20.845676855
+"205",1984,919,"Lake Powell","Powell",42,"Total Release","cfs",10335120
+"206",1984,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",20.4994115723
+"207",1984,921,"Lake Mead","Mead",42,"Total Release","cfs",11197600
+"208",1984,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",22.2101157042
+"209",1985,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.651715702682
+"210",1985,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",18.04244218478
+"211",1985,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",17.51657600622
+"212",1985,919,"Lake Powell","Powell",42,"Total Release","cfs",9626610
+"213",1985,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",19.0941024838
+"214",1985,921,"Lake Mead","Mead",42,"Total Release","cfs",9394900
+"215",1985,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",18.6345123985
+"216",1986,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.647437516083
+"217",1986,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",18.14219883735
+"218",1986,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",18.54556169492
+"219",1986,919,"Lake Powell","Powell",42,"Total Release","cfs",8494120
+"220",1986,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",16.84784132662
+"221",1986,921,"Lake Mead","Mead",42,"Total Release","cfs",8678400
+"222",1986,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",17.2133553736
+"223",1987,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.649062026514
+"224",1987,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.80214906768
+"225",1987,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.3768177499
+"226",1987,919,"Lake Powell","Powell",42,"Total Release","cfs",6770250
+"227",1987,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",13.428595043
+"228",1987,921,"Lake Mead","Mead",42,"Total Release","cfs",6624400
+"229",1987,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",13.1393057876
+"230",1988,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.638871787883
+"231",1988,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.400816316162
+"232",1988,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.98899662115
+"233",1988,919,"Lake Powell","Powell",42,"Total Release","cfs",4105740
+"234",1988,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.14361653083
+"235",1988,921,"Lake Mead","Mead",42,"Total Release","cfs",4883600
+"236",1988,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.6864793404
+"237",1989,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.594820128891
+"238",1989,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.466055339632
+"239",1989,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.93942943414
+"240",1989,919,"Lake Powell","Powell",42,"Total Release","cfs",4023510
+"241",1989,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.00741157217
+"242",1989,921,"Lake Mead","Mead",42,"Total Release","cfs",4550570
+"243",1989,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.02592396857
+"244",1990,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.505345908896
+"245",1990,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",4.908330374989
+"246",1990,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.31087691187
+"247",1990,919,"Lake Powell","Powell",42,"Total Release","cfs",4104120
+"248",1990,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.14040330822
+"249",1990,921,"Lake Mead","Mead",42,"Total Release","cfs",4669130
+"250",1990,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.26108430061
+"251",1991,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.450295094598
+"252",1991,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.46601434748
+"253",1991,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.80067842392
+"254",1991,919,"Lake Powell","Powell",42,"Total Release","cfs",4094540
+"255",1991,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.12140165553
+"256",1991,921,"Lake Mead","Mead",42,"Total Release","cfs",4518380
+"257",1991,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.96207603559
+"258",1992,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.430775302122
+"259",1992,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.76949774288
+"260",1992,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.35243739341
+"261",1992,919,"Lake Powell","Powell",42,"Total Release","cfs",4034290
+"262",1992,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.0018975246
+"263",1992,921,"Lake Mead","Mead",42,"Total Release","cfs",4037670
+"264",1992,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.00860165503
+"265",1993,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.48539226481
+"266",1993,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.70706443706
+"267",1993,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",14.43655381674
+"268",1993,919,"Lake Powell","Powell",42,"Total Release","cfs",4085010
+"269",1993,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.1024991767
+"270",1993,921,"Lake Mead","Mead",42,"Total Release","cfs",3535838.06122
+"271",1993,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.0132325191
+"272",1994,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.53439382998
+"273",1994,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.686074795855
+"274",1994,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.79355364642
+"275",1994,919,"Lake Powell","Powell",42,"Total Release","cfs",4178800
+"276",1994,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2885289276
+"277",1994,921,"Lake Mead","Mead",42,"Total Release","cfs",4742932.72542
+"278",1994,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.40746987028
+"279",1995,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.570051832402
+"280",1995,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",14.69558951247
+"281",1995,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.90523940293
+"282",1995,919,"Lake Powell","Powell",42,"Total Release","cfs",4650100
+"283",1995,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",9.2233388459
+"284",1995,921,"Lake Mead","Mead",42,"Total Release","cfs",4414414.53825
+"285",1995,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.75586354791
+"286",1996,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.616968261699
+"287",1996,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",10.89019517003
+"288",1996,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.40231398145
+"289",1996,919,"Lake Powell","Powell",42,"Total Release","cfs",5809080
+"290",1996,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",11.5221421511
+"291",1996,921,"Lake Mead","Mead",42,"Total Release","cfs",5079696.95854
+"292",1996,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.07543198761
+"293",1997,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.618768830486
+"294",1997,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",16.22081297406
+"295",1997,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",17.05325123995
+"296",1997,919,"Lake Powell","Powell",42,"Total Release","cfs",6969451.99022
+"297",1997,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",13.8237064271
+"298",1997,921,"Lake Mead","Mead",42,"Total Release","cfs",5625995.47417
+"299",1997,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",11.15899928811
+"300",1998,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.640568036198
+"301",1998,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",13.72065994118
+"302",1998,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.52038653575
+"303",1998,919,"Lake Powell","Powell",42,"Total Release","cfs",6811237.19209
+"304",1998,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",13.5098919478
+"305",1998,921,"Lake Mead","Mead",42,"Total Release","cfs",6034992.58269
+"306",1998,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",11.97023322441
+"307",1999,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.638258836358
+"308",1999,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.48345379076
+"309",1999,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.80036698135
+"310",1999,919,"Lake Powell","Powell",42,"Total Release","cfs",5648809.67605
+"311",1999,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",11.20425059609
+"312",1999,921,"Lake Mead","Mead",42,"Total Release","cfs",5745021.69248
+"313",1999,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",11.39508435138
+"314",2000,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.615387297556
+"315",2000,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",7.77412432765
+"316",2000,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.93629011435
+"317",2000,919,"Lake Powell","Powell",42,"Total Release","cfs",4729520.03799
+"318",2000,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",9.3808661906
+"319",2000,921,"Lake Mead","Mead",42,"Total Release","cfs",5537397.07952
+"320",2000,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.98326693544
+"321",2001,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.569384541343
+"322",2001,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.855920182473
+"323",2001,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.99382858357
+"324",2001,919,"Lake Powell","Powell",42,"Total Release","cfs",4152081.66608
+"325",2001,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2355338842
+"326",2001,921,"Lake Mead","Mead",42,"Total Release","cfs",5287013.1892
+"327",2001,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.4866377294
+"328",2002,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.48340671961
+"329",2002,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",3.673631474733
+"330",2002,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",2.64272705865
+"331",2002,919,"Lake Powell","Powell",42,"Total Release","cfs",4149738.8759
+"332",2002,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2308870263
+"333",2002,921,"Lake Mead","Mead",42,"Total Release","cfs",5294979.19455
+"334",2002,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",10.50243807242
+"335",2003,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.391213065056
+"336",2003,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.0727822677
+"337",2003,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.16072673406
+"338",2003,919,"Lake Powell","Powell",42,"Total Release","cfs",4148577.7502
+"339",2003,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2285839652
+"340",2003,921,"Lake Mead","Mead",42,"Total Release","cfs",4762978.82615
+"341",2003,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.44723072927
+"342",2004,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.323824371941
+"343",2004,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.37948627661
+"344",2004,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.91335180111
+"345",2004,919,"Lake Powell","Powell",42,"Total Release","cfs",4149765.95856
+"346",2004,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2309407469
+"347",2004,921,"Lake Mead","Mead",42,"Total Release","cfs",4857605.8711
+"348",2004,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.6349207383
+"349",2005,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.32397891919
+"350",2005,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.54680786325
+"351",2005,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.79493559172
+"352",2005,919,"Lake Powell","Powell",42,"Total Release","cfs",4150157.91653
+"353",2005,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2317181835
+"354",2005,921,"Lake Mead","Mead",42,"Total Release","cfs",4002901.56
+"355",2005,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.93963946018
+"356",2006,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.362977838878
+"357",2006,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.56740874299
+"358",2006,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.62612846886
+"359",2006,919,"Lake Powell","Powell",42,"Total Release","cfs",4148467.24724
+"360",2006,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2283647861
+"361",2006,921,"Lake Mead","Mead",42,"Total Release","cfs",4736853.62543
+"362",2006,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.395412151
+"363",2007,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.371127016931
+"364",2007,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.61568848364
+"365",2007,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.75352359425
+"366",2007,919,"Lake Powell","Powell",42,"Total Release","cfs",4149813.7558
+"367",2007,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.231035548
+"368",2007,921,"Lake Mead","Mead",42,"Total Release","cfs",4764503.48359
+"369",2007,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.45025484514
+"370",2008,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.395639185977
+"371",2008,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.15920789748
+"372",2008,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.085814341026
+"373",2008,919,"Lake Powell","Powell",42,"Total Release","cfs",4526421.0164
+"374",2008,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.978025155
+"375",2008,921,"Lake Mead","Mead",42,"Total Release","cfs",4805230.4165
+"376",2008,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.53103553797
+"377",2009,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.437297800766
+"378",2009,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.70374795736
+"379",2009,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.219576613101
+"380",2009,919,"Lake Powell","Powell",42,"Total Release","cfs",4152166.66831
+"381",2009,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2357024789
+"382",2009,921,"Lake Mead","Mead",42,"Total Release","cfs",4643593.3744
+"383",2009,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.21043314169
+"384",2010,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.443544964974
+"385",2010,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.46641853096
+"386",2010,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",8.426092407899
+"387",2010,919,"Lake Powell","Powell",42,"Total Release","cfs",4151688.7017
+"388",2010,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2347544481
+"389",2010,921,"Lake Mead","Mead",42,"Total Release","cfs",4668394.19435
+"390",2010,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.25962484744
+"391",2011,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.467236483762
+"392",2011,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",15.49810551287
+"393",2011,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",15.971410789862
+"394",2011,919,"Lake Powell","Powell",42,"Total Release","cfs",6311276.26455
+"395",2011,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",12.5182339101
+"396",2011,921,"Lake Mead","Mead",42,"Total Release","cfs",4940539.32887
+"397",2011,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.79941685131
+"398",2012,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.454983854021
+"399",2012,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.96372055865
+"400",2012,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",4.9083018164103
+"401",2012,919,"Lake Powell","Powell",42,"Total Release","cfs",4772412.44062
+"402",2012,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",9.4659420264
+"403",2012,921,"Lake Mead","Mead",42,"Total Release","cfs",4749774.15745
+"404",2012,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.42103965052
+"405",2013,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.360910571846
+"406",2013,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.35818740866
+"407",2013,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.118149802835
+"408",2013,919,"Lake Powell","Powell",42,"Total Release","cfs",4150335.37247
+"409",2013,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2320701592
+"410",2013,921,"Lake Mead","Mead",42,"Total Release","cfs",4559146.79229
+"411",2013,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.04293578508
+"412",2014,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.347171794899
+"413",2014,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.28653751058
+"414",2014,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.38053374503
+"415",2014,919,"Lake Powell","Powell",42,"Total Release","cfs",3770993.81767
+"416",2014,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",7.4796571588
+"417",2014,921,"Lake Mead","Mead",42,"Total Release","cfs",4920154.61039
+"418",2014,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.75898435177
+"419",2015,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.368092871285
+"420",2015,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.41939058222
+"421",2015,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",10.17378753821
+"422",2015,919,"Lake Powell","Powell",42,"Total Release","cfs",4537637.69588
+"423",2015,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",9.0002731125
+"424",2015,921,"Lake Mead","Mead",42,"Total Release","cfs",4661480.03786
+"425",2015,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.24591082065
+"426",2016,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.378368984558
+"427",2016,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",9.90892357786
+"428",2016,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",9.615906180531
+"429",2016,919,"Lake Powell","Powell",42,"Total Release","cfs",4537491.42591
+"430",2016,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.9999829925
+"431",2016,921,"Lake Mead","Mead",42,"Total Release","cfs",4685113.46526
+"432",2016,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.29278703919
+"433",2017,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.408693088906
+"434",2017,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.39620084121
+"435",2017,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",11.90486216794
+"436",2017,919,"Lake Powell","Powell",42,"Total Release","cfs",4537492.89881
+"437",2017,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.9999859131
+"438",2017,921,"Lake Mead","Mead",42,"Total Release","cfs",4345748.12547
+"439",2017,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.61966570319
+"440",2018,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.3863460534
+"441",2018,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.45858796725
+"442",2018,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",4.61205566469829
+"443",2018,919,"Lake Powell","Powell",42,"Total Release","cfs",4537452.60899
+"444",2018,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.9999059959
+"445",2018,921,"Lake Mead","Mead",42,"Total Release","cfs",4658468.52913
+"446",2018,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.2399375798
+"447",2019,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.355521978382
+"448",2019,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",11.786578974365
+"449",2019,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",12.951392981772
+"450",2019,919,"Lake Powell","Powell",42,"Total Release","cfs",4538203.33346
+"451",2019,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",9.0013950367
+"452",2019,921,"Lake Mead","Mead",42,"Total Release","cfs",4482864.91293
+"453",2019,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.89163288659
+"454",2020,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.372177901831
+"455",2020,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.54286965085
+"456",2020,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",5.847568354367
+"457",2020,919,"Lake Powell","Powell",42,"Total Release","cfs",4149338.55062
+"458",2020,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2300929906
+"459",2020,921,"Lake Mead","Mead",42,"Total Release","cfs",4165762.87719
+"460",2020,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.26267017083
+"461",2021,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.276791583708
+"462",2021,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",4.06440395961
+"463",2021,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",3.502091840147
+"464",2021,919,"Lake Powell","Powell",42,"Total Release","cfs",4149026.01941
+"465",2021,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.2294730974
+"466",2021,921,"Lake Mead","Mead",42,"Total Release","cfs",4719367.32716
+"467",2021,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",9.36072858418
+"468",2022,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.203149031246
+"469",2022,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",6.10749888759
+"470",2022,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",6.083883735753
+"471",2022,919,"Lake Powell","Powell",42,"Total Release","cfs",3528725.9682
+"472",2022,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",6.999125888
+"473",2022,921,"Lake Mead","Mead",42,"Total Release","cfs",4486426.16725
+"474",2022,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",8.89869653265
+"475",2023,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.230008363894
+"476",2023,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",12.04319121654
+"477",2023,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",13.42114053904
+"478",2023,919,"Lake Powell","Powell",42,"Total Release","cfs",4326162.38686
+"479",2023,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",8.580817958
+"480",2023,921,"Lake Mead","Mead",42,"Total Release","cfs",3848075.98149
+"481",2023,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.63254740214
+"482",2024,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.268701118603
+"483",2024,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",8.12962580072
+"484",2024,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",7.981439216166
+"485",2024,919,"Lake Powell","Powell",42,"Total Release","cfs",3771910.64576
+"486",2024,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",7.4814756594
+"487",2024,921,"Lake Mead","Mead",42,"Total Release","cfs",3848377.54209
+"488",2024,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.63314553775
+"489",2025,919,"Lake Powell","Powell",25,"Evaporation","million acre-feet",0.23946616937
+"490",2025,919,"Lake Powell","Powell",30,"Inflow Volume","million acre-feet",5.13558038636
+"491",2025,919,"Lake Powell","Powell",34,"Unregulated Inflow Volume","million acre-feet",4.6883673940675
+"492",2025,919,"Lake Powell","Powell",42,"Total Release","cfs",3771450.8502
+"493",2025,919,"Lake Powell","Powell",43,"Release volume","million acre-feet",7.4805636691
+"494",2025,921,"Lake Mead","Mead",42,"Total Release","cfs",3968518.88618
+"495",2025,921,"Lake Mead","Mead",43,"Release volume","million acre-feet",7.87144242138
+"496",1964,919,"Lake Powell","Powell",17,"Storage","million acre-feet",0.8354
+"497",1965,919,"Lake Powell","Powell",17,"Storage","million acre-feet",4.0868
+"498",1966,919,"Lake Powell","Powell",17,"Storage","million acre-feet",6.4226
+"499",1967,919,"Lake Powell","Powell",17,"Storage","million acre-feet",5.8498
+"500",1968,919,"Lake Powell","Powell",17,"Storage","million acre-feet",6.143
+"501",1969,919,"Lake Powell","Powell",17,"Storage","million acre-feet",7.0182
+"502",1970,919,"Lake Powell","Powell",17,"Storage","million acre-feet",9.4521
+"503",1971,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.8531
+"504",1972,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.9727
+"505",1973,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.6818
+"506",1974,919,"Lake Powell","Powell",17,"Storage","million acre-feet",16.8418
+"507",1975,919,"Lake Powell","Powell",17,"Storage","million acre-feet",17.1605
+"508",1976,919,"Lake Powell","Powell",17,"Storage","million acre-feet",19.4602
+"509",1977,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.2078
+"510",1978,919,"Lake Powell","Powell",17,"Storage","million acre-feet",15.3611
+"511",1979,919,"Lake Powell","Powell",17,"Storage","million acre-feet",15.5574
+"512",1980,919,"Lake Powell","Powell",17,"Storage","million acre-feet",20.3119
+"513",1981,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.6653
+"514",1982,919,"Lake Powell","Powell",17,"Storage","million acre-feet",19.9235
+"515",1983,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.1676
+"516",1984,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.7051
+"517",1985,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.6128
+"518",1986,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.2378
+"519",1987,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.4396
+"520",1988,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.3466
+"521",1989,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.558229
+"522",1990,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.652837
+"523",1991,919,"Lake Powell","Powell",17,"Storage","million acre-feet",15.556514
+"524",1992,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.462381
+"525",1993,919,"Lake Powell","Powell",17,"Storage","million acre-feet",13.691332
+"526",1994,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.685809
+"527",1995,919,"Lake Powell","Powell",17,"Storage","million acre-feet",17.504979
+"528",1996,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.665883
+"529",1997,919,"Lake Powell","Powell",17,"Storage","million acre-feet",20.891924
+"530",1998,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.105034
+"531",1999,919,"Lake Powell","Powell",17,"Storage","million acre-feet",22.064563
+"532",2000,919,"Lake Powell","Powell",17,"Storage","million acre-feet",21.955429
+"533",2001,919,"Lake Powell","Powell",17,"Storage","million acre-feet",20.290329
+"534",2002,919,"Lake Powell","Powell",17,"Storage","million acre-feet",18.495213
+"535",2003,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.100988
+"536",2004,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.781589
+"537",2005,919,"Lake Powell","Powell",17,"Storage","million acre-feet",8.881077
+"538",2006,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.964097
+"539",2007,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.401988
+"540",2008,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.617009
+"541",2009,919,"Lake Powell","Powell",17,"Storage","million acre-feet",13.952749
+"542",2010,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.96288
+"543",2011,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.873006
+"544",2012,919,"Lake Powell","Powell",17,"Storage","million acre-feet",16.662076
+"545",2013,919,"Lake Powell","Powell",17,"Storage","million acre-feet",13.230884
+"546",2014,919,"Lake Powell","Powell",17,"Storage","million acre-feet",10.623416
+"547",2015,919,"Lake Powell","Powell",17,"Storage","million acre-feet",11.916846
+"548",2016,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.266957
+"549",2017,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.297425
+"550",2018,919,"Lake Powell","Powell",17,"Storage","million acre-feet",14.322262
+"551",2019,919,"Lake Powell","Powell",17,"Storage","million acre-feet",10.498645
+"552",2020,919,"Lake Powell","Powell",17,"Storage","million acre-feet",12.851469
+"553",2021,919,"Lake Powell","Powell",17,"Storage","million acre-feet",10.601066
+"554",2022,919,"Lake Powell","Powell",17,"Storage","million acre-feet",7.010147
+"555",2023,919,"Lake Powell","Powell",17,"Storage","million acre-feet",5.71270817
+"556",2024,919,"Lake Powell","Powell",17,"Storage","million acre-feet",8.61941614
+"557",2025,919,"Lake Powell","Powell",17,"Storage","million acre-feet",8.91216332
+"558",1965,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3491.47998
+"559",1966,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3532.63989
+"560",1967,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3523.5
+"561",1968,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3528.26001
+"562",1969,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3541.67993
+"563",1970,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3574.06006
+"564",1971,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3600.94995
+"565",1972,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3612.28003
+"566",1973,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3609.40991
+"567",1974,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3646.88989
+"568",1975,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3649.47998
+"569",1976,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3667.17993
+"570",1977,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3657.75
+"571",1978,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3634.41992
+"572",1979,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3636.12988
+"573",1980,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3673.3501
+"574",1981,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3682.73999
+"575",1982,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3670.58008
+"576",1983,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3686.12012
+"577",1984,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3689.66992
+"578",1985,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3689.07007
+"579",1986,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3686.6001
+"580",1987,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3687.93994
+"581",1988,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3687.33008
+"582",1989,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3682.05005
+"583",1990,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3661.21997
+"584",1991,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3636.17993
+"585",1992,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3626.47998
+"586",1993,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3619.32007
+"587",1994,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3661.46997
+"588",1995,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3652.31006
+"589",1996,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3682.78003
+"590",1997,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3677.46997
+"591",1998,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3685.72998
+"592",1999,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3685.45996
+"593",2000,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3684.72998
+"594",2001,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3673.23999
+"595",2002,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3660.02
+"596",2003,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3623.15991
+"597",2004,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3600.33008
+"598",2005,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3567.17993
+"599",2006,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3602.22998
+"600",2007,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3606.71
+"601",2008,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3598.6
+"602",2009,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3621.78
+"603",2010,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3630.98
+"604",2011,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3630.18
+"605",2012,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3645.5
+"606",2013,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3614.91
+"607",2014,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3587.81
+"608",2015,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3601.74
+"609",2016,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3605.34
+"610",2017,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3605.65
+"611",2018,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3625.2
+"612",2019,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3586.41
+"613",2020,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3611.2
+"614",2021,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3587.56
+"615",2022,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3541.76
+"616",2023,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3527.89
+"617",2024,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3571.34
+"618",2025,919,"Lake Powell","Powell",49,"Pool Elevation","feet",3575.15
+"619",1965,919,"Lake Powell","Powell",89,"Area","square feet",49782.71
+"620",1966,919,"Lake Powell","Powell",89,"Area","square feet",64361.32
+"621",1967,919,"Lake Powell","Powell",89,"Area","square feet",60828.75
+"622",1968,919,"Lake Powell","Powell",89,"Area","square feet",62668.49
+"623",1969,919,"Lake Powell","Powell",89,"Area","square feet",67943.07
+"624",1970,919,"Lake Powell","Powell",89,"Area","square feet",82790.29
+"625",1971,919,"Lake Powell","Powell",89,"Area","square feet",95887.72
+"626",1972,919,"Lake Powell","Powell",89,"Area","square feet",101859.8
+"627",1973,919,"Lake Powell","Powell",89,"Area","square feet",100346.96
+"628",1974,919,"Lake Powell","Powell",89,"Area","square feet",122479.03
+"629",1975,919,"Lake Powell","Powell",89,"Area","square feet",124142.52
+"630",1976,919,"Lake Powell","Powell",89,"Area","square feet",136193.48
+"631",1977,919,"Lake Powell","Powell",89,"Area","square feet",129453.94
+"632",1978,919,"Lake Powell","Powell",89,"Area","square feet",114671.08
+"633",1979,919,"Lake Powell","Powell",89,"Area","square feet",115707.74
+"634",1980,919,"Lake Powell","Powell",89,"Area","square feet",140743.36
+"635",1981,919,"Lake Powell","Powell",89,"Area","square feet",147720.76
+"636",1982,919,"Lake Powell","Powell",89,"Area","square feet",138700.75
+"637",1983,919,"Lake Powell","Powell",89,"Area","square feet",150279.01
+"638",1984,919,"Lake Powell","Powell",89,"Area","square feet",152965.68
+"639",1985,919,"Lake Powell","Powell",89,"Area","square feet",152511.68
+"640",1986,919,"Lake Powell","Powell",89,"Area","square feet",150642.28
+"641",1987,919,"Lake Powell","Powell",89,"Area","square feet",151656.34
+"642",1988,919,"Lake Powell","Powell",89,"Area","square feet",151194.77
+"643",1989,919,"Lake Powell","Powell",89,"Area","square feet",147198.58
+"644",1990,919,"Lake Powell","Powell",89,"Area","square feet",131798.61
+"645",1991,919,"Lake Powell","Powell",89,"Area","square feet",115738.08
+"646",1992,919,"Lake Powell","Powell",89,"Area","square feet",109857.49
+"647",1993,919,"Lake Powell","Powell",89,"Area","square feet",105570.61
+"648",1994,919,"Lake Powell","Powell",89,"Area","square feet",131982.96
+"649",1995,919,"Lake Powell","Powell",89,"Area","square feet",125960.14
+"650",1996,919,"Lake Powell","Powell",89,"Area","square feet",147751.07
+"651",1997,919,"Lake Powell","Powell",89,"Area","square feet",143781.36
+"652",1998,919,"Lake Powell","Powell",89,"Area","square feet",149983.74
+"653",1999,919,"Lake Powell","Powell",89,"Area","square feet",149779.37
+"654",2000,919,"Lake Powell","Powell",89,"Area","square feet",149226.89
+"655",2001,919,"Lake Powell","Powell",89,"Area","square feet",140662.17
+"656",2002,919,"Lake Powell","Powell",89,"Area","square feet",130913.75
+"657",2003,919,"Lake Powell","Powell",89,"Area","square feet",107844.7
+"658",2004,919,"Lake Powell","Powell",89,"Area","square feet",95560.98
+"659",2005,919,"Lake Powell","Powell",89,"Area","square feet",79458.24
+"660",2006,919,"Lake Powell","Powell",89,"Area","square feet",96562.42
+"661",2007,919,"Lake Powell","Powell",89,"Area","square feet",98923.84
+"662",2008,919,"Lake Powell","Powell",89,"Area","square feet",94706.6
+"663",2009,919,"Lake Powell","Powell",89,"Area","square feet",107008.13
+"664",2010,919,"Lake Powell","Powell",89,"Area","square feet",112585.63
+"665",2011,919,"Lake Powell","Powell",89,"Area","square feet",112100.62
+"666",2012,919,"Lake Powell","Powell",89,"Area","square feet",121586.38
+"667",2013,919,"Lake Powell","Powell",89,"Area","square feet",103246.06
+"668",2014,919,"Lake Powell","Powell",89,"Area","square feet",89462.66
+"669",2015,919,"Lake Powell","Powell",89,"Area","square feet",96304.15
+"670",2016,919,"Lake Powell","Powell",89,"Area","square feet",98201.71
+"671",2017,919,"Lake Powell","Powell",89,"Area","square feet",98365.12
+"672",2018,919,"Lake Powell","Powell",89,"Area","square feet",109081.5
+"673",2019,919,"Lake Powell","Powell",89,"Area","square feet",88782.26
+"674",2020,919,"Lake Powell","Powell",89,"Area","square feet",101290.52
+"675",2021,919,"Lake Powell","Powell",89,"Area","square feet",89341.16
+"676",2022,919,"Lake Powell","Powell",89,"Area","square feet",67978.2
+"677",2023,919,"Lake Powell","Powell",89,"Area","square feet",58569.81
+"678",2024,919,"Lake Powell","Powell",89,"Area","square feet",75970.28
+"679",2025,919,"Lake Powell","Powell",89,"Area","square feet",77688.74
+"680",1938,921,"Lake Mead","Mead",17,"Storage","million acre-feet",11.8522764
+"681",1939,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.7207506
+"682",1940,921,"Lake Mead","Mead",17,"Storage","million acre-feet",20.2675937
+"683",1941,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.9910637
+"684",1942,921,"Lake Mead","Mead",17,"Storage","million acre-feet",25.46
+"685",1943,921,"Lake Mead","Mead",17,"Storage","million acre-feet",27.017
+"686",1944,921,"Lake Mead","Mead",17,"Storage","million acre-feet",25.681
+"687",1945,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.34
+"688",1946,921,"Lake Mead","Mead",17,"Storage","million acre-feet",23.615
+"689",1947,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.469
+"690",1948,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.434
+"691",1949,921,"Lake Mead","Mead",17,"Storage","million acre-feet",23.876
+"692",1950,921,"Lake Mead","Mead",17,"Storage","million acre-feet",20.756
+"693",1951,921,"Lake Mead","Mead",17,"Storage","million acre-feet",18.673
+"694",1952,921,"Lake Mead","Mead",17,"Storage","million acre-feet",18.316
+"695",1953,921,"Lake Mead","Mead",17,"Storage","million acre-feet",20.692
+"696",1954,921,"Lake Mead","Mead",17,"Storage","million acre-feet",17.469
+"697",1955,921,"Lake Mead","Mead",17,"Storage","million acre-feet",13.158
+"698",1956,921,"Lake Mead","Mead",17,"Storage","million acre-feet",11.538
+"699",1957,921,"Lake Mead","Mead",17,"Storage","million acre-feet",12.168
+"700",1958,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.407
+"701",1959,921,"Lake Mead","Mead",17,"Storage","million acre-feet",22.471
+"702",1960,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.722
+"703",1961,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.578
+"704",1962,921,"Lake Mead","Mead",17,"Storage","million acre-feet",18.095
+"705",1963,921,"Lake Mead","Mead",17,"Storage","million acre-feet",23.254
+"706",1964,921,"Lake Mead","Mead",17,"Storage","million acre-feet",16.515
+"707",1965,921,"Lake Mead","Mead",17,"Storage","million acre-feet",11.209
+"708",1966,921,"Lake Mead","Mead",17,"Storage","million acre-feet",15.044
+"709",1967,921,"Lake Mead","Mead",17,"Storage","million acre-feet",15.228
+"710",1968,921,"Lake Mead","Mead",17,"Storage","million acre-feet",14.132
+"711",1969,921,"Lake Mead","Mead",17,"Storage","million acre-feet",15.297
+"712",1970,921,"Lake Mead","Mead",17,"Storage","million acre-feet",16.455
+"713",1971,921,"Lake Mead","Mead",17,"Storage","million acre-feet",16.673
+"714",1972,921,"Lake Mead","Mead",17,"Storage","million acre-feet",17.25
+"715",1973,921,"Lake Mead","Mead",17,"Storage","million acre-feet",18.104
+"716",1974,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.957
+"717",1975,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.575
+"718",1976,921,"Lake Mead","Mead",17,"Storage","million acre-feet",20.088
+"719",1977,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.012
+"720",1978,921,"Lake Mead","Mead",17,"Storage","million acre-feet",20.036
+"721",1979,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.338
+"722",1980,921,"Lake Mead","Mead",17,"Storage","million acre-feet",22.446
+"723",1981,921,"Lake Mead","Mead",17,"Storage","million acre-feet",23.436
+"724",1982,921,"Lake Mead","Mead",17,"Storage","million acre-feet",22.246
+"725",1983,921,"Lake Mead","Mead",17,"Storage","million acre-feet",23.667
+"726",1984,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.899
+"727",1985,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.133
+"728",1986,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.202
+"729",1987,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.362
+"730",1988,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.411
+"731",1989,921,"Lake Mead","Mead",17,"Storage","million acre-feet",22.841
+"732",1990,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.367
+"733",1991,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.955
+"734",1992,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.075
+"735",1993,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.542
+"736",1994,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.279
+"737",1995,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.5718535
+"738",1996,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.4611191
+"739",1997,921,"Lake Mead","Mead",17,"Storage","million acre-feet",21.88175
+"740",1998,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.8285156
+"741",1999,921,"Lake Mead","Mead",17,"Storage","million acre-feet",25.112252
+"742",2000,921,"Lake Mead","Mead",17,"Storage","million acre-feet",24.78569
+"743",2001,921,"Lake Mead","Mead",17,"Storage","million acre-feet",22.396772
+"744",2002,921,"Lake Mead","Mead",17,"Storage","million acre-feet",19.777126
+"745",2003,921,"Lake Mead","Mead",17,"Storage","million acre-feet",16.848
+"746",2004,921,"Lake Mead","Mead",17,"Storage","million acre-feet",15.334
+"747",2005,921,"Lake Mead","Mead",17,"Storage","million acre-feet",14.36624
+"748",2006,921,"Lake Mead","Mead",17,"Storage","million acre-feet",14.89504
+"749",2007,921,"Lake Mead","Mead",17,"Storage","million acre-feet",14.016
+"750",2008,921,"Lake Mead","Mead",17,"Storage","million acre-feet",12.52814
+"751",2009,921,"Lake Mead","Mead",17,"Storage","million acre-feet",12.15184
+"752",2010,921,"Lake Mead","Mead",17,"Storage","million acre-feet",10.91402
+"753",2011,921,"Lake Mead","Mead",17,"Storage","million acre-feet",9.94432
+"754",2012,921,"Lake Mead","Mead",17,"Storage","million acre-feet",13.957
+"755",2013,921,"Lake Mead","Mead",17,"Storage","million acre-feet",13.3429785
+"756",2014,921,"Lake Mead","Mead",17,"Storage","million acre-feet",12.3140804
+"757",2015,921,"Lake Mead","Mead",17,"Storage","million acre-feet",10.315722
+"758",2016,921,"Lake Mead","Mead",17,"Storage","million acre-feet",9.8648778
+"759",2017,921,"Lake Mead","Mead",17,"Storage","million acre-feet",9.7239054
+"760",2018,921,"Lake Mead","Mead",17,"Storage","million acre-feet",10.090674
+"761",2019,921,"Lake Mead","Mead",17,"Storage","million acre-feet",9.8763942
+"762",2020,921,"Lake Mead","Mead",17,"Storage","million acre-feet",10.3359204
+"763",2021,921,"Lake Mead","Mead",17,"Storage","million acre-feet",10.109825
+"764",2022,921,"Lake Mead","Mead",17,"Storage","million acre-feet",8.8021156
+"765",2023,921,"Lake Mead","Mead",17,"Storage","million acre-feet",7.17801118
+"766",2024,921,"Lake Mead","Mead",17,"Storage","million acre-feet",8.799014
+"767",2025,921,"Lake Mead","Mead",17,"Storage","million acre-feet",8.493771
+"768",1936,921,"Lake Mead","Mead",49,"Pool Elevation","feet",908.349976
+"769",1937,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1023.54999
+"770",1938,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1095.95996
+"771",1939,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1168.63
+"772",1940,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1172.94995
+"773",1941,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1170.78003
+"774",1942,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1205.27002
+"775",1943,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1193.87
+"776",1944,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1184.29004
+"777",1945,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1174.31995
+"778",1946,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1168.76001
+"779",1947,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1151.67004
+"780",1948,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.03003
+"781",1949,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1170.77002
+"782",1950,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1176.72998
+"783",1951,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1160.07996
+"784",1952,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1157.09998
+"785",1953,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1176.23999
+"786",1954,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1149.88
+"787",1955,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1109.56995
+"788",1956,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1092.56995
+"789",1957,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1099.32996
+"790",1958,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.47998
+"791",1959,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.47998
+"792",1960,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1168.64001
+"793",1961,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1167.47998
+"794",1962,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1155.23999
+"795",1963,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1195.06006
+"796",1964,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1141.46997
+"797",1965,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1088.95996
+"798",1966,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1127.96997
+"799",1967,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1129.68994
+"800",1968,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1127.81006
+"801",1969,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1139.09998
+"802",1970,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1149.79004
+"803",1971,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1151.72998
+"804",1972,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1156.77002
+"805",1973,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1163.94995
+"806",1974,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1178.59998
+"807",1975,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.67004
+"808",1976,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1179.59998
+"809",1977,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1186.47998
+"810",1978,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1179.19995
+"811",1979,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1188.84998
+"812",1980,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1196.72998
+"813",1981,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1203.56006
+"814",1982,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1195.32996
+"815",1983,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1204.92004
+"816",1984,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1213.30005
+"817",1985,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1208.25
+"818",1986,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1208.70996
+"819",1987,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1209.77002
+"820",1988,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1210.08997
+"821",1989,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1199.47998
+"822",1990,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.06006
+"823",1991,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1178.58997
+"824",1992,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1171.77002
+"825",1993,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.42004
+"826",1994,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1188.42
+"827",1995,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1175.65002
+"828",1996,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1189.73999
+"829",1997,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1192.75
+"830",1998,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1212.83997
+"831",1999,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1214.68994
+"832",2000,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1212.56006
+"833",2001,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1196.39001
+"834",2002,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1177.22998
+"835",2003,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1153.28003
+"836",2004,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1139.45
+"837",2005,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1130.12
+"838",2006,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1135.26
+"839",2007,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1126.65
+"840",2008,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1111.31
+"841",2009,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1107.27
+"842",2010,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1093.46
+"843",2011,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1082.04
+"844",2012,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1126.06
+"845",2013,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1117.33
+"846",2014,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1106.4
+"847",2015,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1083.65
+"848",2016,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1078.23
+"849",2017,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1076.51
+"850",2018,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1080.96
+"851",2019,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1078.37
+"852",2020,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1083.89
+"853",2021,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1081.19
+"854",2022,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1064.94
+"855",2023,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1042.89
+"856",2024,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1064.9
+"857",2025,921,"Lake Mead","Mead",49,"Pool Elevation","feet",1060.93
