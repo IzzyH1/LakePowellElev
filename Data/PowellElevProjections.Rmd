@@ -1,0 +1,95 @@
+---
+title: "Powell Elevation Projection"
+output: html_document
+date: "2026-05-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Load Libraries
+install.packages("ggplot2")
+library("ggplot2")
+
+
+## Set Current Storage: All data from https://usbr.gov/uc/water/hydrodata/reservoir_data/919/dashboard.html#csv/
+storage <- read.csv("Storage.csv")
+storage$datetime <- as.Date(storage$datetime)
+current_storage <- storage[which.max(storage$datetime),]
+
+# Set Inflows
+inflow <- read.csv("Inflow.csv")
+inflow_proj <- data.frame(inflow$ESP.Min, inflow$ESP.Most, inflow$ESP.Max, as.Date(inflow$datetime, format = "%m/%d/%Y"))
+names(inflow_proj)[4] <- "datetime"
+
+# Define Inflow Projection (Currently Based on median flow)
+inflow_most_fun <- approxfun(as.numeric(inflow_proj$datetime),inflow_proj$inflow.ESP.Most)
+
+# Set Releases (Currently Based on Median Flow)
+outflow <- read.csv("Outflow.csv")
+outflow_proj <- data.frame(outflow$ESP.Min, outflow$ESP.Most, as.Date(outflow$datetime, format = "%m/%d/%Y"))
+names(outflow_proj)[3] <- "datetime"
+
+outflow_most_fun <- approxfun(outflow_proj$datetime, outflow_proj$outflow.ESP.Most)
+
+
+# Load Evaporation Data
+evap_data<- read.csv("dfPowellEvap.csv")
+
+# Define Evaporation Approximation based on Area
+evap_fun <- approxfun(evap_data$EvapVolMax, evap_data$Area..acres., rule = 2)
+
+
+
+
+# Interpolate into Time Series by Month
+time_grid <- seq(from = (current_storage$datetime-10), to = as.Date("2027-10-01"), by = "month")
+
+inflow_most_i <- inflow_most_fun(time_grid)
+outflow_most_i <- outflow_most_fun(time_grid)
+
+# Set Up Dataframe
+df<- data.frame(datetime = time_grid, inflow = inflow_most_i, outflow = outflow_most_i)
+df$storage_proj <- numeric(nrow(df))
+df$area <- sapply(evap_data$Area..acres., function(x){
+  evap_data$EvapVolMax[which.min(abs(x - capacity$Capacity_acrefeet))]
+
+# Calculates days in between time steps for evaporation calculations
+diff(df$datetime)
+df$days_in_step <- c(as.numeric(diff(df$datetime)), NA)
+
+
+# Iterate through time series to project storage: 
+# Storage = Previous Storage + Inflow - Outflow - Evaporation
+# Evaporation = Days in time Step * Evaporation/day
+start_idx <- which.min(abs(df$datetime - current_storage$datetime))
+df$storage_proj[start_idx] <- current_storage$storage
+
+for (i in (start_idx + 1):nrow(df)) {
+  evap_rate_i <- evap_fun(df$storage_proj[i-1])
+  evap_total_i <- evap_rate_i *df$days_in_step[i-1]
+  
+  df$storage_proj[i] <-
+      df$storage_proj[i - 1] +
+      df$inflow[i] -
+      df$outflow[i] -
+      evap_total_i
+
+}
+
+# Find Elevation based on Storage from capacity table
+df$elev_proj <-sapply(df$storage_proj, function(x){
+  capacity$Elevation_ft_NGVD29[which.min(abs(x - capacity$Capacity_acrefeet))]
+})
+
+
+
+# Figure 1: Projected Elevations
+fig_1 <- ggplot(df, aes(x=datetime, y=elev_proj)) + geom_line(color = "blue") + ylab("Lake Powell Elevation (feet)")+scale_x_date(date_labels = "%m-%Y") + geom_point()
+min_power_pool_elev <- geom_hline(yintercept = 3490, color = "orange")
+dead_pool_elev <- geom_hline(yintercept = 3370, color = "red")
+fig_1 + min_power_pool_elev
+
+

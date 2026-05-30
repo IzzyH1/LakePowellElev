@@ -37,12 +37,12 @@ library(stringr)
 library(here)
 library(readxl)
 library(ymd)
+
+here::i_am("PowellElevProjections.Rmd")
 source("AutoReadUSBRData/AutoReadUSBRData.R")
 
-##### A comment by David
-
 # Reads in Updated HydroData
-df <- fReadReclamationHydroData(FromHydroData = T)
+df <- fReadReclamationHydroData(FromHydroData = TRUE)
 
 
 #### Function that Reads in most current CRMMS Inflow Data
