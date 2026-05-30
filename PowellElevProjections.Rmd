@@ -32,14 +32,15 @@ Storage to Elevation Conversion (elev_fun):
 library("ggplot2")
 library("ggrepel")
 library(rvest)
-library(dplyr)
 library(stringr)
-library(here)
 library(readxl)
 library(ymd)
+library(here)
+
 
 here::i_am("PowellElevProjections.Rmd")
 source("AutoReadUSBRData/AutoReadUSBRData.R")
+
 
 # Reads in Updated HydroData
 df <- fReadReclamationHydroData(FromHydroData = TRUE)
@@ -123,8 +124,7 @@ project_storage <- function(inflow, outflow, current_storage, time_grid)
   
 # Set Evaporation
 # Evaporation is in acre feet per year
-  evap_url <- "https://raw.githubusercontent.com/IzzyH1/LakePowellElev/refs/heads/main/dfPowellEvap.csv"
-  evap_data <- read.csv(evap_url)
+  evap_data <- read.csv("Data/dfPowellEvap.csv")
 
 # Define Evaporation Approximation
   evap_fun <- approxfun(evap_data$Total.Storage..ac.ft.,     

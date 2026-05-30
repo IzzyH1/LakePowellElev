@@ -65,11 +65,10 @@ sapply(load.lib,require,character=TRUE)
 fReadReclamationHydroData <- function(FromHydroData) {
  
     # If FromHydroData is TRUE, then read from the hydroportal. Else just load the most recent CSV files
-    
     # Use here package to identify relative paths for the 3 csv files that represent all data downloaded from Reclamation's Hydrodata web portal
-    fAnnualData <- here("AutoReadUSBRData", "dfResDataAnnual.csv")
-    fMonthlyData <- here("AutoReadUSBRData","dfResDataMonthly.csv")
-    fDailyData <- here("AutoReadUSBRData","dfResDataDaily.csv")
+    fAnnualData <- here::here("AutoReadUSBRData", "dfResDataAnnual.csv")
+    fMonthlyData <- here::here("AutoReadUSBRData","dfResDataMonthly.csv")
+    fDailyData <- here::here("AutoReadUSBRData","dfResDataDaily.csv")
      
     #Print out the paths so we can check they are correct.
     print(getwd())
@@ -94,7 +93,7 @@ fReadReclamationHydroData <- function(FromHydroData) {
 
     #We will read from the HydroDataPortal
     
-    sExcelMeta <- here("AutoReadUSBRData", "USBRWebPortalMetaData.xlsx")
+    sExcelMeta <- here::here("AutoReadUSBRData", "USBRWebPortalMetaData.xlsx")
     
     
     dfReservoirs <- read_excel(sExcelMeta, sheet = "Reservoirs")
@@ -241,7 +240,6 @@ fReadReclamationHydroData <- function(FromHydroData) {
     return(list(dfResDaily = dfResDataDaily, dfResMonthly = dfResDataMonthly, dfResAnnual = dfResDataAnnual))
 }
 
-
 ####### New function interp2 to return NAs for values outside interpolation range (from https://stackoverflow.com/questions/47295879/using-interp1-in-r)
 interp2 <- function(x, y, xi = x, ...) {
   yi <- rep(NA, length(xi));
@@ -258,7 +256,7 @@ ReadBathymetryCritialElevations <- function() {
 
     # Read elevation-storage data in from Excel
     sExcelBathymetryFile <- "Bathymetry.xlsx"
-    sExcelBathymetryFile <- here("AutoReadUSBRData", sExcelBathymetryFile)
+    sExcelBathymetryFile <- here::here("AutoReadUSBRData", sExcelBathymetryFile)
     
     print(sExcelBathymetryFile)
     
@@ -268,7 +266,7 @@ ReadBathymetryCritialElevations <- function() {
     ################# Read the critical elevations from Excel
     sExcelElevationsFile <- "ReservoirElevationDefinitions.xlsx"
     
-    sExcelElevationsFile <- here("AutoReadUSBRData", sExcelElevationsFile)
+    sExcelElevationsFile <- here::here("AutoReadUSBRData", sExcelElevationsFile)
     
     print(sExcelElevationsFile)
     
@@ -289,9 +287,11 @@ ReadBathymetryCritialElevations <- function() {
 #### Function: Read in ICS balances and calculate annual contributions
 
 fReadICSData <- function() {
+  
   ## Read in ICS account balance data
   sExcelFile <- 'IntentionallyCreatedSurplus-Summary.xlsx'
-  sExcelFile <- here("AutoReadUSBRData", sExcelFile)
+  sExcelFile <- here::here("AutoReadUSBRData", sExcelFile)
+  
   
   dfICSBalance <- read_excel(sExcelFile, sheet = "Balances")
 
