@@ -75,6 +75,7 @@ inflow$FG_Low[is.na(inflow$FG_Low)] <- 0
 inflow$FG_High[is.na(inflow$FG_High)] <- 0
 inflow <- inflow[order(inflow$datetime), ]
 
+
 # Define Inflow Scenarios
 inflow$old <- inflow$X24MS.MIN.PROB - inflow$FG_High
 inflow$low <- inflow$old + inflow$FG_Low
@@ -151,7 +152,7 @@ project_storage <- function(inflow, outflow, current_storage, time_grid)
 
 project_old <- project_storage(inflow_old_i, outflow_old_i, current_storage, time_grid)
 project_high<- project_storage(inflow_high_i, outflow_new_i,current_storage, time_grid)
-project_low <- project_storage(inflow_low_i, outflow_old_i,current_storage, time_grid)
+project_low <- project_storage(inflow_low_i, outflow_new_i,current_storage, time_grid)
 
 project_old$label <- "Pre April 2026 Projections"
 project_high$label <- "1 MAF release from Flaming Gorge"
