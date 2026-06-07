@@ -187,7 +187,8 @@ ggplot(projection,
         
         
 # Plots October Elevations
-        geom_point(data = october, size = 2, color = "black") +
+        geom_point(data = october, size = 2, color = "black", 
+        show.label = FALSE) +
         geom_text_repel(data = october, aes(label = round(elevation, 1)), vjust = -2) +
         geom_vline(xintercept = october$datetime, linetype = "dashed", 
         color = "black") +
