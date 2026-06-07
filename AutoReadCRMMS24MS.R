@@ -18,12 +18,7 @@ fAutoReadCRMMS24MS <- function(reservoir, parameter) {
   reservoir_id <- reservoir_list$ID[reservoir == reservoir_list$name]
   parameter_id <- parameter_list$ID[parameter == parameter_list$name]
   
-  
-  # Test Values
-  #reservoir_id <- 919
-  #parameter_id <- 30
-  
-  
+
   # Rips all possible CRMMS urls
   nav_url <- "https://www.usbr.gov/uc/water/hydrodata/crmms/current/crmms_nav.html"
   
