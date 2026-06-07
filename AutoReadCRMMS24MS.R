@@ -10,12 +10,18 @@ library(readr)
 # Outputs: dataframe: Most Recent 24MS Results
 fAutoReadCRMMS24MS <- function(reservoir, parameter) {
   
+  
   # Converts inputs reservoir and data_type into ID for URL
   reservoir_list <- data.frame(name = c("Lake Powell", "Lake Mead"), ID = c(919, 921))
   parameter_list <- data.frame(name = c("Storage", "Inflow Volume", "Release Volume", "Pool Elevation"), ID = c(17,30,43,49))
   
   reservoir_id <- reservoir_list$ID[reservoir == reservoir_list$name]
   parameter_id <- parameter_list$ID[parameter == parameter_list$name]
+  
+  
+  # Test Values
+  #reservoir_id <- 919
+  #parameter_id <- 30
   
   
   # Rips all possible CRMMS urls
@@ -34,7 +40,7 @@ fAutoReadCRMMS24MS <- function(reservoir, parameter) {
   
   runs <- str_match(
     crmms_links,
-    "([0-9]{1,2})_([0-9]{4})/919/csv/17\\.csv$"
+    paste0("([0-9]{1,2})_([0-9]{4})/",reservoir_id, "/csv/", parameter_id, "\\.csv$")
   )
   
   
@@ -50,9 +56,9 @@ fAutoReadCRMMS24MS <- function(reservoir, parameter) {
   
   latest_url <- paste0(
     "https://www.usbr.gov/uc/water/hydrodata/crmms/current/",
-    crmms_links[1]
+    candidates$link[1]
   )
-  
+  latest_url
   read_csv(latest_url)
 }
 

@@ -40,18 +40,12 @@ library(here)
 
 here::i_am("PowellElevProjections.Rmd")
 source("AutoReadUSBRData/AutoReadUSBRData.R")
-
+source("AutoReadCRMMS24MS.R")
 
 # Reads in Updated HydroData
 df <- fReadReclamationHydroData(FromHydroData = TRUE)
 #df <- fReadReclamationHydroData(FromHydroData = FALSE)
 
-
-#### Function that Reads in most current CRMMS Inflow Data
-#base <- "https://www.usbr.gov/uc/water/hydrodata/crmms/"
-#page <- read_html(base)
-#links <- page %>% html_nodes("a") %>% html_attr("href")
-#links
 
 ####### Function that takes df and filter into specific values by time frame
 # Inputs: FieldName, TimeStep
@@ -63,7 +57,7 @@ storage_data <-filter_parameter("Storage", df$dfResDaily)
 current_storage <- storage_data[which.max(storage_data$DateValue),]
 
 # Set Inflows
-inflow <- read.csv("Data/May 2026 CRMMS Inflow.csv")
+inflow <- fAutoReadCRMMS24MS("Lake Powell", "Inflow Volume")
 inflow$datetime <- as.Date(inflow$date)
 
 
@@ -77,9 +71,9 @@ inflow <- inflow[order(inflow$datetime), ]
 
 
 # Define Inflow Scenarios
-inflow$old <- inflow$X24MS.MIN.PROB - inflow$FG_High
+inflow$old <- inflow$`24MS MIN PROB` - inflow$FG_High
 inflow$low <- inflow$old + inflow$FG_Low
-inflow$high <- inflow$X24MS.MIN.PROB
+inflow$high <- inflow$`24MS MIN PROB`
 
 # Define Inflow Interpolation (Currently Based on 24MS Low Prob flow)
 inflow_old_fun <- approxfun(as.numeric(inflow$datetime),inflow$old)
@@ -87,10 +81,10 @@ inflow_low_fun <- approxfun(as.numeric(inflow$datetime), inflow$low)
 inflow_high_fun <- approxfun(as.numeric(inflow$datetime), inflow$high)
 
 # Set Releases (Based on 24MS Low Prob flow)
-outflow_new <- read.csv("Data/May 2026 CRMMS Lake Powell Release.csv")
-outflow_old <- read.csv("Data/43 (2).csv")
+outflow_new <- fAutoReadCRMMS24MS("Lake Powell", "Release Volume")
+outflow_old <- read.csv("Data/April 2026 Outflow.csv")
 outflow <- merge(outflow_new, outflow_old, by = "date")
-outflow <- data.frame(new = outflow$X24MS.MIN.PROB.x, old = outflow$X24MS.MIN.PROB.y, date = outflow$date)
+outflow <- data.frame(new = outflow$`24MS MIN PROB`, old = outflow$X24MS.MIN.PROB, date = outflow$date)
 outflow$datetime <- as.Date(outflow$date)
 outflow_new_fun <- approxfun(as.numeric(outflow$datetime), outflow$new)
 outflow_old_fun <- approxfun(as.numeric(outflow$datetime), outflow$old)
