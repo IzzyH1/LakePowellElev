@@ -43,17 +43,18 @@ source("AutoReadUSBRData/AutoReadUSBRData.R")
 source("AutoReadCRMMS24MS.R")
 
 # Reads in Updated HydroData
-df <- fReadReclamationHydroData(FromHydroData = TRUE)
+hydro_data <- fReadReclamationHydroData(FromHydroData = TRUE)
 #df <- fReadReclamationHydroData(FromHydroData = FALSE)
 
 
+
 ####### Function that takes df and filter into specific values by time frame
-# Inputs: FieldName, TimeStep
-filter_parameter <- function(field_name, TimeStep){
-  TimeStep[TimeStep$FieldName == field_name, ]
+# Inputs: FieldName (string), ResName (string), TimeStep (data frame)
+filter_parameter <- function(field_name, res_name, TimeStep){
+  TimeStep[TimeStep$FieldName == field_name & TimeStep$ResName == res_name, ]
 }
 # Current Storage is the most recent storage value
-storage_data <-filter_parameter("Storage", df$dfResDaily)
+storage_data <-filter_parameter("Storage", "Lake Powell", hydro_data$dfResDaily)
 current_storage <- storage_data[which.max(storage_data$DateValue),]
 
 # Set Inflows
@@ -90,7 +91,6 @@ outflow_new_fun <- approxfun(as.numeric(outflow$datetime), outflow$new)
 outflow_old_fun <- approxfun(as.numeric(outflow$datetime), outflow$old)
 
 
-
 # Interpolate into Time Series by Month
 time_grid <- seq(from = (current_storage$DateValue), to = as.Date("2027-10-01"), by = "month")
 time_num <- as.numeric(time_grid)
@@ -113,18 +113,24 @@ start_idx <- which.min(abs(df$datetime - current_storage$DateValue))
 # Output: Data Frame - datetime, storage, elevatrion, label, scenario 
 # Storage = Previous Storage + Inflow - Outflow - Evaporation
 # Evaporation per timestep = Evaporation per year/365*days in time step
-project_storage <- function(inflow, outflow, current_storage, time_grid)
+project_storage <- function(inflow, outflow, Storage_Data, time_grid)
 {
+  
   storage <- numeric(length(time_grid))
-  storage[1] <- current_storage$Value
+  storage[1] <- Storage_Data$Value[which.max(Storage_Data$DateValue)]
   
 # Set Evaporation
 # Evaporation is in acre feet per year
-  evap_data <- read.csv("Data/dfPowellEvap.csv")
-
 # Define Evaporation Approximation
-  evap_fun <- approxfun(evap_data$Total.Storage..ac.ft.,     
-  evap_data$EvapVolMaxLo/12)
+    #evap_data <- read.csv("Data/dfPowellEvap.csv")
+    #evap_fun <- approxfun(evap_data$Total.Storage..ac.ft.,     
+    #evap_data$EvapVolMaxLo/12)
+  evap<- filter_parameter("Evaporation", "Lake Powell", hydro_data$dfResDaily)
+  evap_df <- merge(evap, Storage_Data, by = "DateValue")
+  evap_fun <- approxfun(evap_df$Value.y, evap_df$Value.x)
+  
+
+ 
   
   for (i in 2:length(time_grid)) {
   evap_i <- evap_fun(storage[i-1])
@@ -136,17 +142,19 @@ project_storage <- function(inflow, outflow, current_storage, time_grid)
       evap_i
 
   }
-  elev <- sapply(storage, function(x){
-    evap_data$Elevation..ft.[which.min(abs(x - evap_data$Live.Storage..ac.ft.))]
-    })
+  # Load in Bathymytry data
+  bathy<-ReadBathymetryCritialElevations()
+  elev <- sapply(storage, 
+  function(x){bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(x -bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]})
+
   data.frame(datetime = time_grid, storage = storage, elevation = elev)
   
 }
 
 
-project_old <- project_storage(inflow_old_i, outflow_old_i, current_storage, time_grid)
-project_high<- project_storage(inflow_high_i, outflow_new_i,current_storage, time_grid)
-project_low <- project_storage(inflow_low_i, outflow_new_i,current_storage, time_grid)
+project_old <- project_storage(inflow_old_i, outflow_old_i, storage_data, time_grid)
+project_high<- project_storage(inflow_high_i, outflow_new_i,storage_data, time_grid)
+project_low <- project_storage(inflow_low_i, outflow_new_i,storage_data, time_grid)
 
 project_old$label <- "Pre April 2026 Projections"
 project_high$label <- "1 MAF release from Flaming Gorge"
@@ -159,8 +167,8 @@ projection <- rbind(project_old, project_high, project_low)
 
 # Set key elevations and points to be labeled
 key_elevations <- data.frame(elevation_label = 
-c(3490, 3525, 3460,3471, 3482, 3502, 3511, 3519.5), 
-label = c( "Minimum Power Pool: 3490 ft, 5.9 MAF", "DROA Target Elevation: 3525 ft, 7.8 MAF", "4.5", "5", "5.5","6.5","7", "7.5"))
+c(3490, 3525, 3473, 3496, 3515, 3533), 
+label = c( "Minimum Power Pool: 3490 ft, 3.7 MAF", "DROA Target Elevation: 3525 ft, 5.5 MAF", "3","4", "5", "6"))
 october_date <- projection$datetime[which.min(abs(projection$datetime - as.Date("2026-10-01")))]
 october <- projection[projection$datetime == october_date,]
 
@@ -194,7 +202,7 @@ ggplot(projection,
         linetype = "dashed") +
         scale_y_continuous(name = "Elevation (ft.)",
         sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation_label,
-        labels = key_elevations$label, name = "Storage(MAF)" 
+        labels = key_elevations$label, name = " Active Storage(MAF)" 
         ))
 
 
