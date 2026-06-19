@@ -22,8 +22,8 @@ Current Storage (df$ResDaily): USBR Hydrodata (https://www.usbr.gov/uc/water/hyd
 Inflow Projections (inflow): USBR CRMM 24-Month Study (https://www.usbr.gov/uc/water/hydrodata/crmms/current/crmms_nav.html)
 Additional Flaming Gorge Release Schedule (fg_release): USBR 2026 Drought Response Operations Plan (https://usbr.gov/ColoradoRiverBasin/documents/dcp/DROA/2026/uc-2026droughtresponseoperationsplan-attachmentsa-h-508-20260423.pdf) 
 Outflow Projections (outflow): USBR CRMM 24-Month Study 10th Percentile Flows - Pre April 2026 Projections are based on April 2026 24-Month Study, the rest are based on the most recent 24-Month Study (https://www.usbr.gov/uc/water/hydrodata/crmms/current/crmms_nav.html)
-Evaporation Estimations(evap_fun): 
-Storage to Elevation Conversion (elev_fun): 
+Evaporation Estimations(evap_fun): USBR Hydrodata (https://www.usbr.gov/uc/water/hydrodata/reservoir_data/site_map.html)
+ 
 
 ```{r MassBalanceCalculations, echo=FALSE, warning=FALSE, message=FALSE, results = "hide"}
 
@@ -41,6 +41,7 @@ library(here)
 here::i_am("PowellElevProjections.Rmd")
 source("AutoReadUSBRData/AutoReadUSBRData.R")
 source("AutoReadCRMMS24MS.R")
+source("ProjectPowell.R")
 
 # Reads in Updated HydroData
 hydro_data <- fReadReclamationHydroData(FromHydroData = TRUE)
@@ -113,43 +114,6 @@ start_idx <- which.min(abs(df$datetime - current_storage$DateValue))
 # Output: Data Frame - datetime, storage, elevatrion, label, scenario 
 # Storage = Previous Storage + Inflow - Outflow - Evaporation
 # Evaporation per timestep = Evaporation per year/365*days in time step
-project_storage <- function(inflow, outflow, Storage_Data, time_grid)
-{
-  
-  storage <- numeric(length(time_grid))
-  storage[1] <- Storage_Data$Value[which.max(Storage_Data$DateValue)]
-  
-# Set Evaporation
-# Evaporation is in acre feet per year
-# Define Evaporation Approximation
-    #evap_data <- read.csv("Data/dfPowellEvap.csv")
-    #evap_fun <- approxfun(evap_data$Total.Storage..ac.ft.,     
-    #evap_data$EvapVolMaxLo/12)
-  evap<- filter_parameter("Evaporation", "Lake Powell", hydro_data$dfResDaily)
-  evap_df <- merge(evap, Storage_Data, by = "DateValue")
-  evap_fun <- approxfun(evap_df$Value.y, evap_df$Value.x)
-  
-
- 
-  
-  for (i in 2:length(time_grid)) {
-  evap_i <- evap_fun(storage[i-1])
-  
-  storage[i] <-
-      storage[i - 1] +
-      inflow[i] -
-      outflow[i] -
-      evap_i
-
-  }
-  # Load in Bathymytry data
-  bathy<-ReadBathymetryCritialElevations()
-  elev <- sapply(storage, 
-  function(x){bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(x -bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]})
-
-  data.frame(datetime = time_grid, storage = storage, elevation = elev)
-  
-}
 
 
 project_old <- project_storage(inflow_old_i, outflow_old_i, storage_data, time_grid)
