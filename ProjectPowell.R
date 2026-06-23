@@ -5,7 +5,10 @@ here::i_am("ProjectPowell.R")
 source("AutoReadUSBRData/AutoReadUSBRData.R")
 source("AutoReadCRMMS24MS.R")
 
+# Loads in Hydrodata for storage data
+hydrodata <- fReadReclamationHydroData(TRUE)
 
+projection <- ProjectPowell(Inflow = "Default", Release = 6, Add_Release = c(1,0), Add_Time = 12, Duration = 36, hydrodata)
 
 
 ###Function that projects Lake Powell elevations/storage based on multiple factors
@@ -15,41 +18,46 @@ source("AutoReadCRMMS24MS.R")
 # Default Values: Inflow = CRMMS Min Prob, Release = 6 MAF/yr, Additional Relese = 1, AR Duration = 12, Duration = 24 months
 
 
-ProjectPowell <- function(Inflow = "CRMMS", Release = 6, Add_Release = c(1, 0), Add_Time = 12, Duration = 36, Storage_Data)
+ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = c(1, 0), Add_Time = 12, Duration = 36, Storage_Data)
 {
 
   # Defines time_grid
   current_date <-Sys.Date()
   time_grid<- seq.Date(from = current_date, by = "month", length.out = Duration)
-  #Figure out a way to extract the month from the Dates in the time_gridf
-  # May need to change the start date to the beginning of the current month
-  #time_grid <- cbind(time_grid, month)
-  
+
   # Defines Inflow
-  if (Inflow == "CRMMS"){
-    # Figure out how to integrate AutoReadCRMMS Function
-    #May be replacing with other inflow source, so hold off
-    pass()
-  }
-  else {
-    inflow_prop <- fAverageMonthlyProportion("Inflow", "Lake Powell")
-    inflow_monthly <- inflow_prop$prop * Inflow
-    inflow <- cbind(inflow_prop, inflow_monthly)
+  if (Inflow == "Default"){
+    CMIP5_inflow <- read.csv("Data/CMIP5 Hydrology Scenario.csv")
+    Inflow <- data.frame(inflow = CMIP5_inflow$X65 * 1000000 , year = CMIP5_inflow$CY)
     
-    # Projects inflow onto time_grid
-    inflow_i <- data.frame(datetime = time_grid)
-    inflow_i$inflow <- sapply(inflow_i$datetime,
-          function(d){
-            inflow$inflow_monthly[month(d) == inflow$Month]
-          }
-      
-    )
-    
+    # Adjusts Lee's Ferry Natural Flow to Lake Powell Inflow
+    historic_LP_flow <- data.frame(LP_inflow = hydrodata$dfResAnnual$AnnualValue[hydrodata$dfResAnnual$ResName == "Lake Powell" & hydrodata$dfResAnnual$FieldName == "Inflow Volume"], year = hydrodata$dfResAnnual$WaterYear[hydrodata$dfResAnnual$ResName == "Lake Powell"& hydrodata$dfResAnnual$FieldName == "Inflow Volume"])
+    historic_Lee_flow <- data.frame(LeeFlow = Inflow$inflow[Inflow$year >= 2000], year = Inflow$year[Inflow$year >= 2000])
+    Lee2Powell_df <- merge(historic_Lee_flow, historic_LP_flow, by = "year")
+    Lee2Powell <- lm(Lee2Powell_df$LeeFlow ~ Lee2Powell_df$LP_inflow)
   }
   
+  inflow_prop <- fAverageMonthlyProportion("Inflow", "Lake Powell", hydrodata)
+  inflow_monthly <- merge(inflow_prop, Inflow)
+  inflow_monthly$inflow <- inflow_monthly$prop * inflow_monthly$inflow
+  
+  
+  # Projects inflow onto time grid
+  inflow_i <- data.frame(datetime = time_grid)
+  
+  inflow_i$year  <- lubridate::year(inflow_i$datetime)
+  inflow_i$Month <- lubridate::month(inflow_i$datetime)
+  
+  inflow_i <- merge(
+    inflow_i,
+    inflow_monthly[, c("year","Month","inflow")],
+    by = c("year","Month"),
+    all.x = TRUE
+  )
+
   # Defines Release
-  release_prop <- fAverageMonthlyProportion("Release volume", "Lake Powell")
-  release_monthly <- release_prop$prop * Release
+  release_prop <- fAverageMonthlyProportion("Release volume", "Lake Powell", hydrodata)
+  release_monthly <- release_prop$prop * Release * 1000000
   release <- cbind(release_prop, release_monthly)
   release_i <- data.frame(datetime = time_grid)
   release_i$release <- sapply(release_i$datetime,
@@ -60,7 +68,6 @@ ProjectPowell <- function(Inflow = "CRMMS", Release = 6, Add_Release = c(1, 0), 
   
   # Defines Additional Release data frame
   # Values can be positive for upstream releases (Flaming Gorge) or negative for LP releases
-  
   # Defines when additional release rule changes
   stage_end <- current_date %m+% months(cumsum(Add_Time))
   
@@ -76,24 +83,32 @@ ProjectPowell <- function(Inflow = "CRMMS", Release = 6, Add_Release = c(1, 0), 
         0
       }
       else{
-        Add_Release[stage]/Add_Time[stage]
+        Add_Release[stage]/Add_Time[stage] * 1000000
       }
     }
   )
-  
+
   # Merges inflow and add_release
   inflow_i$with_release <- inflow_i$inflow + add_release_i$add_release
   
   #Projects Storage and merges into single data frame
-  no_add_release <-project_storage(inflow_i$inflow, release_i$release,  )
+  no_add_release <- project_storage(inflow_i$inflow, release_i$release, hydrodata, time_grid)
+  with_release <- project_storage(inflow_i$with_release, release_i$release, hydrodata, time_grid)
+  projection<- data.frame(no_release_storage = no_add_release$storage, no_release_elevation = no_add_release$elevation,
+                          with_release_storage = with_release$storage, with_release_elevation = with_release$elevation, Date = no_add_release$datetime)
+  return(projection)
 }
+
+
+
+
 #### Function: Finds average proportion of value per month across historical Hydrodata
 ## Inputs: parameter ("string"), reservoir ("string")
 ## outputs: avg_prop (dataframe)
-fAverageMonthlyProportion<- function(parameter, reservoir){
-  #df <- fReadReclamationHydroData(TRUE)
-  monthly <- filter(df$dfResMonthly, ResName == reservoir & FieldName == parameter & WaterYear == 2022)
-  yearly<- filter(df$dfResAnnual, ResName == reservoir & FieldName == parameter & WaterYear == 2022)
+fAverageMonthlyProportion<- function(parameter, reservoir, hydrodata){
+  
+  monthly <- filter(hydrodata$dfResMonthly, ResName == reservoir & FieldName == parameter & WaterYear == 2022)
+  yearly<- filter(hydrodata$dfResAnnual, ResName == reservoir & FieldName == parameter & WaterYear == 2022)
   combined <- merge(monthly, yearly, by = 'WaterYear')
   
   combined$prop <- combined$MonthlyValue/combined$AnnualValue
@@ -101,16 +116,18 @@ fAverageMonthlyProportion<- function(parameter, reservoir){
   return(avg_prop)
 }
 
+
+
 # Storage Projection Function:
-# Inputs: Inflow, Outflow, Current Storage (Vectors)
-#         evap_csv (file path as String)  
+# Inputs: Inflow, Outflow (Vectors)
+#         Storage data (data frame)
 #         time_grid (List)
 # Output: Data Frame - datetime, storage, elevatrion, label, scenario 
 # Storage = Previous Storage + Inflow - Outflow - Evaporation
 # Evaporation per timestep = Evaporation per year/365*days in time step
 project_storage <- function(inflow, outflow, Storage_Data, time_grid)
 {
-  
+  Storage_Data <- filter(Storage_Data$dfResDaily, FieldName == "Storage")
   storage <- numeric(length(time_grid))
   storage[1] <- Storage_Data$Value[which.max(Storage_Data$DateValue)]
   
@@ -120,7 +137,7 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
   #evap_data <- read.csv("Data/dfPowellEvap.csv")
   #evap_fun <- approxfun(evap_data$Total.Storage..ac.ft.,     
   #evap_data$EvapVolMaxLo/12)
-  evap<- filter_parameter("Evaporation", "Lake Powell", hydro_data$dfResDaily)
+  evap<- filter(hydrodata$dfResDaily, FieldName == "Evaporation", ResName == "Lake Powell" )
   evap_df <- merge(evap, Storage_Data, by = "DateValue")
   evap_fun <- approxfun(evap_df$Value.y, evap_df$Value.x)
   
