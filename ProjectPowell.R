@@ -16,7 +16,7 @@ hydrodata <- fReadReclamationHydroData(TRUE)
 # Default Values: Inflow = CMIP5 trace 65, Release = 6 MAF/yr, Additional Relese = 1 MAF, AR Duration = 12 months, Duration = 36 months
 
 
-ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = c(1, 0), Add_Time = 12, Duration = 36, Storage_Data)
+ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data)
 {
 
   # Defines time_grid
@@ -94,8 +94,17 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = c(1, 0)
   #Projects Storage and merges into single data frame
   no_add_release <- project_storage(inflow_i$inflow, release_i$release, Storage_Data, time_grid)
   with_release <- project_storage(inflow_i$with_release, release_i$release, Storage_Data, time_grid)
-  projection<- data.frame(no_release_storage = no_add_release$storage, no_release_elevation = no_add_release$elevation,
-                          with_release_storage = with_release$storage, with_release_elevation = with_release$elevation, Date = no_add_release$datetime)
+  
+  #Adds labels to different operations
+  no_add_release$label <- "No Additional Release"
+  if (length(Add_Release) > 1){
+    with_release$label <- "With Additional Release"
+  }
+  else{
+    with_release$label <- paste0("Additional Release: ", Add_Release[1], " MAF in", Add_Time[1], " months")
+  }
+  #Places projection into single data frame
+  projection<- rbind(no_add_release, with_release)
   return(projection)
 }
 
@@ -159,11 +168,32 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
   
 }
 
-test_projection <- ProjectPowell(Inflow = "Default", Release = 6, Add_Release = c(1,0), Add_Time = 12, Duration = 36, hydrodata)
+projection <- ProjectPowell(Inflow = "Default", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
 
+#Sets key elevations for graph
+key_elevations <- data.frame(elevation_label = 
+                               c(3490, 3525, 3473, 3496, 3515, 3533), 
+                             label = c( "Minimum Power Pool: 3490 ft, 3.7 MAF", "DROA Target Elevation: 3525 ft, 5.5 MAF", "3","4", "5", "6"))
 # Plots projection onto plot
-ggplot(test_projection
-       )
+
+ggplot(projection,
+       aes(x = datetime, y = elevation, color = label)) +
+  geom_line(linewidth = 1.2) +
+  
+  scale_color_manual(name = "Operation Strategy", 
+    values = c("No Additional Release" = rgb(.88,.09,.79), 
+    setNames("darkolivegreen3", test_projection$label[length(test_projection$label)]))) +
+  
+  labs(title = "Lake Powell Elevation Projection", x = 
+         "Date", y = "Elevation(ft.)")+
+  
+  # Plots Right side axis
+  geom_hline(yintercept = c(3525, 3490), color = "red", 
+             linetype = "dashed") +
+  scale_y_continuous(name = "Elevation (ft.)",
+            sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation_label,
+                  labels = key_elevations$label, name = " Active Storage(MAF)" 
+                     ))
 
 
 
