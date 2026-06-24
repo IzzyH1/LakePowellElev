@@ -30,15 +30,25 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
     
     # Adjusts Lee's Ferry Natural Flow to Lake Powell Inflow Volume
     historic_LP_flow <- data.frame(LP_inflow = Storage_Data$dfResAnnual$AnnualValue[Storage_Data$dfResAnnual$ResName == "Lake Powell" & Storage_Data$dfResAnnual$FieldName == "Inflow Volume"], year = Storage_Data$dfResAnnual$WaterYear[Storage_Data$dfResAnnual$ResName == "Lake Powell"& Storage_Data$dfResAnnual$FieldName == "Inflow Volume"])
+    #historic_Lee_flow <- read.csv()
+    
     historic_Lee_flow <- data.frame(LeeFlow = Inflow$LeeFlow[Inflow$year >= 2000], year = Inflow$year[Inflow$year >= 2000])
     Lee2Powell_df <- merge(historic_Lee_flow, historic_LP_flow, by = "year")
     Lee2Powell_approx <- approxfun(Lee2Powell_df$LeeFlow, Lee2Powell_df$LP_inflow)
     Inflow$inflow <- Lee2Powell_approx(Inflow$LeeFlow) * 1000000
+    
+    inflow_prop <- fAverageMonthlyProportion("Inflow", "Lake Powell", Storage_Data)
+    inflow_monthly <- merge(inflow_prop, Inflow)
+    inflow_monthly$inflow <- inflow_monthly$prop * inflow_monthly$inflow
+  }
+  else if(Inflow == "CRMMS"){
+    inflow <- fAutoReadCRMMS24MS("Lake Powell", "Inflow Volume")
+    inflow$datetime <- as.Date(inflow$date)
+    inflow_fun <- approxfun(as.numeric(inflow$datetime),inflow$'24MS MIN PROB')
+    inflow_i <- inflow_fun(time_grid)
+    
   }
   
-  inflow_prop <- fAverageMonthlyProportion("Inflow", "Lake Powell", Storage_Data)
-  inflow_monthly <- merge(inflow_prop, Inflow)
-  inflow_monthly$inflow <- inflow_monthly$prop * inflow_monthly$inflow
   
   
   # Projects inflow onto time grid
@@ -135,16 +145,17 @@ fAverageMonthlyProportion<- function(parameter, reservoir, hydrodata){
 # Evaporation per timestep = Evaporation per year/365*days in time step
 project_storage <- function(inflow, outflow, Storage_Data, time_grid)
 {
-  Storage_Data <- filter(Storage_Data$dfResDaily, FieldName == "Storage")
+  storage_data <- filter(Storage_Data$dfResDaily, FieldName == "Storage")
   storage <- numeric(length(time_grid))
-  storage[1] <- Storage_Data$Value[which.max(Storage_Data$DateValue)]
+  storage[1] <- storage_data$Value[which.max(storage_data$DateValue)]
   
   # Set Evaporation
   # Evaporation is in acre feet per year
   # Define Evaporation Approximation
   evap<- filter(Storage_Data$dfResDaily, FieldName == "Evaporation", ResName == "Lake Powell" )
-  evap_df <- merge(evap, Storage_Data, by = "DateValue")
+  evap_df <- merge(evap, storage_data, by = "DateValue")
   evap_fun <- approxfun(evap_df$Value.y, evap_df$Value.x)
+  
   
   
   # Mass Balance time series
@@ -168,7 +179,7 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
   
 }
 
-projection <- ProjectPowell(Inflow = "Default", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
+projection <- ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
 
 #Sets key elevations for graph
 key_elevations <- data.frame(elevation_label = 
