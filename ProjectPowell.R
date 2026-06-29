@@ -1,5 +1,7 @@
 
 library(lubridate)
+library(readxl)
+library(tidyr)
 
 here::i_am("ProjectPowell.R")
 source("AutoReadUSBRData/AutoReadUSBRData.R")
@@ -7,7 +9,7 @@ source("AutoReadCRMMS24MS.R")
 
 # Loads in Hydrodata for storage data
 hydrodata <- fReadReclamationHydroData(TRUE)
-
+Storage_Data <- hydrodata
 
 ###Function that projects Lake Powell elevations/storage based on multiple factors
 # that can be manipulated or left as default.
@@ -26,16 +28,19 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
   # Defines Inflow
   if (Inflow == "Default"){
     CMIP5_inflow <- read.csv("Data/CMIP5 Hydrology Scenario.csv")
-    Inflow <- data.frame(LeeFlow = CMIP5_inflow$X65, year = CMIP5_inflow$CY)
+    Inflow <- data.frame(LeeFlow = CMIP5_inflow$X65* 1000000, year = CMIP5_inflow$CY)
     
-    # Adjusts Lee's Ferry Natural Flow to Lake Powell Inflow Volume
-    historic_LP_flow <- data.frame(LP_inflow = Storage_Data$dfResAnnual$AnnualValue[Storage_Data$dfResAnnual$ResName == "Lake Powell" & Storage_Data$dfResAnnual$FieldName == "Inflow Volume"], year = Storage_Data$dfResAnnual$WaterYear[Storage_Data$dfResAnnual$ResName == "Lake Powell"& Storage_Data$dfResAnnual$FieldName == "Inflow Volume"])
-    #historic_Lee_flow <- read.csv()
+    # Defines Upper Basin Use (Data wrangling)
+    UBuse_raw <- read.csv("Data/UpperBasinConsumptiveUse.csv")
+    UBuse_raw <- as.data.frame(t(UBuse_raw))
+    UBuse_step1 <- gsub(",", "", UBuse_raw$V5)
+    UBuse_raw$clean_numeric <- as.numeric(trimws(UBuse_step1))
+    UBuse <- UBuse_raw[!is.na(UBuse_raw$clean_numeric) & !is.na(as.numeric(UBuse_raw$V3)), ]
+    UBuse <- data.frame(year = as.numeric(UBuse$V3), total_use = UBuse$clean_numeric)
     
-    historic_Lee_flow <- data.frame(LeeFlow = Inflow$LeeFlow[Inflow$year >= 2000], year = Inflow$year[Inflow$year >= 2000])
-    Lee2Powell_df <- merge(historic_Lee_flow, historic_LP_flow, by = "year")
-    Lee2Powell_approx <- approxfun(Lee2Powell_df$LeeFlow, Lee2Powell_df$LP_inflow)
-    Inflow$inflow <- Lee2Powell_approx(Inflow$LeeFlow) * 1000000
+    # Ask Dr. Rosenberg about this, maybe do percentage of total Unreg Inflow? or minimum value?
+    avg_ubuse <- mean(UBuse$total_use[UBuse$year<=2024])
+    LP_inflow <- data.frame(inflow = Inflow$LeeFlow - avg_ubuse, year = Inflow$year)
     
     inflow_prop <- fAverageMonthlyProportion("Inflow", "Lake Powell", Storage_Data)
     inflow_monthly <- merge(inflow_prop, Inflow)
