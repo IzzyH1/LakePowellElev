@@ -9,7 +9,7 @@ source("AutoReadCRMMS24MS.R")
 
 # Loads in Hydrodata for storage data
 hydrodata <- fReadReclamationHydroData(TRUE)
-Storage_Data <- hydrodata
+
 
 ###Function that projects Lake Powell elevations/storage based on multiple factors
 # that can be manipulated or left as default.
@@ -39,44 +39,49 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
     UBuse <- data.frame(year = as.numeric(UBuse$V3), total_use = UBuse$clean_numeric)
     
     # Ask Dr. Rosenberg about this, maybe do percentage of total Unreg Inflow? or minimum value?
-    avg_ubuse <- mean(UBuse$total_use[UBuse$year<=2024])
+    avg_ubuse <- mean(UBuse$total_use[UBuse$year<= 2024])
     LP_inflow <- data.frame(inflow = Inflow$LeeFlow - avg_ubuse, year = Inflow$year)
     
-    inflow_prop <- fAverageMonthlyProportion("Inflow", "Lake Powell", Storage_Data)
-    inflow_monthly <- merge(inflow_prop, Inflow)
+    # Inflow monthly proportion is based on 2021 (recent low water year)
+    inflow_prop <- fMonthlyProportion("Inflow", "Lake Powell", Storage_Data, 2021)
+    inflow_monthly <- merge(inflow_prop, LP_inflow)
     inflow_monthly$inflow <- inflow_monthly$prop * inflow_monthly$inflow
+    
+    # Projects inflow onto time grid
+    inflow_i <- data.frame(datetime = time_grid)
+    
+    inflow_i$year  <- lubridate::year(inflow_i$datetime)
+    inflow_i$month <- lubridate::month(inflow_i$datetime)
+    
+    inflow_i <- merge(
+      inflow_i,
+      inflow_monthly,
+      by = c("year","month"),
+      all.x = TRUE,
+      sort = FALSE
+    )
   }
   else if(Inflow == "CRMMS"){
     inflow <- fAutoReadCRMMS24MS("Lake Powell", "Inflow Volume")
     inflow$datetime <- as.Date(inflow$date)
     inflow_fun <- approxfun(as.numeric(inflow$datetime),inflow$'24MS MIN PROB')
-    inflow_i <- inflow_fun(time_grid)
+    if (length(time_grid) > length(inflow$datetime)){
+      time_grid <- inflow$datetime
+    }
+    inflow_i <- data.frame(datetime = time_grid)
+    inflow_i$inflow <- inflow_fun(as.numeric(time_grid))
     
   }
   
   
-  
-  # Projects inflow onto time grid
-  inflow_i <- data.frame(datetime = time_grid)
-  
-  inflow_i$year  <- lubridate::year(inflow_i$datetime)
-  inflow_i$Month <- lubridate::month(inflow_i$datetime)
-  
-  inflow_i <- merge(
-    inflow_i,
-    inflow_monthly[, c("year","Month","inflow")],
-    by = c("year","Month"),
-    all.x = TRUE
-  )
 
   # Defines Release
-  release_prop <- fAverageMonthlyProportion("Release volume", "Lake Powell", Storage_Data)
-  release_monthly <- release_prop$prop * Release * 1000000
-  release <- cbind(release_prop, release_monthly)
+  release_prop <- fMonthlyProportion("Release volume", "Lake Powell", Storage_Data, 2021)
+  release_prop$release <- release_prop$prop * Release * 1000000
   release_i <- data.frame(datetime = time_grid)
   release_i$release <- sapply(release_i$datetime,
       function(d){
-          release$release_monthly[month(d) == release$Month]
+          release_prop$release[month(d) == release_prop$month]
           }
   )
   
@@ -89,20 +94,22 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
   #  Matches releases to dates and places in data frame 
   #if no match add_release = 0
   # add_release is distributed evenly across stage
-  add_release_i <- data.frame(datetime = time_grid)
-  add_release_i$add_release <- sapply(
-    add_release_i$datetime,
-    function(d) {
-      stage <- which(d <= stage_end)[1]
-      if(is.na(stage)){
-        0
+  for (i in length(Add_Release)){
+    add_release_i <- data.frame(datetime = time_grid)
+    add_release_i$add_release <- sapply(
+      add_release_i$datetime,
+      function(d) {
+        stage <- which(d <= stage_end)[1]
+        if(is.na(stage)){
+          0
+        }
+        else{
+          Add_Release[stage]/Add_Time[stage] * 1000000
+        }
       }
-      else{
-        Add_Release[stage]/Add_Time[stage] * 1000000
-      }
-    }
-  )
-
+  
+    )
+  
   # Merges inflow and add_release
   inflow_i$with_release <- inflow_i$inflow + add_release_i$add_release
   
@@ -116,14 +123,13 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
     with_release$label <- "With Additional Release"
   }
   else{
-    with_release$label <- paste0("Additional Release: ", Add_Release[1], " MAF in", Add_Time[1], " months")
+    with_release$label <- paste0("Additional Release: ", Add_Release[1], " MAF in ", Add_Time[1], " months")
   }
   #Places projection into single data frame
   projection<- rbind(no_add_release, with_release)
   return(projection)
 }
-
-
+}
 
 
 #### Function: Finds average proportion of value per month across historical Hydrodata
@@ -140,6 +146,13 @@ fAverageMonthlyProportion<- function(parameter, reservoir, hydrodata){
   return(avg_prop)
 }
 
+
+fMonthlyProportion <- function(parameter, reservoir, hydrodata, year){
+  monthly <- filter(hydrodata$dfResMonthly, ResName == reservoir & FieldName == parameter & WaterYear == year)
+  annual_value <- hydrodata$dfResAnnual$AnnualValue[hydrodata$dfResAnnual$ResName == reservoir & hydrodata$dfResAnnual$FieldName == parameter & hydrodata$dfResAnnual$WaterYear == year]
+  monthly_prop <- data.frame(month = monthly$month, prop = monthly$MonthlyValue / annual_value)
+  return(monthly_prop)
+}
 
 # Storage Projection Function:
 # Inputs: Inflow, Outflow (Vectors)
@@ -184,32 +197,44 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
   
 }
 
-projection <- ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
+#### Function: Plots projection onto graph
+#Inputs: projection(dataframe)
+#outputs: image
 
+fplotprojection<- function(projection){
 #Sets key elevations for graph
-key_elevations <- data.frame(elevation_label = 
-                               c(3490, 3525, 3473, 3496, 3515, 3533), 
-                             label = c( "Minimum Power Pool: 3490 ft, 3.7 MAF", "DROA Target Elevation: 3525 ft, 5.5 MAF", "3","4", "5", "6"))
+#bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(2000000 - bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]
+  key_elevations <- data.frame(elevation_label = 
+                               c(3490, 3514, 3525,3446, 3473, 3496, 3533, 3549), 
+                             label = c( "Top of Penstocks: 3490 ft, 3.7 MAF","Vortices Elevation: 3514 ft, 4.9 MAF ", "DROA Target Elevation: 3525 ft, 5.5 MAF","2", "3","4", "6", "7"))
+# Sets colors for graph
+  labels <- unique(projection$label)
+  release_labels <- setdiff(labels, "No Additional Release")
+  release_palette <- c("darkolivegreen","darkolivegreen3", "darkolivegreen1" )
+  color_values <- c("No Additional Release" = rgb (.88, .09, .79), 
+                  setNames(release_palette[seq_along(release_labels)], release_labels ))
 # Plots projection onto plot
 
-ggplot(projection,
+  ggplot(projection,
        aes(x = datetime, y = elevation, color = label)) +
-  geom_line(linewidth = 1.2) +
+    geom_line(linewidth = 1.2) +
   
-  scale_color_manual(name = "Operation Strategy", 
-    values = c("No Additional Release" = rgb(.88,.09,.79), 
-    setNames("darkolivegreen3", test_projection$label[length(test_projection$label)]))) +
+    scale_color_manual(name = "Operation Strategy", 
+      values = color_values) +
   
-  labs(title = "Lake Powell Elevation Projection", x = 
+    labs(title = "Lake Powell Elevation Projection", x = 
          "Date", y = "Elevation(ft.)")+
   
   # Plots Right side axis
-  geom_hline(yintercept = c(3525, 3490), color = "red", 
+    geom_hline(yintercept = c(3525, 3514), color = "red", 
              linetype = "dashed") +
-  scale_y_continuous(name = "Elevation (ft.)",
+    scale_y_continuous(name = "Elevation (ft.)",
             sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation_label,
                   labels = key_elevations$label, name = " Active Storage(MAF)" 
                      ))
+}
 
-
-
+# Test Projections
+projection <- ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
+projection <- rbind(projection, ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 2, Add_Time = 6, Duration = 36, hydrodata))
+fplotprojection(projection)
