@@ -3,7 +3,7 @@ library(lubridate)
 library(readxl)
 library(tidyr)
 
-here::i_am("ProjectPowell.R")
+#here::i_am("ProjectPowell.R")
 source("AutoReadUSBRData/AutoReadUSBRData.R")
 source("AutoReadCRMMS24MS.R")
 
@@ -73,7 +73,7 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
     
   }
   
-  
+
 
   # Defines Release
   release_prop <- fMonthlyProportion("Release volume", "Lake Powell", Storage_Data, 2021)
@@ -147,10 +147,11 @@ fAverageMonthlyProportion<- function(parameter, reservoir, hydrodata){
 }
 
 
+
 fMonthlyProportion <- function(parameter, reservoir, hydrodata, year){
   monthly <- filter(hydrodata$dfResMonthly, ResName == reservoir & FieldName == parameter & WaterYear == year)
   annual_value <- hydrodata$dfResAnnual$AnnualValue[hydrodata$dfResAnnual$ResName == reservoir & hydrodata$dfResAnnual$FieldName == parameter & hydrodata$dfResAnnual$WaterYear == year]
-  monthly_prop <- data.frame(month = monthly$month, prop = monthly$MonthlyValue / annual_value)
+  monthly_prop <- data.frame(month = monthly$Month, prop = monthly$MonthlyValue / annual_value)
   return(monthly_prop)
 }
 
@@ -235,6 +236,6 @@ fplotprojection<- function(projection){
 }
 
 # Test Projections
-projection <- ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
-projection <- rbind(projection, ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 2, Add_Time = 6, Duration = 36, hydrodata))
-fplotprojection(projection)
+#projection <- ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
+#projection <- rbind(projection, ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 2, Add_Time = 6, Duration = 36, hydrodata))
+#fplotprojection(projection)
