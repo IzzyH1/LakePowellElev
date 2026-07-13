@@ -16,7 +16,7 @@ source("ProjectPowell.R")
 # Sets up slider inputs
 sliderInput(
   "Release",
-  label = "Scheduled Release (MAF/year)",
+  label = "Scheduled Release from Powell (MAF/year)",
   min = 5,
   max = 10,
   value = 6,
@@ -26,16 +26,16 @@ sliderInput(
 
 sliderInput(
   "Additional_Release",
-  label = "Additional Release (MAF/year)",
-  min = 5,
-  max = 10,
-  value = 6,
+  label = "Additional Inflow to Powell (MAF/year)",
+  min = .5,
+  max = 5,
+  value = 1,
   step = 0.25
 )
 
 sliderInput(
   "Add_Time",
-  label = "Length of Additional Release",
+  label = "Length of Additional Inflow",
   min = 6,
   max = 24,
   value = 12,
@@ -59,11 +59,33 @@ projection <- reactive({
 output$projectionplot <- renderPlot({
   fplotprojection(projection())
 })
+annual_inflow <- reactive({ fAnnualValues(projection(), "inflow") })
 
+
+output$annualText <- renderPrint({
+  ai <- annual_inflow()
+
+  cat("Total Annual Inflow Volume (Including Additional Inflow):\n\n")
+
+  cat(
+    paste0(
+      ai$year,
+      " - ",
+      round(ai$value / 1e6, 1),
+      " MAF"
+    ),
+    sep = "\n")
+  cat("\n")
+  
+  cat(paste0("Total Annual Outflow: ", input$Release, " MAF"))
+  
+})
 
 
 
 ```
 ```{r output, results = "show"}
 plotOutput("projectionplot")
+verbatimTextOutput("annualText")
+
 ```

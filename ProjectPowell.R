@@ -73,7 +73,7 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
     
   }
   
-
+  
 
   # Defines Release
   release_prop <- fMonthlyProportion("Release volume", "Lake Powell", Storage_Data, 2021)
@@ -112,6 +112,7 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
   
   # Merges inflow and add_release
   inflow_i$with_release <- inflow_i$inflow + add_release_i$add_release
+  
   
   #Projects Storage and merges into single data frame
   no_add_release <- project_storage(inflow_i$inflow, release_i$release, Storage_Data, time_grid)
@@ -193,8 +194,9 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
   elev <- sapply(storage, 
                  function(x){bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(x -bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]})
   
+
   # Return projection data frame
-  data.frame(datetime = time_grid, storage = storage, elevation = elev)
+  data.frame(datetime = time_grid, storage = storage, elevation = elev, inflow = inflow)
   
 }
 
@@ -234,8 +236,24 @@ fplotprojection<- function(projection){
                   labels = key_elevations$label, name = " Active Storage(MAF)" 
                      ))
 }
+#### Function that takes a parameter on a time grid and sums that parameter for each year
+# Inputs: df(dataframe with value and date column), parameter (string)
+# Outputs: annual_value(dataframe)
+fAnnualValues <- function(df, parameter){
+  annual_value <- aggregate(
+    df[[parameter]],
+    by = list(year = format(df$datetime, "%Y")),
+    FUN = sum,
+    na.rm = TRUE
+  )
+  
+  names(annual_value)[2] <- "value"
+  annual_value$year <- as.integer(annual_value$year)
+  
+  annual_value
+}
+ 
 
 # Test Projections
-#projection <- ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
-#projection <- rbind(projection, ProjectPowell(Inflow = "CRMMS", Release = 6, Add_Release = 2, Add_Time = 6, Duration = 36, hydrodata))
-#fplotprojection(projection)
+projection <- ProjectPowell(Inflow = "Default", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
+fplotprojection(projection)
