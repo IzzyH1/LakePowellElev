@@ -9,39 +9,44 @@ date: "2026-07-01"
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 source("ProjectPowell.R")
+library("rhandsontable")
 
+#library(rsconnect)
+#rsconnect::showLogs()
+#deployApp()
 ```
 ```{r Projection Calculation, echo=FALSE, warning=FALSE, message=FALSE}
 
-# Sets up slider inputs
-sliderInput(
-  "Release",
-  label = "Scheduled Release from Powell (MAF/year)",
-  min = 5,
-  max = 10,
-  value = 6,
-  step = 0.25
+# Sets up table inputs
+additional_flow <- reactiveVal(
+  data.frame(
+    Value = c("Additional Inflow to Powell (MAF)", 1, .66),
+    Duration = c("Duration (months)", 12, 6)
+  )
 )
 
-
-sliderInput(
-  "Additional_Release",
-  label = "Additional Inflow to Powell (MAF/year)",
-  min = .5,
-  max = 5,
-  value = 1,
-  step = 0.25
+release <- reactiveVal(
+  data.frame(
+    Value = c("Annual Release from Powell (MAF/yr)", 6),
+    Duration = c("Duration (months)", 24)
+  )
 )
 
-sliderInput(
-  "Add_Time",
-  label = "Length of Additional Inflow",
-  min = 6,
-  max = 24,
-  value = 12,
-  step = 2
-)
+output$table_af <- renderRHandsontable({
+    rhandsontable(additional_flow())
+  })
 
+output$table_release <- renderRHandsontable({
+  rhandsontable(release())
+})
+
+observeEvent(input$table_af, {
+    additional_flow(hot_to_r(input$table_af))
+  })
+
+observeEvent(input$table_release, {
+    release(hot_to_r(input$table_release))
+})
 
 # Passes inputs through projection function
 projection <- reactive({
@@ -59,33 +64,18 @@ projection <- reactive({
 output$projectionplot <- renderPlot({
   fplotprojection(projection())
 })
-annual_inflow <- reactive({ fAnnualValues(projection(), "inflow") })
+annual_table <- reactive({ fAnnualValues(projection(), "inflow") })
 
-
-output$annualText <- renderPrint({
-  ai <- annual_inflow()
-
-  cat("Total Annual Inflow Volume (Including Additional Inflow):\n\n")
-
-  cat(
-    paste0(
-      ai$year,
-      " - ",
-      round(ai$value / 1e6, 1),
-      " MAF"
-    ),
-    sep = "\n")
-  cat("\n")
+output$annualTable <- renderTable({
+  annual_table()
+}, digits = 1)
   
-  cat(paste0("Total Annual Outflow: ", input$Release, " MAF"))
-  
-})
 
 
 
 ```
 ```{r output, results = "show"}
 plotOutput("projectionplot")
-verbatimTextOutput("annualText")
+tableOutput("annualTable")
 
 ```

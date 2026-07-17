@@ -8,17 +8,17 @@ source("AutoReadUSBRData/AutoReadUSBRData.R")
 source("AutoReadCRMMS24MS.R")
 
 # Loads in Hydrodata for storage data
-hydrodata <- fReadReclamationHydroData(TRUE)
+hydrodata <- fReadReclamationHydroData(FALSE)
 
 
 ###Function that projects Lake Powell elevations/storage based on multiple factors
 # that can be manipulated or left as default.
 #Inputs: Inflow (MAF/yr), Release (MAF/yr), Additional Release(MAF/yr), Additional Release Duration (months), Duration (Months), Storage_Data (dataframe)
 # Outputs: dataframe (storage_proj, elevation_proj, datetime)
-# Default Values: Inflow = CMIP5 trace 65, Release = 6 MAF/yr, Additional Relese = 1 MAF, AR Duration = 12 months, Duration = 36 months
+# Default Values: Inflow = CRMMS, Release = 6 MAF/yr, Additional Relese = 1 MAF, AR Duration = 12 months, Duration = 36 months
 
 
-ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data)
+ProjectPowell <- function(Inflow = "CRMMS", Release = 6, Release_Time = 36, Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
 {
 
   # Defines time_grid
@@ -26,42 +26,42 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
   time_grid<- seq.Date(from = current_date, by = "month", length.out = Duration)
 
   # Defines Inflow
-  if (Inflow == "Default"){
-    CMIP5_inflow <- read.csv("Data/CMIP5 Hydrology Scenario.csv")
-    Inflow <- data.frame(LeeFlow = CMIP5_inflow$X65* 1000000, year = CMIP5_inflow$CY)
+  #if (Inflow == "Default"){
+    #CMIP5_inflow <- read.csv("Data/CMIP5 Hydrology Scenario.csv")
+    #Inflow <- data.frame(LeeFlow = CMIP5_inflow$X65* 1000000, year = CMIP5_inflow$CY)
     
     # Defines Upper Basin Use (Data wrangling)
-    UBuse_raw <- read.csv("Data/UpperBasinConsumptiveUse.csv")
-    UBuse_raw <- as.data.frame(t(UBuse_raw))
-    UBuse_step1 <- gsub(",", "", UBuse_raw$V5)
-    UBuse_raw$clean_numeric <- as.numeric(trimws(UBuse_step1))
-    UBuse <- UBuse_raw[!is.na(UBuse_raw$clean_numeric) & !is.na(as.numeric(UBuse_raw$V3)), ]
-    UBuse <- data.frame(year = as.numeric(UBuse$V3), total_use = UBuse$clean_numeric)
+    #UBuse_raw <- read.csv("Data/UpperBasinConsumptiveUse.csv")
+    #UBuse_raw <- as.data.frame(t(UBuse_raw))
+    #UBuse_step1 <- gsub(",", "", UBuse_raw$V5)
+    #UBuse_raw$clean_numeric <- as.numeric(trimws(UBuse_step1))
+    #UBuse <- UBuse_raw[!is.na(UBuse_raw$clean_numeric) & !is.na(as.numeric(UBuse_raw$V3)), ]
+    #UBuse <- data.frame(year = as.numeric(UBuse$V3), total_use = UBuse$clean_numeric)
     
     # Ask Dr. Rosenberg about this, maybe do percentage of total Unreg Inflow? or minimum value?
-    avg_ubuse <- mean(UBuse$total_use[UBuse$year<= 2024])
-    LP_inflow <- data.frame(inflow = Inflow$LeeFlow - avg_ubuse, year = Inflow$year)
+    #avg_ubuse <- mean(UBuse$total_use[UBuse$year<= 2024])
+    #LP_inflow <- data.frame(inflow = Inflow$LeeFlow - avg_ubuse, year = Inflow$year)
     
     # Inflow monthly proportion is based on 2021 (recent low water year)
-    inflow_prop <- fMonthlyProportion("Inflow", "Lake Powell", Storage_Data, 2021)
-    inflow_monthly <- merge(inflow_prop, LP_inflow)
-    inflow_monthly$inflow <- inflow_monthly$prop * inflow_monthly$inflow
+    #inflow_prop <- fMonthlyProportion("Inflow", "Lake Powell", Storage_Data, 2021)
+    #inflow_monthly <- merge(inflow_prop, LP_inflow)
+    #inflow_monthly$inflow <- inflow_monthly$prop * inflow_monthly$inflow
     
     # Projects inflow onto time grid
-    inflow_i <- data.frame(datetime = time_grid)
+    #inflow_i <- data.frame(datetime = time_grid)
     
-    inflow_i$year  <- lubridate::year(inflow_i$datetime)
-    inflow_i$month <- lubridate::month(inflow_i$datetime)
+    #inflow_i$year  <- lubridate::year(inflow_i$datetime)
+    #inflow_i$month <- lubridate::month(inflow_i$datetime)
     
-    inflow_i <- merge(
-      inflow_i,
-      inflow_monthly,
-      by = c("year","month"),
-      all.x = TRUE,
-      sort = FALSE
-    )
-  }
-  else if(Inflow == "CRMMS"){
+    #inflow_i <- merge(
+      #inflow_i,
+      #inflow_monthly,
+      #by = c("year","month"),
+      #all.x = TRUE,
+      #sort = FALSE
+    #)
+  #}
+  if(Inflow == "CRMMS"){
     inflow <- fAutoReadCRMMS24MS("Lake Powell", "Inflow Volume")
     inflow$datetime <- as.Date(inflow$date)
     inflow_fun <- approxfun(as.numeric(inflow$datetime),inflow$'24MS MIN PROB')
@@ -73,42 +73,54 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
     
   }
   
-  
+  # Defines when Release rule changes
+  stage_end <- current_date %m+% months(cumsum(Release_Time))
 
   # Defines Release
   release_prop <- fMonthlyProportion("Release volume", "Lake Powell", Storage_Data, 2021)
-  release_prop$release <- release_prop$prop * Release * 1000000
-  release_i <- data.frame(datetime = time_grid)
-  release_i$release <- sapply(release_i$datetime,
-      function(d){
-          release_prop$release[month(d) == release_prop$month]
-          }
-  )
   
-  # Defines Additional Release data frame
-  # Values can be positive for upstream releases (Flaming Gorge) or negative for LP releases
   
-  # Defines when additional release rule changes
-  stage_end <- current_date %m+% months(cumsum(Add_Time))
-  
-  #  Matches releases to dates and places in data frame 
-  #if no match add_release = 0
-  # add_release is distributed evenly across stage
-  for (i in length(Add_Release)){
-    add_release_i <- data.frame(datetime = time_grid)
-    add_release_i$add_release <- sapply(
-      add_release_i$datetime,
+  for (i in seq_along(Release)){
+    release_i <- data.frame(datetime = time_grid)
+    release_i$release <- sapply(
+      release_i$datetime,
       function(d) {
         stage <- which(d <= stage_end)[1]
         if(is.na(stage)){
           0
         }
         else{
-          Add_Release[stage]/Add_Time[stage] * 1000000
+          release_prop$prop[month(d) == release_prop$month] * Release[i]*1000000
         }
       }
-  
     )
+  
+  
+  # Defines Additional Release data frame
+  # Values can be positive for upstream releases (Flaming Gorge) or negative for LP releases
+  
+  # Defines when additional release rule changes
+  stage_end <- current_date %m+% months(cumsum(Release_Time))
+  
+  #  Matches releases to dates and places in data frame 
+  #if no match add_release = 0
+  # add_release is distributed evenly across stage
+  for (i in seq_along(Add_Release)){
+    add_release_i <- data.frame(datetime = time_grid)
+    add_release_i$add_release <- sapply(
+      add_release_i$datetime,
+      function(d) {
+        stage <- which(d <= stage_end)[1]
+          if(is.na(stage)){
+          0
+          }
+          else{
+            Add_Release[i]/Add_Time[i] * 1000000
+          }
+        }
+      )  
+    }
+    
   
   # Merges inflow and add_release
   inflow_i$with_release <- inflow_i$inflow + add_release_i$add_release
@@ -126,12 +138,15 @@ ProjectPowell <- function(Inflow = "Default", Release = 6, Add_Release = 1, Add_
   else{
     with_release$label <- paste0("Additional Release: ", Add_Release[1], " MAF in ", Add_Time[1], " months")
   }
+  
   #Places projection into single data frame
+  no_add_release$inflow <- inflow_i$inflow
+  with_release$inflow <- inflow_i$with_release
   projection<- rbind(no_add_release, with_release)
   return(projection)
-}
-}
+  }
 
+}
 
 #### Function: Finds average proportion of value per month across historical Hydrodata
 ## Inputs: parameter ("string"), reservoir ("string")
@@ -165,9 +180,9 @@ fMonthlyProportion <- function(parameter, reservoir, hydrodata, year){
 # Evaporation per timestep = Evaporation per year/365*days in time step
 project_storage <- function(inflow, outflow, Storage_Data, time_grid)
 {
-  storage_data <- filter(Storage_Data$dfResDaily, FieldName == "Storage")
+  storage_data <- filter(Storage_Data$dfResDaily, FieldName == "Storage", ResName == "Lake Powell")
   storage <- numeric(length(time_grid))
-  storage[1] <- storage_data$Value[which.max(storage_data$DateValue)]
+  storage[1] <- storage_data$Value[which.max(as.Date(storage_data$DateValue))]
   
   # Set Evaporation
   # Evaporation is in acre feet per year
@@ -226,34 +241,43 @@ fplotprojection<- function(projection){
       values = color_values) +
   
     labs(title = "Lake Powell Elevation Projection", x = 
-         "Date", y = "Elevation(ft.)")+
+         "Date", y = "Elevation(ft.)" )+
   
   # Plots Right side axis
     geom_hline(yintercept = c(3525, 3514), color = "red", 
              linetype = "dashed") +
     scale_y_continuous(name = "Elevation (ft.)",
             sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation_label,
-                  labels = key_elevations$label, name = " Active Storage(MAF)" 
-                     ))
+                  labels = key_elevations$label, name = " Active Storage(MAF)" )) +
+    
+    theme(axis.title = element_text(size = 18), 
+          axis.ticks = element_line(linewidth = 1.5))  
+            
 }
 #### Function that takes a parameter on a time grid and sums that parameter for each year
 # Inputs: df(dataframe with value and date column), parameter (string)
 # Outputs: annual_value(dataframe)
 fAnnualValues <- function(df, parameter){
-  annual_value <- aggregate(
-    df[[parameter]],
-    by = list(year = format(df$datetime, "%Y")),
-    FUN = sum,
-    na.rm = TRUE
-  )
+  annual_inflow <- df %>%
+    mutate(year = year(datetime)) %>%
+    group_by(label, year) %>%
+    summarise(
+      annual_inflow = sum(inflow, na.rm = TRUE) / 1e6,
+      .groups = "drop"
+    )
   
-  names(annual_value)[2] <- "value"
-  annual_value$year <- as.integer(annual_value$year)
+  annual_table <- annual_inflow %>%
+    pivot_wider(
+      names_from = label,
+      values_from = annual_inflow
+    )
+  annual_table
   
-  annual_value
 }
  
 
 # Test Projections
-projection <- ProjectPowell(Inflow = "Default", Release = 6, Add_Release = 1, Add_Time = 12, Duration = 36, hydrodata)
-fplotprojection(projection)
+#projection <- ProjectPowell(Inflow = "CRMMS", Release = c(6,5), Release_Time = c(6, 24), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
+#fplotprojection(projection)
+
+

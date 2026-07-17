@@ -53,11 +53,11 @@ rm(list = ls())  #Clear history
 # List of packages
 load.lib <- c("tidyverse", "readxl", "RColorBrewer", "dplyr", "expss", "reshape2", "pracma", "lubridate", "directlabels", "plyr", "stringr", "ggplot2", "ggpubr", "ggrepel", "zoo", "here")
 # Then we select only the packages that aren't currently installed.
-install.lib <- load.lib[!load.lib %in% installed.packages()]
+#install.lib <- load.lib[!load.lib %in% installed.packages()]
 # And finally we install the missing packages, including their dependency.
-for(lib in install.lib) install.packages(lib,dependencies=TRUE)
+#for(lib in install.lib) install.packages(lib,dependencies=TRUE)
 # After the installation process completes, we load all packages.
-sapply(load.lib,require,character=TRUE)
+invisible(lapply(load.lib, library, character.only = TRUE))
 
 ###### Define a function that Reads in all the available reservoir data from Reclamations HydroData webportal.
 # https://www.usbr.gov/uc/water/hydrodata/reservoir_data/site_map.html
