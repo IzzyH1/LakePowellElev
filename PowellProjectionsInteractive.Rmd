@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 source("ProjectPowell.R")
 library("rhandsontable")
 
+#Uploads app
 #library(rsconnect)
 #rsconnect::showLogs()
 #deployApp()
@@ -18,43 +19,66 @@ library("rhandsontable")
 ```{r Projection Calculation, echo=FALSE, warning=FALSE, message=FALSE}
 
 # Sets up table inputs
-additional_flow <- reactiveVal(
-  data.frame(
-    Value = c("Additional Inflow to Powell (MAF)", 1, .66),
-    Duration = c("Duration (months)", 12, 6)
-  )
+additional_flow <- data.frame(
+  Parameter = c("Additional Inflow to Lake Powell (MAF)", "Length of Addtional Inflow Period (months)"),
+  stage_1 = c(0, 0), 
+  stage_2 = c(0, 0),
+  stage_3 = c(0, 0),
+  check.names = FALSE
 )
 
-release <- reactiveVal(
-  data.frame(
-    Value = c("Annual Release from Powell (MAF/yr)", 6),
-    Duration = c("Duration (months)", 24)
-  )
+release <- data.frame(
+  Parameter = c("Release Flow from Lake Powell (MAF/yr)", "Length of Release Stage (months)"),
+  stage_1 = c(0,0),
+  stage_2 = c(0,0),
+  stage_3 = c(0,0),
+  check.names = FALSE
 )
 
-output$table_af <- renderRHandsontable({
-    rhandsontable(additional_flow())
+
+output$additional_flow <- renderRHandsontable({
+    rhandsontable(additional_flow)%>%
+    hot_col("Parameter", readOnly = TRUE)
   })
 
-output$table_release <- renderRHandsontable({
-  rhandsontable(release())
+output$release <- renderRHandsontable({
+    rhandsontable(release)%>%
+    hot_col("Parameter", readOnly = TRUE)
 })
 
-observeEvent(input$table_af, {
-    additional_flow(hot_to_r(input$table_af))
-  })
 
-observeEvent(input$table_release, {
-    release(hot_to_r(input$table_release))
+input_flow <- reactive({
+  req(input$additional_flow)
+  hot_to_r(input$additional_flow)
 })
 
-# Passes inputs through projection function
+input_release <- reactive({
+  req(input$release)
+  hot_to_r(input$release)
+})
+
+
+# Passes inputs through projection function 
 projection <- reactive({
+  # Insures that there are proper inputs
+  tbl <- rbind(input_flow(), input_release())
+
+  add_release <-as.numeric(tbl[1,-1])#[row 1, every column but 1]
+  add_time <- as.numeric(tbl[2,-1])
+  release <- as.numeric(tbl[3,-1])
+  release_time <- as.numeric(tbl[4, -1])
+  
+  req(length(add_release) > 0, !all(is.na(add_release)))
+  req(length(add_time) > 0, !all(is.na(add_time)))
+  req(length(release) > 0, !all(is.na(release)))
+  req(length(release_time) > 0, !all(is.na(release_time)))
+  
   ProjectPowell(
     Inflow = "CRMMS",
-    Release = input$Release,
-    Add_Release = input$Additional_Release,
-    Add_Time = input$Add_Time,
+    Release = release,
+    Release_Time = release_time,
+    Add_Release = add_release, 
+    Add_Time = add_time,
     Duration = 36,
     Storage_Data = hydrodata
   )
@@ -64,18 +88,20 @@ projection <- reactive({
 output$projectionplot <- renderPlot({
   fplotprojection(projection())
 })
-annual_table <- reactive({ fAnnualValues(projection(), "inflow") })
+#annual_table <- reactive({ fAnnualValues(projection(), "inflow") })
 
-output$annualTable <- renderTable({
-  annual_table()
-}, digits = 1)
+#output$annualTable <- renderTable({
+  #annual_table()
+#}, digits = 1)
   
 
 
 
 ```
 ```{r output, results = "show"}
+rHandsontableOutput("additional_flow")
+rHandsontableOutput("release")
 plotOutput("projectionplot")
-tableOutput("annualTable")
+#tableOutput("annualTable")
 
 ```

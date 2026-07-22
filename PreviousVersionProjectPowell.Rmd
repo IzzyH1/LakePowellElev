@@ -1,0 +1,70 @@
+
+---
+title: "Lake Powell Calculation Tool"
+output: html_document
+runtime: shiny
+date: "2026-07-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+source("ProjectPowell.R")
+
+```
+```{r Projection Calculation, echo=FALSE, warning=FALSE, message=FALSE}
+
+# Sets up slider inputs
+sliderInput(
+  "Release",
+  label = "Scheduled Release (MAF/year)",
+  min = 5,
+  max = 10,
+  value = 6,
+  step = 0.25
+)
+
+
+sliderInput(
+  "Additional_Release",
+  label = "Additional Release (MAF/year)",
+  min = 5,
+  max = 10,
+  value = 6,
+  step = 0.25
+)
+
+sliderInput(
+  "Add_Time",
+  label = "Length of Additional Release",
+  min = 6,
+  max = 24,
+  value = 12,
+  step = 2
+)
+
+
+# Passes inputs through projection function
+projection <- reactive({
+  ProjectPowell(
+    Inflow = "CRMMS",
+    Release = input$Release,
+    Add_Release = input$Additional_Release,
+    Add_Time = input$Add_Time,
+    Duration = 36,
+    Storage_Data = hydrodata
+  )
+})
+
+# plots projection
+output$projectionplot <- renderPlot({
+  fplotprojection(projection())
+})
+
+
+
+
+```
+```{r output, results = "show"}
+plotOutput("projectionplot")
+```

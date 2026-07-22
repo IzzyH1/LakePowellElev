@@ -18,7 +18,7 @@ hydrodata <- fReadReclamationHydroData(FALSE)
 # Default Values: Inflow = CRMMS, Release = 6 MAF/yr, Additional Relese = 1 MAF, AR Duration = 12 months, Duration = 36 months
 
 
-ProjectPowell <- function(Inflow = "CRMMS", Release = 6, Release_Time = 36, Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
+ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, Duration, Storage_Data = hydrodata)
 {
 
   # Defines time_grid
@@ -74,6 +74,7 @@ ProjectPowell <- function(Inflow = "CRMMS", Release = 6, Release_Time = 36, Add_
   }
   
   # Defines when Release rule changes
+  Release_Time[is.na(Release_Time)] <- 0
   stage_end <- current_date %m+% months(cumsum(Release_Time))
 
   # Defines Release
@@ -100,27 +101,25 @@ ProjectPowell <- function(Inflow = "CRMMS", Release = 6, Release_Time = 36, Add_
   # Values can be positive for upstream releases (Flaming Gorge) or negative for LP releases
   
   # Defines when additional release rule changes
-  stage_end <- current_date %m+% months(cumsum(Release_Time))
+  req(Add_Time)
+  req((length(Add_Time) > 0),
+  Add_Time[is.na(Add_Time)] <- 0)
+  stage_end <- current_date %m+% months(cumsum(Add_Time))
   
   #  Matches releases to dates and places in data frame 
   #if no match add_release = 0
   # add_release is distributed evenly across stage
-  for (i in seq_along(Add_Release)){
     add_release_i <- data.frame(datetime = time_grid)
     add_release_i$add_release <- sapply(
       add_release_i$datetime,
       function(d) {
         stage <- which(d <= stage_end)[1]
           if(is.na(stage)){
-          0
+            return(0)
           }
-          else{
-            Add_Release[i]/Add_Time[i] * 1000000
-          }
-        }
-      )  
-    }
-    
+        Add_Release[i]/Add_Time[i] * 1000000
+      }
+    )
   
   # Merges inflow and add_release
   inflow_i$with_release <- inflow_i$inflow + add_release_i$add_release
