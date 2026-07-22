@@ -35,7 +35,6 @@ release <- data.frame(
   check.names = FALSE
 )
 
-
 output$additional_flow <- renderRHandsontable({
     rhandsontable(additional_flow)%>%
     hot_col("Parameter", readOnly = TRUE)
@@ -57,6 +56,22 @@ input_release <- reactive({
   hot_to_r(input$release)
 })
 
+
+key_elev_df <- reactive({
+  # Parse comma-separated or space-separated numeric inputs
+  raw_vals <- unlist(strsplit(input$key_elev_input, "[,\\s]+"))
+  elev_num <- as.numeric(raw_vals[!is.na(as.numeric(raw_vals))])
+  
+  # If no valid numbers are entered, return NULL
+  if (length(elev_num) == 0) return(NULL)
+  
+  # Construct the dataframe with elevation and paste0 label
+  data.frame(
+    elevation = elev_num,
+    label = paste0(elev_num, " ft."),
+    stringsAsFactors = FALSE
+  )
+})
 
 # Passes inputs through projection function 
 projection <- reactive({
@@ -86,7 +101,7 @@ projection <- reactive({
 
 # plots projection
 output$projectionplot <- renderPlot({
-  fplotprojection(projection())
+  fplotprojection(projection(), key_elev_df())
 })
 #annual_table <- reactive({ fAnnualValues(projection(), "inflow") })
 
@@ -99,8 +114,11 @@ output$projectionplot <- renderPlot({
 
 ```
 ```{r output, results = "show"}
+# Inputs
 rHandsontableOutput("additional_flow")
 rHandsontableOutput("release")
+textInput("key_elev_input", "Key Elevation (ft)")
+
 plotOutput("projectionplot")
 #tableOutput("annualTable")
 

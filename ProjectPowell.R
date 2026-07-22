@@ -218,13 +218,19 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
 #Inputs: projection(dataframe)
 #outputs: image
 
-fplotprojection<- function(projection){
+fplotprojection<- function(projection, elevation_input = NULL){
 #Sets key elevations for graph
 #bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(2000000 - bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]
-  key_elevations <- data.frame(elevation_label = 
-                               c(3490, 3514, 3525,3446, 3473, 3496, 3533, 3549), 
-                             label = c( "Top of Penstocks: 3490 ft, 3.7 MAF","Vortices Elevation: 3514 ft, 4.9 MAF ", "DROA Target Elevation: 3525 ft, 5.5 MAF","2", "3","4", "6", "7"))
-# Sets colors for graph
+  elevation_ticks <- data.frame(elevation = c(3490, 3446, 3473, 3496, 3533, 3549), label = c("Top of Penstocks: 3490 ft, 3.7 MAF","2", "3","4", "6", "7"))
+  key_elevations<- data.frame(elevation = c(3514, 3525), label =c("Vortices Elevation: 3514 ft, 4.9 MAF ", "DROA Target Elevation: 3525 ft"))
+  
+  if (!is.null(elevation_input)){
+    key_elevations <- rbind(key_elevations, elevation_input)
+  }
+  
+  elevation_ticks <- rbind(elevation_ticks, key_elevations)
+  
+  # Sets colors for graph
   labels <- unique(projection$label)
   release_labels <- setdiff(labels, "No Additional Release")
   release_palette <- c("darkolivegreen","darkolivegreen3", "darkolivegreen1" )
@@ -243,11 +249,11 @@ fplotprojection<- function(projection){
          "Date", y = "Elevation(ft.)" )+
   
   # Plots Right side axis
-    geom_hline(yintercept = c(3525, 3514), color = "red", 
+    geom_hline(yintercept = key_elevations$elevation, color = "red", 
              linetype = "dashed") +
     scale_y_continuous(name = "Elevation (ft.)",
-            sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation_label,
-                  labels = key_elevations$label, name = " Active Storage(MAF)" )) +
+            sec.axis = sec_axis(~.*1, breaks = elevation_ticks$elevation,
+                  labels = elevation_ticks$label, name = " Active Storage(MAF)" )) +
     
     theme(axis.title = element_text(size = 18), 
           axis.ticks = element_line(linewidth = 1.5))  
@@ -277,6 +283,7 @@ fAnnualValues <- function(df, parameter){
 
 # Test Projections
 #projection <- ProjectPowell(Inflow = "CRMMS", Release = c(6,5), Release_Time = c(6, 24), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
-#fplotprojection(projection)
+#elevation_input <- data.frame(elevation = 3500, label = "3500 label")
+#fplotprojection(projection, elevation_input)
 
 
