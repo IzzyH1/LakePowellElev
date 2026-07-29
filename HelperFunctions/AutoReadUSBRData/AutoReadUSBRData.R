@@ -47,17 +47,30 @@
 # Utah State University
 # david.rosenberg@usu.edu
 
-rm(list = ls())  #Clear history
+#rm(list = ls())  #Clear history
 
 # Load required libraries in 1 go
 # List of packages
-load.lib <- c("tidyverse", "readxl", "RColorBrewer", "dplyr", "expss", "reshape2", "pracma", "lubridate", "directlabels", "plyr", "stringr", "ggplot2", "ggpubr", "ggrepel", "zoo", "here")
+library(tidyverse)
+library(readxl)
+library(RColorBrewer)
+library(expss)
+library(reshape2)
+library(pracma)
+library(lubridate)
+library(directlabels)
+library(plyr)
+library(ggpubr)
+library(ggrepel)
+library(zoo)
+library(here)
+#load.lib <- c("tidyverse", "readxl", "RColorBrewer", "dplyr", "expss", "reshape2", "pracma", "lubridate", "directlabels", "plyr", "stringr", "ggplot2", "ggpubr", "ggrepel", "zoo", "here")
 # Then we select only the packages that aren't currently installed.
 #install.lib <- load.lib[!load.lib %in% installed.packages()]
 # And finally we install the missing packages, including their dependency.
 #for(lib in install.lib) install.packages(lib,dependencies=TRUE)
 # After the installation process completes, we load all packages.
-invisible(lapply(load.lib, library, character.only = TRUE))
+#invisible(lapply(load.lib, library, character.only = TRUE))
 
 ###### Define a function that Reads in all the available reservoir data from Reclamations HydroData webportal.
 # https://www.usbr.gov/uc/water/hydrodata/reservoir_data/site_map.html
@@ -66,9 +79,9 @@ fReadReclamationHydroData <- function(FromHydroData) {
  
     # If FromHydroData is TRUE, then read from the hydroportal. Else just load the most recent CSV files
     # Use here package to identify relative paths for the 3 csv files that represent all data downloaded from Reclamation's Hydrodata web portal
-    fAnnualData <- here::here("AutoReadUSBRData", "dfResDataAnnual.csv")
-    fMonthlyData <- here::here("AutoReadUSBRData","dfResDataMonthly.csv")
-    fDailyData <- here::here("AutoReadUSBRData","dfResDataDaily.csv")
+    fAnnualData <-"HelperFunctions/AutoReadUSBRData/dfResDataAnnual.csv"
+    fMonthlyData <- "HelperFunctions/AutoReadUSBRData/dfResDataMonthly.csv"
+    fDailyData <- "HelperFunctions/AutoReadUSBRData/dfResDataDaily.csv"
      
     #Print out the paths so we can check they are correct.
     print(getwd())
@@ -93,7 +106,7 @@ fReadReclamationHydroData <- function(FromHydroData) {
 
     #We will read from the HydroDataPortal
     
-    sExcelMeta <- here::here("AutoReadUSBRData", "USBRWebPortalMetaData.xlsx")
+    sExcelMeta <- here::here("HelperFunctions/AutoReadUSBRData", "USBRWebPortalMetaData.xlsx")
     
     
     dfReservoirs <- read_excel(sExcelMeta, sheet = "Reservoirs")
@@ -256,7 +269,7 @@ ReadBathymetryCritialElevations <- function() {
 
     # Read elevation-storage data in from Excel
     sExcelBathymetryFile <- "Bathymetry.xlsx"
-    sExcelBathymetryFile <- here::here("AutoReadUSBRData", sExcelBathymetryFile)
+    sExcelBathymetryFile <- here::here("HelperFunctions/AutoReadUSBRData", sExcelBathymetryFile)
     
     print(sExcelBathymetryFile)
     
@@ -266,7 +279,7 @@ ReadBathymetryCritialElevations <- function() {
     ################# Read the critical elevations from Excel
     sExcelElevationsFile <- "ReservoirElevationDefinitions.xlsx"
     
-    sExcelElevationsFile <- here::here("AutoReadUSBRData", sExcelElevationsFile)
+    sExcelElevationsFile <- here::here("HelperFunctions/AutoReadUSBRData", sExcelElevationsFile)
     
     print(sExcelElevationsFile)
     
@@ -286,48 +299,47 @@ ReadBathymetryCritialElevations <- function() {
 
 #### Function: Read in ICS balances and calculate annual contributions
 
-fReadICSData <- function() {
+#fReadICSData <- function() {
   
   ## Read in ICS account balance data
-  sExcelFile <- 'IntentionallyCreatedSurplus-Summary.xlsx'
-  sExcelFile <- here::here("AutoReadUSBRData", sExcelFile)
+  #sExcelFile <- 'IntentionallyCreatedSurplus-Summary.xlsx'
+  #sExcelFile <- paste0("HelperFunctions/AutoReadUSBRData/", sExcelFile)
   
-  
-  dfICSBalance <- read_excel(sExcelFile, sheet = "Balances")
+  #dfICSBalance <- read_excel(sExcelFile, sheet = "Balances")
 
   #Save the most recent year of ICS data
-  nMaxYearICSData <- max(dfICSBalance$Year)
+  #nMaxYearICSData <- max(dfICSBalance$Year)
   #Register the largest year of reservoir data. Right now one larger than ICS
-  nMaxYearResData <- nMaxYearICSData + 1
+  #nMaxYearResData <- nMaxYearICSData + 1
   
-  dfICSBalanceForStacked <- dfICSBalance
+  #dfICSBalanceForStacked <- dfICSBalance
 
   # #Duplicate the largest year and set the year to largest value plus 1
-   dfICSBalanceForStacked <- rbind(dfICSBalanceForStacked, dfICSBalanceForStacked %>% filter(Year == nMaxYearICSData) %>% mutate(Year = nMaxYearICSData+1))
+   #dfICSBalanceForStacked <- rbind(dfICSBalanceForStacked, dfICSBalanceForStacked %>% filter(Year == nMaxYearICSData) %>% mutate(Year = nMaxYearICSData+1))
   # #Order by decreasing year
-  dfICSBalanceForStacked <- dfICSBalanceForStacked[order(-dfICSBalanceForStacked$Year),]
+  #dfICSBalanceForStacked <- dfICSBalanceForStacked[order(-dfICSBalanceForStacked$Year),]
   #Turn time into a index by month. Year 1 = 1, Year 2 = 13
-  dfICSBalanceForStacked$MonthIndex <- 12*(dfICSBalanceForStacked$Year - dfICSBalanceForStacked$Year[nrow(dfICSBalanceForStacked)]) + 12
+  #dfICSBalanceForStacked$MonthIndex <- 12*(dfICSBalanceForStacked$Year - dfICSBalanceForStacked$Year[nrow(dfICSBalanceForStacked)]) + 12
 
-  cColNames <- colnames(dfICSBalance)
+  #cColNames <- colnames(dfICSBalance)
   #Convert to Narrow data frame so state columns become a variable
-  dfICSBalanceNarrow <- melt(data = dfICSBalance,id.vars = "Year", measure.vars = cColNames[2:5])
+  #dfICSBalanceNarrow <- melt(data = dfICSBalance,id.vars = "Year", measure.vars = cColNames[2:5])
   
   ##Turn the ICS year into monthly
-  dfICSmonths = expand.grid(Year = unique(dfICSBalanceForStacked$Year), month = 1:12)
-  dfICSmonths$MonthIndex <- 12*(dfICSmonths$Year - dfICSmonths$Year[nrow(dfICSmonths)]) + dfICSmonths$month
+  #dfICSmonths = expand.grid(Year = unique(dfICSBalanceForStacked$Year), month = 1:12)
+  #dfICSmonths$MonthIndex <- 12*(dfICSmonths$Year - dfICSmonths$Year[nrow(dfICSmonths)]) + dfICSmonths$month
   #Filter off first year but keep last month
-  dfICSmonths <- dfICSmonths %>% filter(dfICSmonths$MonthIndex >= 12)
+  #dfICSmonths <- dfICSmonths %>% filter(dfICSmonths$MonthIndex >= 12)
   #Calculate a date
-  dfICSmonths$Date <- as.Date(sprintf("%d-%d-01",dfICSmonths$Year, dfICSmonths$month))
+  #dfICSmonths$Date <- as.Date(sprintf("%d-%d-01",dfICSmonths$Year, dfICSmonths$month))
   
   #Interpolate Lower Basin conservation account balances by Month
-  dfICSmonths$LowerBasinConserve <- interp1(xi = dfICSmonths$MonthIndex, x=dfICSBalanceForStacked$MonthIndex, y = dfICSBalanceForStacked$Total, method="linear" )
+  #dfICSmonths$LowerBasinConserve <- interp1(xi = dfICSmonths$MonthIndex, x=dfICSBalanceForStacked$MonthIndex, y = dfICSBalanceForStacked$Total, method="linear" )
   #Interpolate Mexico conservation account balance by Month
-  dfICSmonths$MexicoConserve <- interp1(xi = dfICSmonths$MonthIndex, x=dfICSBalanceForStacked$MonthIndex, y = dfICSBalanceForStacked$Mexico, method="linear" )
+  #dfICSmonths$MexicoConserve <- interp1(xi = dfICSmonths$MonthIndex, x=dfICSBalanceForStacked$MonthIndex, y = dfICSBalanceForStacked$Mexico, method="linear" )
   
   ##Set values above the max ICS date to zero
-  dfICSmonths[dfICSmonths$Year > nMaxYearICSData, c("LowerBasinConserve", "MexicoConserve")] <- 0
+  #dfICSmonths[dfICSmonths$Year > nMaxYearICSData, c("LowerBasinConserve", "MexicoConserve")] <- 0
 
 
   
@@ -335,44 +347,44 @@ fReadICSData <- function() {
   
   
   ##Format Program limits for plotting
-  dfLimits <- read_excel(sExcelFile, sheet = "Capacities",  range = "A7:F10")
-  cColNamesLimits <- colnames(dfLimits)
-  dfLimitsMelt <- melt(data=dfLimits, id.vars="New levels with DCP", measure.vars = cColNamesLimits[2:5]) 
-  dfMaxBalanceCum = dfLimitsMelt %>% filter(`New levels with DCP` == "Max Balance (AF)", variable != 'Total')
+  #dfLimits <- read_excel(sExcelFile, sheet = "Capacities",  range = "A7:F10")
+  #cColNamesLimits <- colnames(dfLimits)
+  #dfLimitsMelt <- melt(data=dfLimits, id.vars="New levels with DCP", measure.vars = cColNamesLimits[2:5]) 
+  #dfMaxBalanceCum = dfLimitsMelt %>% filter(`New levels with DCP` == "Max Balance (AF)", variable != 'Total')
   #Reorder so Arizona is on top
-  dfMaxBalanceCum$Order <- c(3,2,1,4)
-  dfMaxBalanceCum <- dfMaxBalanceCum[order(dfMaxBalanceCum$Order),]
+  #dfMaxBalanceCum$Order <- c(3,2,1,4)
+  #dfMaxBalanceCum <- dfMaxBalanceCum[order(dfMaxBalanceCum$Order),]
   #Calculate the cumulative total
-  dfMaxBalanceCum$CumVal <- cumsum(dfMaxBalanceCum$value)
+  #dfMaxBalanceCum$CumVal <- cumsum(dfMaxBalanceCum$value)
   #Replace the Arizona label
-  dfMaxBalanceCum$StateAsChar <- as.character(dfMaxBalanceCum$variable)
-  dfMaxBalanceCum$StateAsChar[3] <- "Total/Arizona"
+  #dfMaxBalanceCum$StateAsChar <- as.character(dfMaxBalanceCum$variable)
+  #dfMaxBalanceCum$StateAsChar[3] <- "Total/Arizona"
   
-  dfMaxAnnualAmounts <- data.frame(Year=dfICSBalance$Year, MaxDeposit = dfLimits$Total[1], MaxWithdraw = dfLimits$Total[3])
+  #dfMaxAnnualAmounts <- data.frame(Year=dfICSBalance$Year, MaxDeposit = dfLimits$Total[1], MaxWithdraw = dfLimits$Total[3])
   
   
   ## Calculate Credits/Debits from ICS balances as differences by year
   
   # Add a row of zeros year for the year before the first year
-  cFirstICSYear <- min(dfICSBalance$Year)
-  dfICSBalanceFirstYear <- dfICSBalance[1,]
-  dfICSBalanceFirstYear[1, 2:(ncol(dfICSBalanceFirstYear))] <- 0
-  dfICSBalanceFirstYear$Year <- cFirstICSYear - 1
-  dfICSBalanceFirstYear$Item <- paste("Balance - Dec",as.character(cFirstICSYear - 1) ,"(AF)")
+  #cFirstICSYear <- min(dfICSBalance$Year)
+  #dfICSBalanceFirstYear <- dfICSBalance[1,]
+  #dfICSBalanceFirstYear[1, 2:(ncol(dfICSBalanceFirstYear))] <- 0
+  #dfICSBalanceFirstYear$Year <- cFirstICSYear - 1
+  #dfICSBalanceFirstYear$Item <- paste("Balance - Dec",as.character(cFirstICSYear - 1) ,"(AF)")
   
-  dfICSBalanceAll <- rbind(dfICSBalanceFirstYear, dfICSBalance)
+  #dfICSBalanceAll <- rbind(dfICSBalanceFirstYear, dfICSBalance)
   
-  dfICSDeposit <- data.frame(diff(as.matrix(dfICSBalanceAll %>% select(Arizona,California,Nevada,Mexico,Total,Year))))
+  #dfICSDeposit <- data.frame(diff(as.matrix(dfICSBalanceAll %>% select(Arizona,California,Nevada,Mexico,Total,Year))))
   
   #dfICSDeposit <- data.frame(-diff(as.matrix(dfICSBalanceAll %>% select(Arizona,California,Nevada,Mexico,Total,Year))))
   #Put the correct year back in
-  dfICSDeposit$Year <- dfICSBalance$Year[1:nrow(dfICSDeposit)]
+  #dfICSDeposit$Year <- dfICSBalance$Year[1:nrow(dfICSDeposit)]
 
   #Melt the data so state columns become a variable
-  dfICSDepositNarrow <- melt(data = dfICSDeposit,id.vars = "Year", measure.vars = cColNames[2:5])
+  #dfICSDepositNarrow <- melt(data = dfICSDeposit,id.vars = "Year", measure.vars = cColNames[2:5])
   
-  return(list(dfICSBalance = dfICSBalance, dfICSBalanceNarrow = dfICSBalanceNarrow, dfICSmonths = dfICSmonths, dfMaxBalanceCum = dfMaxBalanceCum, dfICSLimits = dfLimits, dfICSDepositNarrow = dfICSDepositNarrow, dfMaxAnnualAmounts = dfMaxAnnualAmounts, nMaxYearICSData = nMaxYearICSData, nMaxYearResData = nMaxYearResData))
-  }
+  #return(list(dfICSBalance = dfICSBalance, dfICSBalanceNarrow = dfICSBalanceNarrow, dfICSmonths = dfICSmonths, dfMaxBalanceCum = dfMaxBalanceCum, dfICSLimits = dfLimits, dfICSDepositNarrow = dfICSDepositNarrow, dfMaxAnnualAmounts = dfMaxAnnualAmounts, nMaxYearICSData = nMaxYearICSData, nMaxYearResData = nMaxYearResData))
+  #}
 
 
 #dfTemp <- ReadBathymetryCritialElevations()
@@ -384,4 +396,4 @@ fReadICSData <- function() {
 # Read the downloaded data from HydroData
 # lResData <- fReadReclamationHydroData(FromHydroData = TRUE)
 
-lTrialICS <- fReadICSData()
+#lTrialICS <- fReadICSData()

@@ -3,9 +3,9 @@ library(lubridate)
 library(readxl)
 library(tidyr)
 
-#here::i_am("ProjectPowell.R")
-source("AutoReadUSBRData/AutoReadUSBRData.R")
-source("AutoReadCRMMS24MS.R")
+
+source("HelperFunctions/AutoReadUSBRData/AutoReadUSBRData.R")
+source("HelperFunctions/AutoReadCRMMS24MS.R")
 
 # Loads in Hydrodata for storage data
 hydrodata <- fReadReclamationHydroData(FALSE)
@@ -262,7 +262,7 @@ fplotprojection<- function(projection, elevation_input = NULL){
 #### Function that takes a parameter on a time grid and sums that parameter for each year
 # Inputs: df(dataframe with value and date column), parameter (string)
 # Outputs: annual_value(dataframe)
-fAnnualValues <- function(df, parameter){
+fAnnualValues <- function(df, parameter, Storage_Data){
   annual_inflow <- df %>%
     mutate(year = year(datetime)) %>%
     group_by(label, year) %>%

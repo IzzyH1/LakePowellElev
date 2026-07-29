@@ -8,13 +8,11 @@ date: "2026-07-01"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
-source("ProjectPowell.R")
+source("HelperFunctions/ProjectPowell.R")
 library("rhandsontable")
 
-#Uploads app
-#library(rsconnect)
 #rsconnect::showLogs()
-#deployApp()
+
 ```
 ```{r Projection Calculation, echo=FALSE, warning=FALSE, message=FALSE}
 

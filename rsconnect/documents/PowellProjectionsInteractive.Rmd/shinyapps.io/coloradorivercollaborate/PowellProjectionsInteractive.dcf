@@ -1,0 +1,12 @@
+name: PowellProjectionsInteractive
+title: PowellProjectionsInteractive
+username: coloradorivercollaborate
+account: coloradorivercollaborate
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17633350
+bundleId: 12338006
+url: https://coloradorivercollaborate.shinyapps.io/PowellProjectionsInteractive/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
