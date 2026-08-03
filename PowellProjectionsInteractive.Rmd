@@ -103,13 +103,35 @@ output$projectionplot <- renderPlot({
 })
 
 
-# Annual Table 
-annual_table <- reactive({fAnnualValues(projection(), "inflow", hydrodata) })
-output$annualTable <- renderTable({
-  annual_table()[annual_table()$water_year == 2026 |annual_table()$water_year == 2027,]
-}, digits = 1)
-  
+# Annual Tables 
+inflow_no_add_table <- reactive({fAnnualValues(projection()[projection()$label == "No Additional Release",], "inflow", hydrodata) })
 
+inflow_add_table <- reactive({fAnnualValues(projection()[projection()$label != "No Additional Release",], "inflow", hydrodata)})
+
+inflow_table <- reactive({
+  data.frame(
+    `Inflow Volume Without Additional Flow (MAF)` =
+      inflow_no_add_table()[["Inflow Volume (MAF)"]],
+    
+    `Inflow Volume With Additional Flow (MAF)` =
+      inflow_add_table()[["Inflow Volume (MAF)"]],
+    
+    water_year =
+      inflow_add_table()[["water_year"]],
+    
+    check.names = FALSE
+  )
+})
+
+release_table <- reactive({fAnnualValues(projection(), "outflow", hydrodata)})
+
+annual_table <- reactive({merge(inflow_table(), release_table(), by = "water_year")})
+  
+output$annualTable <- renderTable({
+  annual_table()[
+    annual_table()$water_year %in% c(2025, 2026, 2027),
+  ]
+}, digits = 1)
 
 
 ```

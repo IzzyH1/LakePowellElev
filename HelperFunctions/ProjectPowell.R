@@ -266,7 +266,7 @@ fplotprojection<- function(projection, elevation_input = NULL){
 # Outputs: annual_value(dataframe)
 fAnnualValues <- function(df, parameter, Storage_Data){
   # Focuses data frames to concerned value
-  df_value <- data.frame(value = df[[parameter]], datetime = df$datetime)
+  df_value <- data.frame(value = df[[parameter]]/ 1000000, datetime = df$datetime)
   
   FieldName <- switch(
     parameter,
@@ -275,37 +275,40 @@ fAnnualValues <- function(df, parameter, Storage_Data){
     stop("Unknown parameter")
   )
   
-  storage_value <- data.frame(value = Storage_Data$dfResMonthly$MonthlyValue[Storage_Data$dfResMonthly$FieldName == FieldName & Storage_Data$dfResMonthly$ResName == "Lake Powell"] * 1000000, 
+  storage_value <- data.frame(value = Storage_Data$dfResMonthly$MonthlyValue[Storage_Data$dfResMonthly$FieldName == FieldName & Storage_Data$dfResMonthly$ResName == "Lake Powell"], 
                               datetime = as.Date(Storage_Data$dfResMonthly$Date[Storage_Data$dfResMonthly$FieldName == FieldName & Storage_Data$dfResMonthly$ResName == "Lake Powell"]))
   
   
   # adds common month column to make merging/coalescing consistent
   df_monthly <- df_value %>%
-    mutate(month = floor_date(datetime, "month"))
+    mutate(fixed_date = floor_date(datetime, "month"))
   
   storage_monthly <- storage_value %>%
-    mutate(month = floor_date(datetime, "month"))
+    mutate(fixed_date = floor_date(datetime, "month"))
   
+  # Summing of Values by water year
   annual_value <- storage_monthly %>%
-    full_join(df_monthly, by = "month", suffix = c("_actual", "_forecasted"))%>%
+    full_join(df_monthly, by = "fixed_date", suffix = c("_actual", "_forecasted"))%>%
     dplyr::mutate(value = coalesce(value_actual, value_forecasted),
            water_year = if_else(
-             lubridate::month(month) >= 10,
-             lubridate::year(month) + 1,
-             lubridate::year(month)
+             lubridate::month(fixed_date) >= 10,
+             lubridate::year(fixed_date) + 1,
+             lubridate::year(fixed_date)
            )) %>%
     group_by(water_year)%>%
     dplyr::summarise(value = sum(value, na.rm = TRUE))%>%
     ungroup()
   
-  annual_value <- dplyr::rename(annual_value, Inflow_Volume = value)  
+  # Changes Column Name to more readable format
+  value_name <- paste0(FieldName, " (MAF)")
+  annual_value <- dplyr::rename(annual_value, !!value_name := value)  
   return(annual_value)
 }
  
 
 # Test Projections
-#projection <- ProjectPowell(Inflow = "CRMMS", Release = c(6,5), Release_Time = c(6, 24), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
+#projection <- ProjectPowell(Inflow = "CRMMS", Release = c(20,5), Release_Time = c(6, 24), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
 #elevation_input <- data.frame(elevation = 3500, label = "3500 label")
 #fplotprojection(projection, elevation_input)
-#annual_outflow <- fAnnualValues(projection[projection$label == "No Additional Release",], "outflow", hydrodata)
+#annual_outflow <- fAnnualValues(inflow_i, "inflow", hydrodata)
 
