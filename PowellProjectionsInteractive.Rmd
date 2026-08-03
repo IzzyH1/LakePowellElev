@@ -101,11 +101,13 @@ projection <- reactive({
 output$projectionplot <- renderPlot({
   fplotprojection(projection(), key_elev_df())
 })
-#annual_table <- reactive({ fAnnualValues(projection(), "inflow") })
 
-#output$annualTable <- renderTable({
-  #annual_table()
-#}, digits = 1)
+
+# Annual Table 
+annual_table <- reactive({fAnnualValues(projection(), "inflow", hydrodata) })
+output$annualTable <- renderTable({
+  annual_table()[annual_table()$water_year == 2026 |annual_table()$water_year == 2027,]
+}, digits = 1)
   
 
 
@@ -118,6 +120,6 @@ rHandsontableOutput("release")
 textInput("key_elev_input", "Key Elevation (ft)")
 
 plotOutput("projectionplot")
-#tableOutput("annualTable")
+tableOutput("annualTable")
 
 ```

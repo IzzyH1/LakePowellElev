@@ -101,9 +101,9 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
   # Values can be positive for upstream releases (Flaming Gorge) or negative for LP releases
   
   # Defines when additional release rule changes
-  req(Add_Time)
-  req((length(Add_Time) > 0),
-  Add_Time[is.na(Add_Time)] <- 0)
+  #req(Add_Time)
+  #req((length(Add_Time) > 0),
+  Add_Time[is.na(Add_Time)] <- 0
   stage_end <- current_date %m+% months(cumsum(Add_Time))
   
   #  Matches releases to dates and places in data frame 
@@ -210,7 +210,7 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
   
 
   # Return projection data frame
-  data.frame(datetime = time_grid, storage = storage, elevation = elev, inflow = inflow)
+  data.frame(datetime = time_grid, storage = storage, elevation = elev, inflow = inflow, outflow = outflow)
   
 }
 
@@ -259,25 +259,47 @@ fplotprojection<- function(projection, elevation_input = NULL){
           axis.ticks = element_line(linewidth = 1.5))  
             
 }
+
+
 #### Function that takes a parameter on a time grid and sums that parameter for each year
 # Inputs: df(dataframe with value and date column), parameter (string)
 # Outputs: annual_value(dataframe)
 fAnnualValues <- function(df, parameter, Storage_Data){
-  annual_inflow <- df %>%
-    mutate(year = year(datetime)) %>%
-    group_by(label, year) %>%
-    summarise(
-      annual_inflow = sum(inflow, na.rm = TRUE) / 1e6,
-      .groups = "drop"
-    )
+  # Focuses data frames to concerned value
+  df_value <- data.frame(value = df[[parameter]], datetime = df$datetime)
   
-  annual_table <- annual_inflow %>%
-    pivot_wider(
-      names_from = label,
-      values_from = annual_inflow
-    )
-  annual_table
+  FieldName <- switch(
+    parameter,
+    inflow = "Inflow Volume",
+    outflow = "Release volume",
+    stop("Unknown parameter")
+  )
   
+  storage_value <- data.frame(value = Storage_Data$dfResMonthly$MonthlyValue[Storage_Data$dfResMonthly$FieldName == FieldName & Storage_Data$dfResMonthly$ResName == "Lake Powell"] * 1000000, 
+                              datetime = as.Date(Storage_Data$dfResMonthly$Date[Storage_Data$dfResMonthly$FieldName == FieldName & Storage_Data$dfResMonthly$ResName == "Lake Powell"]))
+  
+  
+  # adds common month column to make merging/coalescing consistent
+  df_monthly <- df_value %>%
+    mutate(month = floor_date(datetime, "month"))
+  
+  storage_monthly <- storage_value %>%
+    mutate(month = floor_date(datetime, "month"))
+  
+  annual_value <- storage_monthly %>%
+    full_join(df_monthly, by = "month", suffix = c("_actual", "_forecasted"))%>%
+    dplyr::mutate(value = coalesce(value_actual, value_forecasted),
+           water_year = if_else(
+             lubridate::month(month) >= 10,
+             lubridate::year(month) + 1,
+             lubridate::year(month)
+           )) %>%
+    group_by(water_year)%>%
+    dplyr::summarise(value = sum(value, na.rm = TRUE))%>%
+    ungroup()
+  
+  annual_value <- dplyr::rename(annual_value, Inflow_Volume = value)  
+  return(annual_value)
 }
  
 
@@ -285,5 +307,5 @@ fAnnualValues <- function(df, parameter, Storage_Data){
 #projection <- ProjectPowell(Inflow = "CRMMS", Release = c(6,5), Release_Time = c(6, 24), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
 #elevation_input <- data.frame(elevation = 3500, label = "3500 label")
 #fplotprojection(projection, elevation_input)
-
+#annual_outflow <- fAnnualValues(projection[projection$label == "No Additional Release",], "outflow", hydrodata)
 
