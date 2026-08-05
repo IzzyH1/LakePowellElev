@@ -71,6 +71,7 @@ key_elev_df <- reactive({
   )
 })
 
+
 # Passes inputs through projection function 
 projection_calculated <- reactive({
   # Insures that there are proper inputs
@@ -101,8 +102,15 @@ projection_calculated <- reactive({
 CRMMS_projection <- fAutoReadCRMMS24MS("Lake Powell", "Pool Elevation")
 CRMMS_filtered <- data.frame(datetime = CRMMS_projection$date, storage = NA, elevation = CRMMS_projection$`24MS MIN PROB`,inflow = NA, outflow = NA, label = "24MS MIN PROB" )
 
+# Displays 24 MS if toggled True
 projection <- reactive({
-  rbind(projection_calculated(), CRMMS_filtered)
+
+  if (isTRUE(input$CRMMS_input)) {
+    rbind(projection_calculated(), CRMMS_filtered)
+  } else {
+    projection_calculated()
+  }
+
 })
 
 # plots projection
@@ -150,6 +158,7 @@ output$annualTable <- renderTable({
 rHandsontableOutput("additional_flow")
 rHandsontableOutput("release")
 textInput("key_elev_input", "Key Elevation (ft)")
+checkboxInput("CRMMS_input", "Display CRMMS 24 MS MIN PROB Elevation Projection?", value = FALSE)
 
 plotOutput("projectionplot")
 tableOutput("annualTable")
