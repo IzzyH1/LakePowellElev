@@ -17,7 +17,7 @@ hydrodata <- fReadReclamationHydroData(FALSE)
 # Outputs: dataframe (storage_proj, elevation_proj, datetime)
 # Default Values: Inflow = CRMMS, Release = 6 MAF/yr, Additional Relese = 1 MAF, AR Duration = 12 months, Duration = 36 months
 
-
+Duration <- 36
 ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, Duration, Storage_Data = hydrodata)
 {
 
@@ -73,13 +73,13 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
     
   }
   
+  
   # Defines when Release rule changes
   Release_Time[is.na(Release_Time)] <- 0
   stage_end <- current_date %m+% months(cumsum(Release_Time))
 
   # Defines Release
   release_prop <- fMonthlyProportion("Release volume", "Lake Powell", Storage_Data, 2021)
-  
   
   for (i in seq_along(Release)){
     release_i <- data.frame(datetime = time_grid)
@@ -232,9 +232,9 @@ fplotprojection<- function(projection, elevation_input = NULL){
   
   # Sets colors for graph
   labels <- unique(projection$label)
-  release_labels <- setdiff(labels, "No Additional Release")
+  release_labels <- setdiff(labels, c("No Additional Release", "24MS MIN PROB"))
   release_palette <- c("darkolivegreen","darkolivegreen3", "darkolivegreen1" )
-  color_values <- c("No Additional Release" = rgb (.88, .09, .79), 
+  color_values <- c("No Additional Release" = rgb (.88, .09, .79), "24MS MIN PROB" = rgb(.046,.037,.333),
                   setNames(release_palette[seq_along(release_labels)], release_labels ))
 # Plots projection onto plot
 
@@ -307,8 +307,10 @@ fAnnualValues <- function(df, parameter, Storage_Data){
  
 
 # Test Projections
-#projection <- ProjectPowell(Inflow = "CRMMS", Release = c(20,5), Release_Time = c(6, 24), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
+#projection <- ProjectPowell(Inflow = "CRMMS", Release = c(5,6), Release_Time = c(12, 12), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
 #elevation_input <- data.frame(elevation = 3500, label = "3500 label")
-#fplotprojection(projection, elevation_input)
-#annual_outflow <- fAnnualValues(inflow_i, "inflow", hydrodata)
+#annual_outflow <- fAnnualValues(projection, "outflow", hydrodata)
 
+#CRMMS_projection <- fAutoReadCRMMS24MS("Lake Powell", "Pool Elevation")
+#CRMMS_filtered <- data.frame(datetime = CRMMS_projection$date, elevation = CRMMS_projection$`24MS MIN PROB`, label = "24MS MIN PROB", storage = NA, inflow = NA, outflow = NA)
+#test <- rbind(projection, CRMMS_filtered)

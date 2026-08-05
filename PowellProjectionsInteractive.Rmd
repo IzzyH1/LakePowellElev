@@ -72,7 +72,7 @@ key_elev_df <- reactive({
 })
 
 # Passes inputs through projection function 
-projection <- reactive({
+projection_calculated <- reactive({
   # Insures that there are proper inputs
   tbl <- rbind(input_flow(), input_release())
 
@@ -97,6 +97,14 @@ projection <- reactive({
   )
 })
 
+# Adds 24 MS plot to projection
+CRMMS_projection <- fAutoReadCRMMS24MS("Lake Powell", "Pool Elevation")
+CRMMS_filtered <- data.frame(datetime = CRMMS_projection$date, storage = NA, elevation = CRMMS_projection$`24MS MIN PROB`,inflow = NA, outflow = NA, label = "24MS MIN PROB" )
+
+projection <- reactive({
+  rbind(projection_calculated(), CRMMS_filtered)
+})
+
 # plots projection
 output$projectionplot <- renderPlot({
   fplotprojection(projection(), key_elev_df())
@@ -106,7 +114,9 @@ output$projectionplot <- renderPlot({
 # Annual Tables 
 inflow_no_add_table <- reactive({fAnnualValues(projection()[projection()$label == "No Additional Release",], "inflow", hydrodata) })
 
-inflow_add_table <- reactive({fAnnualValues(projection()[projection()$label != "No Additional Release",], "inflow", hydrodata)})
+inflow_add_table <- reactive({fAnnualValues(projection()%>%
+        dplyr::filter(!label %in% 
+            c("No Additional   Release", "24MS MIN PROB")), "inflow", hydrodata)})
 
 inflow_table <- reactive({
   data.frame(
@@ -123,7 +133,7 @@ inflow_table <- reactive({
   )
 })
 
-release_table <- reactive({fAnnualValues(projection(), "outflow", hydrodata)})
+release_table <- reactive({fAnnualValues(projection()[projection()$label == "No Additional Release",], "outflow", hydrodata)})
 
 annual_table <- reactive({merge(inflow_table(), release_table(), by = "water_year")})
   
