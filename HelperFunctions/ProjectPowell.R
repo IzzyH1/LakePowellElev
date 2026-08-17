@@ -207,15 +207,10 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
 
 fplotprojection<- function(projection, elevation_input = NULL){
 #Sets key elevations for graph
-#bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(2000000 - bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]
-  elevation_ticks <- data.frame(elevation = c(3490, 3446, 3473, 3496, 3533, 3549), label = c("Top of Penstocks: 3490 ft, 3.7 MAF","2", "3","4", "6", "7"))
-  key_elevations<- data.frame(elevation = c(3514, 3500), label =c("Vortices Elevation: 3514 ft, 4.9 MAF ", "Final EIS Critical Elevation: 3500 ft"))
+#bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(5000000 - bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]
+  elevation_ticks <- data.frame(elevation = c(3446, 3473, 3496,3515, 3533, 3549), label = c("2", "3","4","5", "6", "7"))
   
-  if (!is.null(elevation_input)){
-    key_elevations <- rbind(key_elevations, elevation_input)
-  }
-  
-  elevation_ticks <- rbind(elevation_ticks, key_elevations)
+  key_elevations <- rbind(elevation_ticks, elevation_input)
   
   # Sets colors for graph
   labels <- unique(projection$label)
@@ -236,11 +231,11 @@ fplotprojection<- function(projection, elevation_input = NULL){
          "Date", y = "Elevation(ft.)" )+
   
   # Plots Right side axis
-    geom_hline(yintercept = key_elevations$elevation, color = "red", 
+    geom_hline(yintercept = elevation_input$elevation, color = "red", 
              linetype = "dashed") +
     scale_y_continuous(name = "Elevation (ft.)",
-            sec.axis = sec_axis(~.*1, breaks = elevation_ticks$elevation,
-                  labels = elevation_ticks$label, name = " Active Storage(MAF)" )) +
+            sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation,
+                  labels = key_elevations$label, name = " Active Storage(MAF)" )) +
     
     theme(axis.title = element_text(size = 18), 
           axis.ticks = element_line(linewidth = 1.5))  
@@ -295,7 +290,6 @@ fAnnualValues <- function(df, parameter, Storage_Data){
 
 # Test Projections
 #projection <- ProjectPowell(Inflow = "CRMMS", Release = c(5,6), Release_Time = c(12, 12), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
-dates <- fCalculateDateRange(c(12,12,12), "Inflow")
 #elevation_input <- data.frame(elevation = 3500, label = "3500 label")
 #annual_outflow <- fAnnualValues(projection, "outflow", hydrodata)
 

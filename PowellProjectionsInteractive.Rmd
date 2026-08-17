@@ -56,19 +56,20 @@ input_release <- reactive({
 
 
 key_elev_df <- reactive({
-  # Parse comma-separated or space-separated numeric inputs
-  raw_vals <- unlist(strsplit(input$key_elev_input, "[,\\s]+"))
-  elev_num <- as.numeric(raw_vals[!is.na(as.numeric(raw_vals))])
+  # Use inputs if available, else use default values (3500 and 3490)
+  if (is.null(input$buffer_elevation) || input$buffer_elevation == ""){
+    buffer_elev <- data.frame(elevation = 3500, label = "Final EIS Critical Elevation: 3500 ft")
+  }else{
+    buffer_elev <- data.frame(elevation = as.numeric(input$buffer_elevation), label = paste0(input$buffer_elevation, " ft."))
+  }
   
-  # If no valid numbers are entered, return NULL
-  if (length(elev_num) == 0) return(NULL)
+  if (is.null(input$catastrophic_elevation)|| input$catastrophic_elevation == "" ){
+    catastrophic_elev <- data.frame(elevation = 3490, label = "Top of Penstocks: 3490 ft.")
+  }else{
+    catastrophic_elev <- data.frame(elevation = as.numeric(input$catastrophic_elevation), label = paste0(input$catastrophic_elevation, " ft."))
+  }
   
-  # Construct the dataframe with elevation and paste0 label
-  data.frame(
-    elevation = elev_num,
-    label = paste0(elev_num, " ft."),
-    stringsAsFactors = FALSE
-  )
+  rbind(buffer_elev, catastrophic_elev)
 })
 
 
@@ -199,9 +200,13 @@ uiOutput("inflow_date_ranges")
 
 rHandsontableOutput("release")
 uiOutput("release_date_ranges")
-textInput("key_elev_input", "Key Elevation (ft)")
+
+textInput("buffer_elevation", "Buffer Elevation (ft)")
+textInput("catastrophic_elevation", "Catastrophic Elevation (ft)")
+
 checkboxInput("CRMMS_input", "Display CRMMS 24 MS MIN PROB Elevation Projection?", value = FALSE)
 
+#Outputs
 plotOutput("projectionplot")
 tableOutput("annualTable")
 
