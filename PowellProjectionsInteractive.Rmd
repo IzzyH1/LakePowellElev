@@ -87,7 +87,7 @@ projection_calculated <- reactive({
   req(length(release) > 0, !all(is.na(release)))
   req(length(release_time) > 0, !all(is.na(release_time)))
   
-  ProjectPowell(
+  result <- ProjectPowell(
     Inflow = "CRMMS",
     Release = release,
     Release_Time = release_time,
@@ -95,6 +95,45 @@ projection_calculated <- reactive({
     Add_Time = add_time,
     Duration = 36,
     Storage_Data = hydrodata
+  )
+  # Checks if crashed
+  if (identical(result, "crashed")) {
+    showModal(
+      modalDialog(
+        title = "Empty!",
+        "One or more of your projections results in a negative active storage in Lake Powell.",
+        easyClose = TRUE,
+        footer = modalButton("OK")
+      )
+    )
+
+    return(NULL)
+  }
+
+  result
+})
+
+output$inflow_date_ranges <- renderText({
+  add_time <- unlist(input_flow()[2,-1])
+  result_list<- fCalculateDateRange(add_time, "Additional Inflow")
+  
+  HTML(
+    paste(
+      unlist(na.omit(result_list)),
+      collapse = "<br>"
+    )
+  )
+})
+
+output$release_date_ranges <- renderText({
+  release_time <- unlist(input_release()[2,-1])
+  result_list<- fCalculateDateRange(release_time, "Release")
+  
+  HTML(
+    paste(
+      unlist(na.omit(result_list)),
+      collapse = "<br>"
+    )
   )
 })
 
@@ -156,7 +195,10 @@ output$annualTable <- renderTable({
 ```{r output, results = "show"}
 # Inputs
 rHandsontableOutput("additional_flow")
+uiOutput("inflow_date_ranges")
+
 rHandsontableOutput("release")
+uiOutput("release_date_ranges")
 textInput("key_elev_input", "Key Elevation (ft)")
 checkboxInput("CRMMS_input", "Display CRMMS 24 MS MIN PROB Elevation Projection?", value = FALSE)
 

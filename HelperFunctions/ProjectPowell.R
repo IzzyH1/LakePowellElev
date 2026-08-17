@@ -17,7 +17,7 @@ hydrodata <- fReadReclamationHydroData(FALSE)
 # Outputs: dataframe (storage_proj, elevation_proj, datetime)
 # Default Values: Inflow = CRMMS, Release = 6 MAF/yr, Additional Relese = 1 MAF, AR Duration = 12 months, Duration = 36 months
 
-Duration <- 36
+
 ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, Duration, Storage_Data = hydrodata)
 {
 
@@ -25,48 +25,13 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
   current_date <-Sys.Date()
   time_grid<- seq.Date(from = current_date, by = "month", length.out = Duration)
 
-  # Defines Inflow
-  #if (Inflow == "Default"){
-    #CMIP5_inflow <- read.csv("Data/CMIP5 Hydrology Scenario.csv")
-    #Inflow <- data.frame(LeeFlow = CMIP5_inflow$X65* 1000000, year = CMIP5_inflow$CY)
-    
-    # Defines Upper Basin Use (Data wrangling)
-    #UBuse_raw <- read.csv("Data/UpperBasinConsumptiveUse.csv")
-    #UBuse_raw <- as.data.frame(t(UBuse_raw))
-    #UBuse_step1 <- gsub(",", "", UBuse_raw$V5)
-    #UBuse_raw$clean_numeric <- as.numeric(trimws(UBuse_step1))
-    #UBuse <- UBuse_raw[!is.na(UBuse_raw$clean_numeric) & !is.na(as.numeric(UBuse_raw$V3)), ]
-    #UBuse <- data.frame(year = as.numeric(UBuse$V3), total_use = UBuse$clean_numeric)
-    
-    # Ask Dr. Rosenberg about this, maybe do percentage of total Unreg Inflow? or minimum value?
-    #avg_ubuse <- mean(UBuse$total_use[UBuse$year<= 2024])
-    #LP_inflow <- data.frame(inflow = Inflow$LeeFlow - avg_ubuse, year = Inflow$year)
-    
-    # Inflow monthly proportion is based on 2021 (recent low water year)
-    #inflow_prop <- fMonthlyProportion("Inflow", "Lake Powell", Storage_Data, 2021)
-    #inflow_monthly <- merge(inflow_prop, LP_inflow)
-    #inflow_monthly$inflow <- inflow_monthly$prop * inflow_monthly$inflow
-    
-    # Projects inflow onto time grid
-    #inflow_i <- data.frame(datetime = time_grid)
-    
-    #inflow_i$year  <- lubridate::year(inflow_i$datetime)
-    #inflow_i$month <- lubridate::month(inflow_i$datetime)
-    
-    #inflow_i <- merge(
-      #inflow_i,
-      #inflow_monthly,
-      #by = c("year","month"),
-      #all.x = TRUE,
-      #sort = FALSE
-    #)
-  #}
+  #Defines INflow
   if(Inflow == "CRMMS"){
     inflow <- fAutoReadCRMMS24MS("Lake Powell", "Inflow Volume")
     inflow$datetime <- as.Date(inflow$date)
     inflow_fun <- approxfun(as.numeric(inflow$datetime),inflow$'24MS MIN PROB')
     if (length(time_grid) > length(inflow$datetime)){
-      time_grid <- inflow$datetime
+      time_grid <- inflow$datetime[-(1:2)]   #Indexing makes time_grid start at current month
     }
     inflow_i <- data.frame(datetime = time_grid)
     inflow_i$inflow <- inflow_fun(as.numeric(time_grid))
@@ -96,7 +61,7 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
       }
     )
   
-  
+ 
   # Defines Additional Release data frame
   # Values can be positive for upstream releases (Flaming Gorge) or negative for LP releases
   
@@ -128,6 +93,9 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
   #Projects Storage and merges into single data frame
   no_add_release <- project_storage(inflow_i$inflow, release_i$release, Storage_Data, time_grid)
   with_release <- project_storage(inflow_i$with_release, release_i$release, Storage_Data, time_grid)
+  if("crashed" %in% c(no_add_release, with_release)){
+    return("crashed")
+  }
   
   #Adds labels to different operations
   no_add_release$label <- "No Additional Release"
@@ -147,27 +115,40 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
 
 }
 
-#### Function: Finds average proportion of value per month across historical Hydrodata
-## Inputs: parameter ("string"), reservoir ("string")
-## outputs: avg_prop (dataframe)
-fAverageMonthlyProportion<- function(parameter, reservoir, hydrodata){
-  
-  monthly <- filter(hydrodata$dfResMonthly, ResName == reservoir & FieldName == parameter & WaterYear >= 2022)
-  yearly<- filter(hydrodata$dfResAnnual, ResName == reservoir & FieldName == parameter & WaterYear >= 2022)
-  combined <- merge(monthly, yearly, by = 'WaterYear')
-  
-  combined$prop <- combined$MonthlyValue/combined$AnnualValue
-  avg_prop <- aggregate(prop ~ Month, data = combined, FUN = mean, na.rm = TRUE)
-  return(avg_prop)
-}
 
-
-
+### Function: finds monthly proportion of value for a specific parameter and a specific year
 fMonthlyProportion <- function(parameter, reservoir, hydrodata, year){
   monthly <- filter(hydrodata$dfResMonthly, ResName == reservoir & FieldName == parameter & WaterYear == year)
   annual_value <- hydrodata$dfResAnnual$AnnualValue[hydrodata$dfResAnnual$ResName == reservoir & hydrodata$dfResAnnual$FieldName == parameter & hydrodata$dfResAnnual$WaterYear == year]
   monthly_prop <- data.frame(month = monthly$Month, prop = monthly$MonthlyValue / annual_value)
   return(monthly_prop)
+}
+
+### Function: Takes stage length inputs and returns the date range associated with stages
+# Inputs: stage_durations (list of lengths), parameter (string)
+#Outputs: date_ranges (data frame)
+
+fCalculateDateRange <- function(stage_durations, parameter){
+  start_date <- as.Date(rep(NA, length(stage_durations)))
+  start_date[1] <- floor_date(Sys.Date(), unit = "month")
+  end_date <- as.Date(rep(NA, length(stage_durations)))
+  stage_number <- numeric(length(stage_durations))
+  text <- as.character(rep(NA, length(stage_durations)))
+
+  for (i in seq_along(stage_durations)){
+    end_date[i] <- start_date[i] %m+% months(stage_durations[i])
+    start_date[i + 1] <- end_date[i]
+    stage_number[i] <- i
+  }
+
+  for (i in seq_along(stage_number)){
+    text[i] <- paste0(parameter, " Stage ",stage_number[i], ": ", start_date[i], " - ", end_date[i])
+  if (stage_durations[i] == 0){
+    text[i] <- NA
+  }
+  }  
+  
+  return(text)
 }
 
 # Storage Projection Function:
@@ -203,6 +184,12 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
       evap_i
     
   }
+  
+  # Returns crash message if storage is less than 0
+  if (any(storage <= 0)){
+    return("crashed")
+  }
+  
   # Load in Bathymytry data
   bathy<-ReadBathymetryCritialElevations()
   elev <- sapply(storage, 
@@ -222,7 +209,7 @@ fplotprojection<- function(projection, elevation_input = NULL){
 #Sets key elevations for graph
 #bathy$dfPowellBathymetry$`ELEVATION (feet)`[which.min(abs(2000000 - bathy$dfPowellBathymetry$`Active Storage (acre-feet)`))]
   elevation_ticks <- data.frame(elevation = c(3490, 3446, 3473, 3496, 3533, 3549), label = c("Top of Penstocks: 3490 ft, 3.7 MAF","2", "3","4", "6", "7"))
-  key_elevations<- data.frame(elevation = c(3514, 3525), label =c("Vortices Elevation: 3514 ft, 4.9 MAF ", "DROA Target Elevation: 3525 ft"))
+  key_elevations<- data.frame(elevation = c(3514, 3500), label =c("Vortices Elevation: 3514 ft, 4.9 MAF ", "Final EIS Critical Elevation: 3500 ft"))
   
   if (!is.null(elevation_input)){
     key_elevations <- rbind(key_elevations, elevation_input)
@@ -308,6 +295,7 @@ fAnnualValues <- function(df, parameter, Storage_Data){
 
 # Test Projections
 #projection <- ProjectPowell(Inflow = "CRMMS", Release = c(5,6), Release_Time = c(12, 12), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
+dates <- fCalculateDateRange(c(12,12,12), "Inflow")
 #elevation_input <- data.frame(elevation = 3500, label = "3500 label")
 #annual_outflow <- fAnnualValues(projection, "outflow", hydrodata)
 
