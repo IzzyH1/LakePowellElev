@@ -14,6 +14,7 @@ library("rhandsontable")
 #rsconnect::showLogs()
 
 ```
+
 ```{r Projection Calculation, echo=FALSE, warning=FALSE, message=FALSE}
 
 # Sets up table inputs
@@ -193,14 +194,19 @@ output$annualTable <- renderTable({
 
 
 ```
-```{r output, results = "show"}
-# Inputs
+***Instructions:***<br />
+*Additional Inflow:* Row 1 allows you to add an additional flow into Lake Powell in million-acre feet (MAF). This inflow is added to the projected inflow from the CRBFC 24 MS Minimum Probable inflow forecast. Row 2 describes the time in months it takes for the complete inflow volume to reach Lake Powell. For example, if you input 1 in row 1 and 6 in row 2, this would add 1/6 MAF of inflow per month for 6 months.  Lake Powell’s projected elevation without the input additional inflow will be plotted in magenta. Lake Powell’s projected elevation with the input additional inflow will be plotted in green.
+```{r inflow table, results = "show"}
 rHandsontableOutput("additional_flow")
 uiOutput("inflow_date_ranges")
-
+```
+*Release Schedule:* Row 1 allows you to set the release rate for Lake Powell in million acre-feet per year (MAF/yr). Row 2 allows you to set the number of months that water is being released from Lake Powell at this rate. The proportion of the annual rate that is released monthly is based on the historical release hydrodata. For example, if I input 6 in row 1 and 6 for row 2, the historical monthly proportion of the release multiplied by 6 MAF would be released for each month for 6 months.
+```{r release table, results = "show"}
 rHandsontableOutput("release")
 uiOutput("release_date_ranges")
-
+```
+*Key Elevations: * You can input a buffer and catastrophic elevation in their respective boxes. These elevations will appear on the plot as a labeled red dashed line. The default buffer and catastrophic elevations are 3500 ft. (Final EIS Critical Elevation) and 3490 ft. (Top of the Penstocks, often considered the minimum elevation for power generation) respectively. If nothing is inputted in an elevation text box, these defaults will be plotted. 
+```{r elevation inputs, results = "show"}
 textInput("buffer_elevation", "Buffer Elevation (ft)")
 textInput("catastrophic_elevation", "Catastrophic Elevation (ft)")
 
@@ -208,6 +214,21 @@ checkboxInput("CRMMS_input", "Display CRMMS 24 MS MIN PROB Elevation Projection?
 
 #Outputs
 plotOutput("projectionplot")
+```
+***Annual Table:*** This table shows the total annual inflow and release volume for the water years spanned by the model (and the 2025 water year for reference). <br />
+A water year spans October 1st  - September 30th. A water year is named based on the latest calendar year in its range. For example, If a water year starts on October 1st 2025 and ends September 30th 2026, it would be the 2026 water year.
+
+```{r annual table, results="show"}
 tableOutput("annualTable")
 
 ```
+**General Tips:**<br />
+1. You may initially see an error message until you input at least one additional inflow stage and one release stage, or while your inputs are being processed. <br />
+2. The graph/table will become transparant while it is loading, and will become solid when it is finished.<br />
+3. All inputs need to be numeric (don't type in the units)<br //>
+
+**Table Tips:**<br /> 
+1. A stage duration needs to be inputted for each additional flow/release input, or you will receive an error message. <br />
+2. You can input a stage duration that is longer than 24 months, but the model will only plot 24 months. <br />
+3. You do not need to provide inputs for all of the stages, and the stages for additional inflow and release do not have to match. <br />
+4. After the table there will be text displaying the date ranges of each stage based on your inputs. This is to make it easier to determine if your stages line up with water years, calendar years, etc., and to provide clarity.
