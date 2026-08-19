@@ -14,6 +14,9 @@ The total inflow and releases from Lake Powell for the Water Years present in th
  Original script written by Dr. David Rosenberg https://github.com/dzeke/ColoradoRiverCollaborate/tree/main/AutoReadUSBRData
 3. **AutoReadCRMMS24MS.R** - Sources data from most recent CRMMS 24MS for Lake Powell and filters data by reservoir (Lake Powell or Lake Mead) and parameter (Storage, Inflow Volume, Release Volume, or Pool Elevation).
 4. **ProjectPowell.R** - Script that performs all of the calculations necessary for the interactive tool and creates the final plot. Functions are as follows:
+
    *ProjectPowell:* Takes additional inflow and release schedule, hydrodata, and a base inflow scenario and creates a dataframe of monthly inflow and             outflow. This time series is then plugged into project_storage and a storage/elevation projection is returned.
+
    *project_storage:* Takes a dataframe with inflow, outflow, and dates and plugs it into a time series mass balance equation. It outputs a projection           dataframe with columns (datetime, storage, elevation, inflow, outflow, and label)
+
    *fplotprojection:* Creates a ggplot with projected storage and elevation
