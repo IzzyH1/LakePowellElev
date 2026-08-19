@@ -5,6 +5,7 @@ These projections are displayed on a graph with the current CRMMS 24 MS and user
 The total inflow and releases from Lake Powell for the Water Years present in the projection are also calculated and displayed.
 
 **Description of Contents**
+
 **PowellProjectionsInteractive.Rmd** - Creates the Shiny app and user interface for the interactive tool
 
 **PowellElevProjections.Rmd** - Markdown document that uses the Lake Powell Calculation tool to look specifically at the affects of Flaming Gorge Additional Release strategies. Noninteractive
