@@ -42,20 +42,12 @@ To reproduce the results for PowellProjectionsInteractive.Rmd, follow the direct
 3. Download this repository.
 - Scroll to the top of this page and select 'Code'.
 - Select 'Download ZIP'.
-- Go to the device's downloads and select 'ImmersiveModelLakeMead-main'. This will unzip the file.
-5. Open the Python script.
-- In the 'ImmersiveModelLakeMead-main' file, select the folder 'MinimumHydrologyScenarios'.
-- Open 'MinimumHydrologyScenarios.py' with Pycharm.
-- Follow the directions.
-- Select 'MinimumHydrologyScenarios.py'.
-6. Select a Python interpreter.
-7. Open settings in Pycharm.
-- Select 'Project:MinimumHydrologyScenarios', 'Python Interpreter', then "+".
-- In the search bar, type, 'pandas'. Select 'pandas' then 'Install Package'.
-- Repeat step 5b. with 'openpyxl' instead of 'pandas'.
-8. Click the green play arrow at the top of the page.
-9. Follow the directions at the bottom of the page.
-10. The results will be stored in a created excel file in the 'Results' folder in the 'MinimumHydrologySenarios' folder.
+- Go to the device's downloads and select 'LakePowellElev-main'. This will unzip the file.
+5. Open the R Markdown script.
+- In the 'LakePowellElev-main' file, select the file 'PowellProjectionsInteractive.Rmd'.
+- Open 'PowellProjectionsInteractive.Rmd' with RStudio.
+- At the top of the left panel is green arrow labeled 'Run'. Click this button
+- The resulting shiny app will open as a separate window
 
 ## Contact Information
 ### Authors
