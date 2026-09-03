@@ -223,7 +223,7 @@ inflow_no_add_table <- reactive({fAnnualValues(projection()[projection()$label =
 
 inflow_add_table <- reactive({fAnnualValues(projection()%>%
         dplyr::filter(!label %in% 
-            c("No Additional   Release", "24MS MIN PROB")), "inflow", hydrodata)})
+            c("No Additional Release", "24MS MIN PROB")), "inflow", hydrodata)})
 
 inflow_table <- reactive({
   data.frame(
