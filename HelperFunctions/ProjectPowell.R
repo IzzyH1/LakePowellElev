@@ -18,15 +18,17 @@ hydrodata <- fReadReclamationHydroData(FALSE)
 # Default Values: Inflow = CRMMS, Release = 6 MAF/yr, Additional Relese = 1 MAF, AR Duration = 12 months, Duration = 36 months
 
 
-ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, Duration, Storage_Data = hydrodata)
+
+ProjectPowell <- function(Inflow, Inflow_Time, Release, Release_Time, Add_Release, Add_Time, Storage_Data = hydrodata)
 {
 
   # Defines time_grid
-  current_date <-Sys.Date()
-  time_grid<- seq.Date(from = current_date, by = "month", length.out = Duration)
-
-  #Defines INflow
-  if(Inflow == "CRMMS"){
+  duration <- min(sum(Inflow_Time), sum(Release_Time), sum(Add_Time))
+  current_date <- floor_date(Sys.Date(), unit = "month")
+  time_grid<- seq.Date(from = current_date, by = "month", length.out = duration)
+  
+  #Defines Inflow
+  if(any(Inflow == "CRMMS")){
     inflow <- fAutoReadCRMMS24MS("Lake Powell", "Inflow Volume")
     inflow$datetime <- as.Date(inflow$date)
     inflow_fun <- approxfun(as.numeric(inflow$datetime),inflow$'24MS MIN PROB')
@@ -36,6 +38,28 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
     inflow_i <- data.frame(datetime = time_grid)
     inflow_i$inflow <- inflow_fun(as.numeric(time_grid))
     
+  }else{
+    Inflow_Time[is.na(Inflow_Time)] <- 0
+    stage_end <- current_date %m+% months(cumsum(Inflow_Time))
+    
+    # Defines inflow distribution
+    inflow_prop <- fMonthlyProportion("Inflow Volume", "Lake Powell", Storage_Data, 2021)
+    
+    for (i in seq_along(Inflow)){
+      inflow_i <- data.frame(datetime = time_grid)
+      inflow_i$inflow <- sapply(
+        inflow_i$datetime,
+        function(d) {
+          stage <- which(d <= stage_end)[1]
+          if(is.na(stage)){
+            0
+          }
+          else{
+            inflow_prop$prop[month(d) == inflow_prop$month] * Inflow[stage]*1000000
+          }
+        }
+      )
+    }
   }
   
   
@@ -82,7 +106,7 @@ ProjectPowell <- function(Inflow, Release, Release_Time, Add_Release, Add_Time, 
           if(is.na(stage)){
             return(0)
           }
-        Add_Release[i]/Add_Time[i] * 1000000
+        Add_Release[stage]/Add_Time[stage] * 1000000
       }
     )
   
@@ -151,6 +175,8 @@ fCalculateDateRange <- function(stage_durations, parameter){
   return(text)
 }
 
+
+
 # Storage Projection Function:
 # Inputs: Inflow, Outflow (Vectors)
 #         Storage data (data frame)
@@ -184,9 +210,9 @@ project_storage <- function(inflow, outflow, Storage_Data, time_grid)
       evap_i
     
   }
-  
+
   # Returns crash message if storage is less than 0
-  if (any(storage <= 0)){
+  if (any(storage <= 0 | is.na(storage))){
     return("crashed")
   }
   
@@ -232,13 +258,14 @@ fplotprojection<- function(projection, elevation_input = NULL){
   
   # Plots Right side axis
     geom_hline(yintercept = elevation_input$elevation, color = "red", 
-             linetype = "dashed") +
+             linetype = "dashed", linewidth = 1.2) +
     scale_y_continuous(name = "Elevation (ft.)",
             sec.axis = sec_axis(~.*1, breaks = key_elevations$elevation,
                   labels = key_elevations$label, name = " Active Storage(MAF)" )) +
     
     theme(axis.title = element_text(size = 18), 
-          axis.ticks = element_line(linewidth = 1.5))  
+          axis.ticks = element_line(linewidth = 1.5),
+          axis.text.y = element_text(size = 15))  
             
 }
 
@@ -289,7 +316,7 @@ fAnnualValues <- function(df, parameter, Storage_Data){
  
 
 # Test Projections
-#projection <- ProjectPowell(Inflow = "CRMMS", Release = c(5,6), Release_Time = c(12, 12), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
+#projection <- ProjectPowell(Inflow = c(11,9), Inflow_Time = c(12,12), Release = c(5,6), Release_Time = c(12, 12), Add_Release = 1, Add_Time = 12, Duration = 36, Storage_Data = hydrodata)
 #elevation_input <- data.frame(elevation = 3500, label = "3500 label")
 #annual_outflow <- fAnnualValues(projection, "outflow", hydrodata)
 
